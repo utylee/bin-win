@@ -22,7 +22,7 @@ while 1:
         # 파일이 여러개가 동시에 추가될 경우 파일 한개 밖에 처리하지 못하던 문제 수정
             #if added[0][-7:] == 'torrent' : 
             if i[-7:] == 'torrent' : 
-                print(i)
+                #print(i)
                 #a = path + "".join(added) 
                 a = path + "".join(i) 
                 try:
@@ -33,8 +33,8 @@ while 1:
                 os.remove(a)
     
             #elif added[0][-3:] == 'smi' :
-            elif i[-3:] == 'smi' :
-                print(i)
+            elif i[-3:] == 'smi' or i[-3:] == 'srt':
+                #print(i)
                 #a = path + "".join(added) 
                 a = path + "".join(i) 
                 try:
