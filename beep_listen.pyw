@@ -3,6 +3,7 @@ import asyncio
 from PIL import Image
 import os, glob
 import subprocess
+import datetime
 
 #import pillow
 
@@ -31,12 +32,16 @@ class Handle():
                 
         # motion 이 종료되었을 때 날아오는 메세지 
         elif(message == "ended"):
+            # 거래시간인 오전에는 이미지 표시는 pass하도록 합니다
+            current_hour = int(datetime.datetime.now().strftime('%H'))
+            if (current_hour >= 9) and (current_hour <= 11):
+                return
+
             try:
-            # 파일 생성까지 시간이 좀 걸리므로 3초 딜레이를 줘봅니다
+                # 파일 생성까지 시간이 좀 걸리므로 3초 딜레이를 줘봅니다
                 loop.call_later(3, self.show)
             except:
                 pass
-
 
     # 최신 캡쳐 이미지를 화면에 표시합니다
     def show(self):
