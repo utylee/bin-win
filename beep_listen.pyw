@@ -33,9 +33,13 @@ class Handle():
         # motion 이 종료되었을 때 날아오는 메세지 
         elif(message == "ended"):
             # 거래시간인 오전에는 이미지 표시는 pass하도록 합니다
-            current_hour = int(datetime.datetime.now().strftime('%H'))
-            if (current_hour >= 9) and (current_hour <= 11):
-                return
+            n = datetime.datetime.now()
+            current_hour = int(n.strftime('%H'))
+            weekday = n.weekday()
+            # 평일일 경우(토요일, 일요일이 아닌 경우)
+            if (weekday != 0) or (weekday !=6):
+                if (current_hour >= 8) and (current_hour <= 11):
+                    return
 
             try:
                 # 파일 생성까지 시간이 좀 걸리므로 3초 딜레이를 줘봅니다

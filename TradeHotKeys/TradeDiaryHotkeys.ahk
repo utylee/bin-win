@@ -9,7 +9,6 @@ Coordmode, Mouse, Screen
 ;CoordMode, ToolTip|Pixel|Mouse|Caret|Menu [, Screen|Window|Client]
 
 
-
 ; 8282호가창에서 클릭지점 오류가 자꾸 나서 보완장치를 마련하기로 했습니다.
 ; 제대로 된 위치 위로 올라가면 빨간, 혹은 파란 세로선이 가격 양쪽으로 나타납니다
 Gui,  -Caption +ToolWindow +AlwaysOnTop
@@ -490,6 +489,7 @@ LAlt & ~1::
 */
 }
 
+/* 자꾸 창 옮기기의 오타가 생겨서 안 쓰는 키이니 빼놓기로
 ;일봉차트 사이즈 유타일리식 디폴트화
 #!Left::
 {
@@ -535,6 +535,7 @@ LAlt & ~1::
 	
 	return
 }
+*/
 
 #!Enter::
 {
@@ -1542,7 +1543,10 @@ LButton Up::
         MouseGetPos, posX, posY
         cur_num := CheckPos(posX, posY)
 
-        if (cur_num == 0 || clicked_num == 0)
+        ;if (cur_num == 0 || clicked_num == 0)
+        ;가끔 다른 창을 드래그하다가 막 swap이 되어서, cur_num이 0이 아닌 의미있는 윈도우 좌표에 걸려서
+        ;그런것 같아 num이 10 이상인 윈도우들을 제외에 추가하였습니다
+        if (cur_num == 0 || cur_num > 10 || clicked_num == 0)
         {
             clicked_num := 0
             lbutton_down := 0
@@ -2274,7 +2278,7 @@ XButton1::
 }
 
 ; [0999] 가상화면1<--->가상화면3을 스윗칭
-MButton::
+XButton2::
 {
     global togglescr
     
@@ -2316,8 +2320,11 @@ MButton::
 
 ; [0999] 각 호가창 내에서 마우스 앞으로 키 눌렀을 경우, 분<-->틱 토글 기능추가
 ; 호가창만으로 바뀌면서 틱-분 전환은 필요없어졌고, 대신 우상단 알림창 순환 버튼 클릭으로 용도 변경
-XButton2::
+; [0998] 차트가 필요없어진 지금 토글보다는 바로 8282 매수 위치로 이동하게끔 합니다
+MButton::
 {
+    MouseMove, 1630 - 1920, 227
+    /*
     ; 마우스 커서의 포지션을 구합니다
     MouseGetPos, posX, posY
     Sleep, 10
@@ -2337,6 +2344,7 @@ XButton2::
     MouseClick, Left, pos_T.x, pos_T.y
     Sleep, 20
     MouseMove, posX, posY
+    */
 
     /*
     global toggle0101
@@ -3325,7 +3333,9 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 	Sleep 100
 	;MouseMove, -4000, -4000, 0, R
 	;MouseMove, 2555, 130, 5, R
-	MouseMove, 2555 - 1920, 130, 5
+	;MouseMove, 2555 - 1920, 130, 5
+    ;For nighlyfirefox
+	MouseMove, 2555 - 1920, 110, 5
 	Send {LButton}
 
     ; 윈10
@@ -3337,10 +3347,10 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
     Send {LButton} 
     
 
-	WinWait, 파일 업로드|열기|blog.upphoto
+	WinWait, 파일 업로드|열기|blog.upphoto|File Upload
 	;WinWait, 열기|blog.upphoto
 	;WinWait, blog.upphoto
-	IfWinExist, 파일 업로드|열기|blog.upphoto
+	IfWinExist, 파일 업로드|열기|blog.upphoto|File Upload
 		WinActivate
 	Sleep 500
 	
@@ -3363,9 +3373,9 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
     */
     ; 열기 버튼 위치가 바뀌어서 그런지 자꾸 안돼서 키보드로 변경해봄
     Send {Tab}
-    Sleep 300
+    Sleep 1000
     Send {Tab}
-    Sleep 300
+    Sleep 1000
     Send {Enter}
     ;MouseClick, Left, 1195, 506
 	Sleep 2500
@@ -6182,7 +6192,7 @@ if (WinActive("ahk_class _NKHeroMainClass"))
         ;newX := iX - 205
         newX := iX - 161
         ;Gui, Show, Hide NA x-495 y130 h300 w5
-        Gui, Show, Hide NA x%newX% y130 h300 w5
+        Gui, Show, NA x%newX% y130 h300 w5
         ;1920 - 1425,130, x, 428
     }
     ;else if (X >= 1200 - 1920) and (X <= 1252 - 1920) and (Y >= 120) and (Y <= 461)
@@ -6192,7 +6202,7 @@ if (WinActive("ahk_class _NKHeroMainClass"))
         ;Gui, Show, Hide NA x-540 y134 h300 w5
         newX := iX + 157
         ;Gui, Show, Hide NA x-564 y130 h300 w5
-        Gui, Show, Hide NA x%newX% y130 h300 w5
+        Gui, Show, NA x%newX% y130 h300 w5
         ;1920 - 1356,130, x, 428
     }
     else
