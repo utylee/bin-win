@@ -2355,7 +2355,7 @@ WheelLeft::
 
     cur_num := CheckPos(posX, posY)
     ;의미없는 포지션일 경우 아무 액션도 하지 않습니다
-    if (cur_num >= 1 && cur_num <= 9)
+    if (cur_num >= 1 && cur_num <= 9 || cur_num == 88)
     {
         start := NumToSubjectPos(cur_num)
         target := NumToSubjectPos(11)
