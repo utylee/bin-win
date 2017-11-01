@@ -5,8 +5,10 @@ import os, time, shutil
 path = 'E:/Down/'
 #path = 'E:\\Down\\'
 #target = 'w:\\99-data\\91-transmission-watch\\'
-target = 'v:/99-data/91-transmission-watch'
-target_media = 'v:/00-MediaWorld'
+#target = 'v:/99-data/91-transmission-watch'
+#target_media = 'v:/00-MediaWorld'
+target = 'u:/3002/99-data/91-transmission-watch'
+target_media = 'u:/3002/00-MediaWorld'
 
 
 before = dict([(f, None) for f in os.listdir(path)])

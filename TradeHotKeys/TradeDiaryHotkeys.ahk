@@ -421,7 +421,13 @@ LAlt & ~1::
 	{
 		;WinActivate
 		;WinMove, ahk_class mintty, , 520, 135, 1100, 870 
-		WinMove, ahk_class mintty, , 500, 130, 1200, 900 
+		;WinMove, ahk_class mintty, , 500, 130, 1200, 900 
+        ;
+		WinMove, ahk_class mintty, , 563, 187, 1200, 900 
+	}	
+	IfWinExist, ahk_class Vim
+	{
+		WinMove, ahk_class Vim, , 566, 83, 1160, 992 
 	}	
 
 	return
@@ -849,9 +855,9 @@ S Up::
 
 
 
-SC029::ESC
-^SC029::Send, `` 
-+SC029::SendRaw, ~ 
+;SC029::ESC
+;^SC029::Send, `` 
+;+SC029::SendRaw, ~ 
 
 LWin & Tab::AltTab
 
@@ -1232,6 +1238,12 @@ CheckPos(posX, posY)
     {
         ret := 88
     }
+    ;(추가) 관심종목 창
+    ; 10이상인 다른 좌측 창 등 드래그 문제를 제외하기 위해 얘는 좀 작은 숫자로 했습니다
+    else if (posX >= 623 - 1920) and (posX <= 1195 - 1920) and (posY >= 757) and (posY <= 1130)
+    {
+        ret := 11
+    }
 
 
 
@@ -1393,6 +1405,9 @@ NumToSubjectPos(N)
     ;좌측상단 검색연동 현재가창
     else if (N == 88) 
         Pos := {"x" : 35, "y" : 27}
+    ;관심종목 창
+    else if (N == 11) 
+        Pos := {"x" : 800 - 1920, "y" : 850}
 
     return Pos
 }
@@ -1542,16 +1557,21 @@ LButton Up::
         ;MsgBox, lbutton_down
         MouseGetPos, posX, posY
         cur_num := CheckPos(posX, posY)
+        ;MsgBox, %cur_num%
+        ;MsgBox, %clicked_num%
+
 
         ;if (cur_num == 0 || clicked_num == 0)
         ;가끔 다른 창을 드래그하다가 막 swap이 되어서, cur_num이 0이 아닌 의미있는 윈도우 좌표에 걸려서
         ;그런것 같아 num이 10 이상인 윈도우들을 제외에 추가하였습니다
-        if (cur_num == 0 || cur_num > 10 || clicked_num == 0)
+        if (cur_num == 0 || cur_num > 12 || clicked_num == 0)
         {
+            ;MsgBox, asdf
             clicked_num := 0
             lbutton_down := 0
             return
         }
+
 
         if (cur_num != clicked_num)
         {
@@ -1559,6 +1579,15 @@ LButton Up::
             if (clicked_num == 88)
             {
                 start := NumToSubjectPos(88)
+                target := NumToSubjectPos(cur_num)
+
+                DragProc(start, target)
+            }
+            ; 검색연동 현재가창을 드래그할 경우 스왑이 아닌 드래그를 실행
+            else if (cur_num == 11)
+            {
+                ;MsgBox, asdf 
+                start := NumToSubjectPos(clicked_num)
                 target := NumToSubjectPos(cur_num)
 
                 DragProc(start, target)
@@ -2318,12 +2347,40 @@ XButton2::
     return
 }
 
+WheelLeft::
+{
+    ; 마우스 커서의 포지션을 구합니다
+    MouseGetPos, posX, posY
+    Sleep, 10
+
+    cur_num := CheckPos(posX, posY)
+    ;의미없는 포지션일 경우 아무 액션도 하지 않습니다
+    if (cur_num >= 1 && cur_num <= 9)
+    {
+        start := NumToSubjectPos(cur_num)
+        target := NumToSubjectPos(11)
+
+        DragProc(start, target)
+
+        Sleep 50
+        ;마우스커서의 위치를 원래 위치로 되돌립니다
+        MouseMove, posX, posY
+
+        return
+    }
+    
+    return
+}
+
 ; [0999] 각 호가창 내에서 마우스 앞으로 키 눌렀을 경우, 분<-->틱 토글 기능추가
 ; 호가창만으로 바뀌면서 틱-분 전환은 필요없어졌고, 대신 우상단 알림창 순환 버튼 클릭으로 용도 변경
 ; [0998] 차트가 필요없어진 지금 토글보다는 바로 8282 매수 위치로 이동하게끔 합니다
 MButton::
 {
+
     MouseMove, 1630 - 1920, 227
+    return
+
     /*
     ; 마우스 커서의 포지션을 구합니다
     MouseGetPos, posX, posY
@@ -2381,9 +2438,10 @@ MButton::
 
     ;다음 플래그로(분<--->틱) 전환해 놓습니다
     toggle0101[cur] := toggle0101[cur] * -1
-    */
 
     return 
+    */
+
 }
 
 
@@ -3191,12 +3249,12 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 	Sleep 50
 	Send {LShift Up}
 	Send {PrintScreen Up}
-	Sleep 700
+	Sleep 1700
 
 	;MouseMove, 7, -424, 2
 	MouseMove, 10, -1920 + 10, 2
     Send {LButton Down}
-    Sleep 100
+    Sleep 1100
 	MouseMove, 1900, 470, 2, R
 	Sleep 100 
 	Send {LButton Up}

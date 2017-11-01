@@ -10,6 +10,7 @@ import datetime
 class Handle():
     def __init__(self):
         self.file_flag = 0
+        self.file_flag_car = 0
 
     async def handle(self, reader, writer):
         #data = yield from reader.read(100)
@@ -25,10 +26,37 @@ class Handle():
                 for i in range(0, 6):
                     #winsound.Beep(300 + i*100, 60)
                     winsound.Beep(300 , 60)
-                    asyncio.sleep(0.1)
+                    await asyncio.sleep(0.1)
             except:
                 pass
                 #print('Beep failed!')
+        # message가 차량용블랙박스로부터 comingcar  들어오면 Beep 발생
+        if(message == "comingcar"):
+            try:
+                # Beep
+                for i in range(0, 6):
+                    #winsound.Beep(300 + i*100, 60)
+                    winsound.Beep(700 , 60)
+                    await asyncio.sleep(0.1)
+            except:
+                pass
+                #print('Beep failed!')
+        # motion from car 가 종료되었을 때 날아오는 메세지 
+        elif(message == "endedcar"):
+            # 거래시간인 오전에는 이미지 표시는 pass하도록 합니다
+            n = datetime.datetime.now()
+            current_hour = int(n.strftime('%H'))
+            weekday = n.weekday()
+            # 평일일 경우(토요일, 일요일이 아닌 경우)
+            if (weekday != 0) or (weekday !=6):
+                if (current_hour >= 8) and (current_hour <= 11):
+                    return
+
+            try:
+                # 파일 생성까지 시간이 좀 걸리므로 3초 딜레이를 줘봅니다
+                loop.call_later(3, self.showcar)
+            except:
+                pass
                 
         # motion 이 종료되었을 때 날아오는 메세지 
         elif(message == "ended"):
@@ -46,6 +74,24 @@ class Handle():
                 loop.call_later(3, self.show)
             except:
                 pass
+
+    def showcar(self):
+        newest = max(glob.iglob(r"u:\20-motion\2*.jpg"), key = os.path.getctime)
+        #print(newest)
+        im = Image.open(newest).resize((320, 450), Image.BICUBIC)
+        filename = "{}{}.jpg".format(r"c:\Users\utylee\tempcar", self.file_flag_car)
+        self.file_flag_car = self.file_flag_car + 1
+        if (self.file_flag_car > 3): 
+            self.file_flag_car = 0
+        #im.save(r"c:\Users\utylee\temp.jpg")
+        print(filename)
+        im.save(filename)
+        #꿀뷰를 직접 지정하여 사용합니다. im.show()를 사용하니 pyw 시작시 cmd창이 떠버립니다
+        command = "{} {}".format(r"HoneyView.exe ", filename)
+        print(command)
+        #subprocess.Popen("{}".format(r"Honeyview.exe ", filename), shell = False )
+        subprocess.Popen(command, shell = False )
+        #im.show()
 
     # 최신 캡쳐 이미지를 화면에 표시합니다
     def show(self):
