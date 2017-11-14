@@ -37,6 +37,7 @@ wintab_toggle := 0
 ;lbutton 드래그 만으로 호가창 swap을 위한 변수들
 lbutton_down := 0
 clicked_num := 0
+clicked_pos := {"x": 0, "y": 0}
 
 ; 분봉<-->틱봉 간의 교환을 위한 변수
 toggle := 1
@@ -1244,6 +1245,12 @@ CheckPos(posX, posY)
     {
         ret := 11
     }
+    ;(추가) 우측 중앙 현재가 창
+    ; 해당 창에서의 단축키 이동도 좀 필요한 것 같았다.
+    else if (posX >= 6) and (posX <= 615 ) and (posY >= 420) and (posY <= 815)
+    {
+        ret := 10
+    }
 
 
 
@@ -1402,6 +1409,12 @@ NumToSubjectPos(N)
         ;Pos := {"x" : 1260, "y" : 825}
         ;Pos := {"x" : 1572, "y" : 450}
         Pos := {"x" : 1630, "y" : 447}
+    ;우측 중앙 현재가 창
+    else if (N == 10) 
+        ;Pos := {"x" : 1920 + 1260, "y" : 825}
+        ;Pos := {"x" : 1260, "y" : 825}
+        ;Pos := {"x" : 1572, "y" : 450}
+        Pos := {"x" : 34, "y" : 433}
     ;좌측상단 검색연동 현재가창
     else if (N == 88) 
         Pos := {"x" : 35, "y" : 27}
@@ -1547,6 +1560,8 @@ SwapWinProc(A, B)
     clicked_num := cur
     lbutton_down := 1
 
+    clicked_pos := {"x": posX, "y": posY}
+
     return
 }
 
@@ -1576,18 +1591,29 @@ LButton Up::
         if (cur_num != clicked_num)
         {
             ; 검색연동 현재가창을 드래그할 경우 스왑이 아닌 드래그를 실행
-            if (clicked_num == 88)
+            ; 혹은 그 아래 현재가창을 드래그할 경우 스왑이 아닌 드래그를 실행
+            if (clicked_num == 88 || clicked_num == 10)
             {
-                start := NumToSubjectPos(88)
+                start := NumToSubjectPos(clicked_num)
                 target := NumToSubjectPos(cur_num)
 
                 DragProc(start, target)
             }
-            ; 검색연동 현재가창을 드래그할 경우 스왑이 아닌 드래그를 실행
-            else if (cur_num == 11)
+            ; 관종창이 목표일 경우 특정 포지션으로 드래그를 행합니다 
+            else if (cur_num == 11) 
             {
                 ;MsgBox, asdf 
                 start := NumToSubjectPos(clicked_num)
+                target := NumToSubjectPos(cur_num)
+
+                DragProc(start, target)
+            }
+            ; 관종창이 시작일 경우 '현재' 포지션을 그대로 드래그를 행합니다 
+            else if (clicked_num == 11)
+            {
+                ;MsgBox, asdf 
+                ;start := NumToSubjectPos(clicked_num)
+                start := clicked_pos
                 target := NumToSubjectPos(cur_num)
 
                 DragProc(start, target)
@@ -2355,7 +2381,7 @@ WheelLeft::
 
     cur_num := CheckPos(posX, posY)
     ;의미없는 포지션일 경우 아무 액션도 하지 않습니다
-    if (cur_num >= 1 && cur_num <= 9 || cur_num == 88)
+    if (cur_num >= 1 && cur_num <= 10 || cur_num == 88)
     {
         start := NumToSubjectPos(cur_num)
         target := NumToSubjectPos(11)
