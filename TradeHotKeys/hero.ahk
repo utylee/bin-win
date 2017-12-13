@@ -115,7 +115,7 @@ Sleep 100
 ;1,2,3 조건 순차적으로 클릭
 ;영웅문4
 ;익절 클릭
-MouseClick, Left, 60 - 1920, 541
+MouseClick, Left, 65 - 1920, 545
 Sleep 100
 ; 잠시후 스탑로스 설정 창 닫기
 Sleep 500

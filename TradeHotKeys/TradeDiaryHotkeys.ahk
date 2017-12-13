@@ -1189,7 +1189,6 @@ $LWin Up::
 ; 자꾸 잘못눌려서 Win+4가 다른 앱이 실행되어서 그냥 단축키 두개를 같이 쓰게끔 바꾸었습니다
 #IfWinExist ahk_class MozillaWindowClass
 #3::
-#4::
 {
     IfWinExist, ahk_class MozillaWindowClass
         WinActivate
@@ -1197,6 +1196,7 @@ $LWin Up::
     return
 }
 #IfWinExist
+
 
 ;#IfWinExist ahk_class _KiWoomClass
 #IfWinExist ahk_class _NKHeroMainClass
@@ -1633,6 +1633,7 @@ LButton Up::
     return
 }
 
+/*
 LAlt & ~LButton::
 {   
     MouseGetPos, posX, posY 
@@ -1657,6 +1658,7 @@ LAlt & ~LButton::
 
     return
 }
+*/
 
 ; [호가창만으로 거래] F1 키 등을 분봉 클릭에서 현재 커서의 종목을 각 호가창으로의 할당 드래그로 변경
 F1::
