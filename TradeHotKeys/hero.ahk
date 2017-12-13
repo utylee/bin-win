@@ -109,6 +109,7 @@ Sleep 2000
 
 ;MouseClick, Left, 460 - 1920, 55
 ;영웅문4
+;잔고편입 스탑로스 클릭
 MouseClick, Left, 340 - 1920, 52
 Sleep 100
 
