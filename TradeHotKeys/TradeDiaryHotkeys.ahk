@@ -3440,7 +3440,7 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 		WinActivate
 	Sleep 500
 	
-	Send {1}{.}{p}{n}{g}
+	SendInput {Raw}1.png
 
     ; 열기 버튼 안눌리는 문제 해결법
     Sleep, 2000
