@@ -98,6 +98,9 @@ IfWinExist, ahk_class _NKHeroMainClass
     Sleep 40000
 */
 
+; 스탑로스를 빼놓음
+/*
+
 IfWinExist, ahk_class _NKHeroMainClass
 	WinActivate
 
@@ -107,8 +110,6 @@ Send, ^w
 Sleep 2000
 
 
-; 스탑로스를 빼놓음
-/*
 ;MouseClick, Left, 460 - 1920, 55
 ;영웅문4
 ;잔고편입 스탑로스 클릭
