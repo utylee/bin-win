@@ -77,6 +77,7 @@ IfWinExist, ahk_class _NKHeroMainClass
     ;ControlSend, , {Ctrl Down}{a}{Ctrl Up} , Utylee Asset
     ;Send, ^a
 
+    ; 0998 호가 거래 화면 번호 누르기
     /* 키움 종료 에러 때문에 멈춘상태동안 키떼는 UP입력이 들어가서 인지 아니면 너무 키입력이 빨라서인지
     몰라서 일단 사람처럼 좀 느리게 하기로
     */
@@ -99,7 +100,7 @@ IfWinExist, ahk_class _NKHeroMainClass
 */
 
 ; 스탑로스를 빼놓음
-/*
+; 스탑로스 손절 부분만 다시 추가해놓음
 
 IfWinExist, ahk_class _NKHeroMainClass
 	WinActivate
@@ -118,6 +119,11 @@ Sleep 100
 
 ;1,2,3 조건 순차적으로 클릭
 ;영웅문4
+;1.50% 손절 클릭
+MouseClick, Left, 65 - 1920, 527
+Sleep 200
+
+/*
 ;1% 익절 클릭
 MouseClick, Left, 65 - 1920, 545
 Sleep 200
@@ -125,11 +131,11 @@ Sleep 200
 ;필요하다는 생각.. 그게 이득이기에
 MouseClick, Left, 65 - 1920, 563
 Sleep 200
+*/
 ; 잠시후 스탑로스 설정 창 닫기
 Sleep 500
 ;영웅문4
 MouseClick, Left, 941 - 1920, 20
-*/
 
 
 

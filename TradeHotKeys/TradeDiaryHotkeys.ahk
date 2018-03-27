@@ -1022,11 +1022,15 @@ $LWin Up::
 }
 */
 
+/* planck 키보드 조합누르다가 자꾸 오타발생해서 창 닫혀서 임시로 제거하기로 
 #Q::
 {
     send !{F4}
 	return
 }
+*/
+
+/* planck 로 바꾸면서 제거하기로.. 
 
 ~ / & 5::
 {
@@ -1064,17 +1068,17 @@ $LWin Up::
 ~ / & P::
 {
     slash_toggle := 1
-    /*   
-    GetKeyState, state, LCtrl
-    if state = D
-    {
-        ; ctrl + insert ( copy ) 버튼
-        send {Ctrl Down}{Insert}
-        sleep, 30
-        send {Ctrl Up}
-        return
-    }
-    */
+      
+    //GetKeyState, state, LCtrl
+    //if state = D
+    //{
+        //; ctrl + insert ( copy ) 버튼
+        //send {Ctrl Down}{Insert}
+        //sleep, 30
+        //send {Ctrl Up}
+        //return
+    //}
+    //
 
     send {Shift Down}{PrintScreen}
     Sleep, 30
@@ -1101,6 +1105,8 @@ $LWin Up::
         return
     }
 }
+
+*/
 
 #+j::
 {
