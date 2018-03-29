@@ -101,7 +101,9 @@ IfWinExist, ahk_class _NKHeroMainClass
 
 ; 스탑로스를 빼놓음
 ; 스탑로스 손절 부분만 다시 추가해놓음
+; 다시 뺌.. 스탑로스 이후 에러생기며 버벅버벅 --;
 
+/*
 IfWinExist, ahk_class _NKHeroMainClass
 	WinActivate
 
@@ -123,19 +125,18 @@ Sleep 100
 MouseClick, Left, 65 - 1920, 527
 Sleep 200
 
-/*
-;1% 익절 클릭
-MouseClick, Left, 65 - 1920, 545
-Sleep 200
-;1.8% 익절 클릭 (자꾸 나름 큰 수익을 놓치기에 저정도만 올라가도 맥스에서 팔린거다 싶어 또 스탑주문이 
-;필요하다는 생각.. 그게 이득이기에
-MouseClick, Left, 65 - 1920, 563
-Sleep 200
-*/
+;;1% 익절 클릭
+;MouseClick, Left, 65 - 1920, 545
+;Sleep 200
+;;1.8% 익절 클릭 (자꾸 나름 큰 수익을 놓치기에 저정도만 올라가도 맥스에서 팔린거다 싶어 또 스탑주문이 
+;;필요하다는 생각.. 그게 이득이기에
+;MouseClick, Left, 65 - 1920, 563
+;Sleep 200
 ; 잠시후 스탑로스 설정 창 닫기
 Sleep 500
 ;영웅문4
 MouseClick, Left, 941 - 1920, 20
 
+*/
 
 
