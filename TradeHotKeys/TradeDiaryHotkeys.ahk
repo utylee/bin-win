@@ -2488,7 +2488,8 @@ XButton1::
     ;#####
     ; [8282] 분틱차트 위치일 경우, 분<-->틱 상호교환
     ;If (posX >= 671) and (posX <= 1193) and (posY >=9) and (posY <= 403)
-    If (posX >= 671 - 1920) and (posX <= 1193 - 1920) and (posY >=9) and (posY <= 403)
+    ;If (posX >= 671 - 1920) and (posX <= 1193 - 1920) and (posY >=9) and (posY <= 403)
+    If (posX >= 650 - 1920) and (posX <= 1150 - 1920) and (posY >=9) and (posY <= 403)
     {
         global toggle
 
@@ -2500,15 +2501,18 @@ XButton1::
         {
             ;cX := 1065
             ;cX := 1065 - 1920
-            cX := 1045 - 1920
+            ;cX := 1045 - 1920
+            cX := 1015 - 1920
         }
         else
         {
             ;cX := 1085
-            cX := 1085 - 1920
+            ;cX := 1085 - 1920
+            cX := 1055 - 1920
         }
         
-        MouseClick, Left, cX, 30
+        ;MouseClick, Left, cX, 30
+        MouseClick, Left, cX, 28
         Sleep, 50
         MouseMove, posX, posY
         return 
@@ -2517,7 +2521,8 @@ XButton1::
     ;#####
     ; [8282] 호가창 전체버튼 누르기
     ;If (posX >= 1192) and (posX <= 1720) and (posY >=5) and (posY <= 518)
-    If (posX >= 1192 - 1920) and (posX <= 1720 - 1920) and (posY >=5) and (posY <= 518)
+    ;If (posX >= 1192 - 1920) and (posX <= 1720 - 1920) and (posY >=5) and (posY <= 518)
+    If (posX >= 1150 - 1920) and (posX <= 1720 - 1920) and (posY >=5) and (posY <= 518)
     {
         ;MouseClick, Left, 1650, 50
         MouseClick, Left, 1623 - 1920, 43
