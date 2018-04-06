@@ -2520,7 +2520,7 @@ XButton1::
     If (posX >= 1192 - 1920) and (posX <= 1720 - 1920) and (posY >=5) and (posY <= 518)
     {
         ;MouseClick, Left, 1650, 50
-        MouseClick, Left, 1650 - 1920, 50
+        MouseClick, Left, 1623 - 1920, 43
         Sleep, 50
         MouseMove, posX, posY
         return

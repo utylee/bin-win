@@ -102,8 +102,9 @@ IfWinExist, ahk_class _NKHeroMainClass
 ; 스탑로스를 빼놓음
 ; 스탑로스 손절 부분만 다시 추가해놓음
 ; 다시 뺌.. 스탑로스 이후 에러생기며 버벅버벅 --;
+; 2% 기계적 손절은 필요하다는 생각에 추가는 해놓기로. 프로와 아마추어 경계다.
 
-/*
+
 IfWinExist, ahk_class _NKHeroMainClass
 	WinActivate
 
@@ -137,6 +138,6 @@ Sleep 500
 ;영웅문4
 MouseClick, Left, 941 - 1920, 20
 
-*/
+
 
 
