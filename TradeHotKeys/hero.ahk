@@ -99,6 +99,38 @@ IfWinExist, ahk_class _NKHeroMainClass
     Sleep 40000
 */
 
+/* 잔고/미체결 난으로 변경해놓아 지금 보유중인 잔고 유무를 확인해야한다. 큰 수익 내놓고
+이게 뭔가 했더니 한팔린 물량이 있던 것이 한두번이 아니다 
+*/
+
+; 왼 화살표 연타 및 탭 클릭으로  가장 왼탭으로 이동 
+IfWinExist, ahk_class _NKHeroMainClass
+	WinActivate
+
+; 화살표 클릭
+Loop, 7 {
+    MouseClick, Left, 525 - 1920, 795
+    Sleep 150
+}
+
+Sleep 100
+
+;탭클릭
+MouseClick, Left, 63 - 1920, 794
+Sleep 100
+
+;계좌번호 콤보  클릭
+MouseClick, Left, 103 - 1920, 822
+Sleep 200
+
+;계좌번호 호가스캘 클릭
+MouseClick, Left, 120 - 1920, 866
+Sleep 200
+
+
+
+
+
 ; 스탑로스를 빼놓음
 ; 스탑로스 손절 부분만 다시 추가해놓음
 ; 다시 뺌.. 스탑로스 이후 에러생기며 버벅버벅 --;
