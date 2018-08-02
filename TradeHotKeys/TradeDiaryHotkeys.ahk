@@ -74,7 +74,7 @@ toggle0101[77] := 1 ;잔고 / 당일매매 영역의 토글을 위한 변수
 ;#define MOUSEEVENTF_ABSOLUTE 0x8000 /* absolute move */
 ; 오버워치 뒤로 돌기 매크로 테스트
 /*
-XButton1::
+XButton2::
 {
 	IfWinExist, 오버워치
 	{
@@ -82,10 +82,22 @@ XButton1::
 		WinActivate, 오버워치
 	
 		;MouseMove, -100, 0, , R
-		Loop, 10
+	;	Loop, 10
+        
+        ;f = 389
+        ;final = 3890
+        final = 1990
+        cur = 0
+        While ( cur < final)
 		{
-			DllCall("mouse_event", uint, 1, int, 303, int, 0, uint, 0, int, 0)
+            ;step := Rand(300,400)
+            Random, step, 390, 430
+            if ( cur + step > final)
+                step := final - cur
+			;DllCall("mouse_event", uint, 1, int, 389, int, 0, uint, 0, int, 0)
+			DllCall("mouse_event", uint, 1, int, step, int, 0, uint, 0, int, 0)
 			Sleep 15	
+            cur := cur + step
 		}
 	
 	}
@@ -979,8 +991,6 @@ $LWin Up::
 
 ;키움HTS에서 삼등분선 자동 메뉴 선택
 #IfWinActive ahk_class _NKHeroMainClass
-^XButton1::
-!XButton1::
 #^1::
 {
 	IfWinExist, ahk_class _NKHeroMainClass
@@ -1226,16 +1236,18 @@ CheckPos(posX, posY)
 {
     ret := 0
 
+    /* 호가창 두개 길게 늘인 이후 오류가 생겨서 필요없는 기능같이 제외해놓았습니다
     ;잔고/당일매매 영역일 경우
     ;if (posX >= 1920 + 620) and (posX <= 1920 + 1223) and (posY >= 820 ) and (posY <= 1076)
     if (posX >= 620) and (posX <= 1223) and (posY >= 820 ) and (posY <= 1076)
     {
         ret := 77 
     }
+    */
     
     ;(추가)좌측 큰 차트일 경우
     ;else if (posX >= 671) and (posX <= 1193) and (posY >=9) and (posY <= 403)
-    else if (posX >= 671 - 1920) and (posX <= 1193 - 1920) and (posY >=9) and (posY <= 403)
+    if (posX >= 671 - 1920) and (posX <= 1193 - 1920) and (posY >=9) and (posY <= 403)
     {
         ret := 99
     }
@@ -1308,7 +1320,7 @@ CheckPos(posX, posY)
     ;else if (posX >= 1920 + 616) and ( posX <= 1920+ 1225) and (posY >= 411) and (posY <= 812)
     ;else if (posX >= 616) and ( posX <= 1225) and (posY >= 411) and (posY <= 812)
     ;else if (posX >= 627) and ( posX <= 935) and (posY >= 431) and (posY <= 857)
-    else if (posX >= 628) and ( posX <= 890) and (posY >= 433) and (posY <= 867)
+    else if (posX >= 628) and ( posX <= 890) and (posY >= 433) ;and (posY <= 867)
     {
         ;-->
         ret := 5
@@ -1317,7 +1329,7 @@ CheckPos(posX, posY)
     ;else if (posX >= 1920 + 1226) and ( posX <= 1920+ 1841) and (posY >= 411) and (posY <= 812)
     ;else if (posX >= 1226) and ( posX <= 1841) and (posY >= 411) and (posY <= 812)
     ;else if (posX >= 936) and ( posX <= 1230) and (posY >= 431) and (posY <= 857)
-    else if (posX >= 927) and ( posX <= 1190) and (posY >= 433) and (posY <= 867)
+    else if (posX >= 927) and ( posX <= 1190) and (posY >= 433) ;and (posY <= 867)
     {
         ;-->
         ret := 6
@@ -1341,6 +1353,7 @@ CheckPos(posX, posY)
         ret := 8
     }
 
+    ;MsgBox, %ret%
     return ret 
 }
 
