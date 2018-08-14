@@ -1338,7 +1338,7 @@ CheckPos(posX, posY)
     ;else if (posX >= 1920) and ( posX <= 1920+ 615) and (posY >= 813)
     ;else if (posX >= 0) and ( posX <= 615) and (posY >= 813)
     ;else if (posX >= 1231) and ( posX <= 1540) and (posY >= 431) and (posY <= 857)
-    else if (posX >= 1234) and ( posX <= 1492) and (posY >= 433) and (posY <= 865)
+    else if (posX >= 1234) and ( posX <= 1492) and (posY >= 433) ; and (posY <= 865)
     {
         ;-->
         ret := 7
@@ -1347,7 +1347,7 @@ CheckPos(posX, posY)
     ;else if (posX >= 1920 + 1226) and (posY >= 813) 
     ;else if (posX >= 1226) and (posY >= 813) 
     ;else if (posX >= 1541) and ( posX <= 1848) and (posY >= 431) and (posY <= 857)
-    else if (posX >= 1545) and ( posX <= 1803) and (posY >= 438) and (posY <= 870)
+    else if (posX >= 1545) and ( posX <= 1803) and (posY >= 438) ; and (posY <= 870)
     {
         ;-->
         ret := 8
