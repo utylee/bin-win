@@ -2377,7 +2377,7 @@ XButton2::
 		Sleep, 100
 		
 		; 매도 포지션으로 이동
-		MouseMove, 1204 - 1920, 273
+		MouseMove, 1199 - 1920, 273
 		toggle_sell := 1
 		return
 	}
@@ -2391,7 +2391,7 @@ XButton2::
 		Sleep, 100
 		
 		; 매도 포지션으로 이동
-		MouseMove, 1204 - 1920, 273
+		MouseMove, 1199 - 1920, 273
 		toggle_sell := 0
 		return
 	}
