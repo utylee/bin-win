@@ -27,6 +27,11 @@ Gui, Show, Hide NA x-747 y180 h210 w25, Blues
 
 SetTimer, timer_proc, 100
 
+; 8282호가창의 매도량 클릭의 전환
+; 0 : 초기값, 혹은 매수포지션 mbutton 을 누르면 다시 2/3량 포지션으로 전환 재초기화
+; 1 : 두번째 누를 때는 나머지 잔량 포지션을 클릭하고 커서 위치 대기 
+toggle_sell := 0
+
 ; S 버튼을 스페셜 커맨드 키로 사용하기 위한 플래그
 s_toggle := 0
 
@@ -2353,9 +2358,45 @@ XButton1::
     return
 }
 
+
+; 매도대기로 변경
+;	.먼저, 2/3 대부분매도 물량 클릭 후
+;	.8282 호가상 매도 위치포지션에 커서 대기	
+;
 ; [0999] 가상화면1<--->가상화면3을 스윗칭
 XButton2::
 {
+	global toggle_sell 
+
+	; 최초 클릭이면
+	;	2/3 가격 클릭 후 매도 포지션으로 이동
+	if(toggle_sell == 0)
+	{
+		; 2/3 클릭후
+		MouseClick, Left, 1425 - 1920, 66
+		Sleep, 100
+		
+		; 매도 포지션으로 이동
+		MouseMove, 1204 - 1920, 273
+		toggle_sell := 1
+		return
+	}
+
+	; 두번째 클릭이면 ( mbutton 으로 (매수대기)리셋되지 않으면)
+	;	잔여물량 클릭 후 매도 포지션에 대기
+	else
+	{
+		; 잔여물량 클릭후
+		MouseClick, Left, 1198 - 1920, 66
+		Sleep, 100
+		
+		; 매도 포지션으로 이동
+		MouseMove, 1204 - 1920, 273
+		toggle_sell := 0
+		return
+	}
+
+	/*
     global togglescr
     
     ;가상화면 3일경우(기본)
@@ -2392,6 +2433,7 @@ XButton2::
 
     togglescr := togglescr * -1
     return
+	*/
 }
 
 WheelLeft::
@@ -2419,12 +2461,14 @@ WheelLeft::
     return
 }
 
+; 매수포지션 이동으로 변경
 ; [0999] 각 호가창 내에서 마우스 앞으로 키 눌렀을 경우, 분<-->틱 토글 기능추가
 ; 호가창만으로 바뀌면서 틱-분 전환은 필요없어졌고, 대신 우상단 알림창 순환 버튼 클릭으로 용도 변경
 ; [0998] 차트가 필요없어진 지금 토글보다는 바로 8282 매수 위치로 이동하게끔 합니다
 MButton::
 {
-
+	global toggle_sell
+	toggle_sell := 0
     MouseMove, 1630 - 1920, 227
     return
 
