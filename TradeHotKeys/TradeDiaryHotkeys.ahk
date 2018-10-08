@@ -1276,7 +1276,12 @@ CheckPos(posX, posY)
     }
 
 
-
+    ; (추가) 조건검색 실시간 일경우
+    ; 검색창에서 바로 뒤로 버튼 눌러서 포커스 종목으로 변경
+    else if (posX >= 20) and (posX <= 445 ) and (posY >= 965) and (posY <= 1075)
+    {
+        ret := 12
+    }
 
     ;--------------------------
 
@@ -1392,6 +1397,7 @@ NumToRightUpPos(N)
 NumToSubjectPos(N)
 {
     Pos := {"x" : 0, "y" :0}
+    MouseGetPos, i, j
 
     if (N == 1) 
         ;Pos := {"x" : 1920 + 30, "y" : 25}
@@ -1445,6 +1451,10 @@ NumToSubjectPos(N)
     ;관심종목 창
     else if (N == 11) 
         Pos := {"x" : 800 - 1920, "y" : 850}
+    ;조건검색 실시간 창
+    else if (N == 12) 
+        ;MouseGetPos, i, j
+        Pos := {"x" : i , "y" : j}
 
     return Pos
 }
@@ -1536,10 +1546,13 @@ NumToMinuPos(N)
 DragProc(A, B)
 {
         MouseMove, A.x, A.y 
+        Sleep 20
 	    Send {LButton Down}
 	    Sleep 20
 	    MouseMove, B.x, B.y
+        Sleep 20
 	    Send {LButton Up}
+        return
 }
 
 ; [0999] 저장화면에서 두 호가창의 위치를 변경하는 프로세스입니다
@@ -2535,7 +2548,7 @@ MButton::
 
 }
 
-
+; 마우스 뒤로 버튼
 XButton1::
 {
     ; 마우스 커서의 포지션을 구합니다
@@ -2605,7 +2618,10 @@ XButton1::
     pos_A := NumToSubjectPos(start)
     pos_Main := {"x": 35, "y": 430}
 
+    i := pos_A.x
+    j := pos_A.y
     ;호가 좌표에서 temp좌표(1920 + 756, 1128)로 드래그 합니다
+    ;MsgBox, %i%
     DragProc(pos_A, pos_Main)
 
     ;마우스커서의 위치를 원래 위치로 되돌립니다
