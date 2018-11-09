@@ -1270,9 +1270,11 @@ CheckPos(posX, posY)
     }
     ;(추가) 우측 중앙 현재가 창
     ; 해당 창에서의 단축키 이동도 좀 필요한 것 같았다.
-    else if (posX >= 6) and (posX <= 615 ) and (posY >= 420) and (posY <= 815)
+
+    ; (또 변경)엇 있었네. 호가창 이동에서 stop주문으로의 이동으로 변경
+    else if (posX >= 6) and (posX <= 615 ) and (posY >= 420) and (posY <= 590)
     {
-        ret := 10
+        ret := 9
     }
 
 
@@ -1440,7 +1442,7 @@ NumToSubjectPos(N)
         ;Pos := {"x" : 1572, "y" : 450}
         Pos := {"x" : 1630, "y" : 447}
     ;우측 중앙 현재가 창
-    else if (N == 10) 
+    else if (N == 9) 
         ;Pos := {"x" : 1920 + 1260, "y" : 825}
         ;Pos := {"x" : 1260, "y" : 825}
         ;Pos := {"x" : 1572, "y" : 450}
@@ -2610,16 +2612,28 @@ XButton1::
     ; 첫 호가창 위치일 경우 (0999 버전)
 
     start := CheckPos(posX, posY)
+    ;MsgBox, %start%
     ;의미없는 포지션일 경우 아무 액션도 하지 않습니다
     if (start == 0)
     {
         return
     }
+
+    ;
+    ;오히려 우측 메인 호가창에서 사용한다면 그때는 stop주문창으로의 드래그를 행합니다
+    else if (start == 9)
+    {
+        pos_A := NumToSubjectPos(start)
+        pos_Main := {"x": 300, "y": 910}
+        DragProc(pos_A, pos_Main)
+        MouseMove, posX, posY
+        return
+    }
     pos_A := NumToSubjectPos(start)
     pos_Main := {"x": 35, "y": 430}
 
-    i := pos_A.x
-    j := pos_A.y
+    ;i := pos_A.x
+    ;j := pos_A.y
     ;호가 좌표에서 temp좌표(1920 + 756, 1128)로 드래그 합니다
     ;MsgBox, %i%
     DragProc(pos_A, pos_Main)
