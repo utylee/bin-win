@@ -1274,7 +1274,7 @@ CheckPos(posX, posY)
     ; (또 변경)엇 있었네. 호가창 이동에서 stop주문으로의 이동으로 변경
     else if (posX >= 6) and (posX <= 615 ) and (posY >= 420) and (posY <= 590)
     {
-        ret := 9
+        ret := 10
     }
 
 
@@ -1293,7 +1293,9 @@ CheckPos(posX, posY)
     ;굵은폰트 및 호가창 몰아놓음으로 바뀐 좌표에 따라 로직 변경
     ;else if (posX >= 627) and ( posX <= 935) and (posY <= 430)
     ; 0998 순수체결거래 템플릿
-    else if (posX >= 628) and ( posX <= 890) and (posY <= 428)
+    ;else if (posX >= 628) and ( posX <= 890) and (posY <= 428)
+    ; 9998 화면번호로 호가그래프를 보기 위해 1,2를 호가그래프 창으로 변경했습니다
+    else if (posX >= 625) and ( posX <= 930) and (posY >= 10) and (posY <= 435) 
     {
         ret := 1
     }
@@ -1301,7 +1303,9 @@ CheckPos(posX, posY)
     ;else if (posX >= 1920 + 616) and ( posX <= 1920+ 1225) and (posY <= 410)
     ;else if (posX >= 616) and ( posX <= 1225) and (posY <= 410)
     ;else if (posX >= 936) and ( posX <= 1230) and (posY <= 430)
-    else if (posX >= 930) and ( posX <= 1190) and (posY <= 428)
+    ;else if (posX >= 930) and ( posX <= 1190) and (posY <= 428)
+    ; 9998 화면번호로 호가그래프를 보기 위해 1,2를 호가그래프 창으로 변경했습니다
+    else if (posX >= 933) and ( posX <= 1240) and (posY >= 10) and (posY <= 435)
     {
         ret := 2
     }
@@ -1310,7 +1314,9 @@ CheckPos(posX, posY)
     ;else if (posX >= 1920 + 1226) and ( posX <= 1920+ 1841) and (posY <= 410)
     ;else if (posX >= 1226) and ( posX <= 1841) and (posY <= 410)
     ;else if (posX >= 1231) and ( posX <= 1540) and (posY <= 430)
-    else if (posX >= 1235) and ( posX <= 1500) and (posY <= 428)
+    ;else if (posX >= 1235) and ( posX <= 1500) and (posY <= 428)
+    ; 9998 화면번호로 호가그래프를 보기 위해 1,2를 호가그래프 창으로 변경했습니다
+    else if (posX >= 1250) and ( posX <= 1510) and (posY >= 10) and (posY <= 430)
     {
         ;-->
         ret := 3
@@ -1320,7 +1326,9 @@ CheckPos(posX, posY)
     ;else if (posX >= 1920) and ( posX <= 1920+ 615) and (posY >= 411) and (posY <= 812)
     ;else if (posX >= 0) and ( posX <= 615) and (posY >= 411) and (posY <= 812)
     ;else if (posX >= 1541) and ( posX <= 1848) and (posY <= 430)
-    else if (posX >= 1542) and ( posX <= 1805) and (posY <= 428)
+    ;else if (posX >= 1542) and ( posX <= 1805) and (posY <= 428)
+    ; 9998 화면번호로 호가그래프를 보기 위해 1,2를 호가그래프 창으로 변경했습니다
+    else if (posX >= 1540) and ( posX <= 1805) and (posY >= 10) and (posY <= 430)
     {
         ;-->
         ret := 4
@@ -1328,20 +1336,25 @@ CheckPos(posX, posY)
 
 
 
+    ; 9998 화면번호로 호가그래프를 보기 위해 1,2를 호가그래프 창으로 변경했습니다
     ; 5th 호가창 위치일 경우
     ;else if (posX >= 1920 + 616) and ( posX <= 1920+ 1225) and (posY >= 411) and (posY <= 812)
     ;else if (posX >= 616) and ( posX <= 1225) and (posY >= 411) and (posY <= 812)
     ;else if (posX >= 627) and ( posX <= 935) and (posY >= 431) and (posY <= 857)
-    else if (posX >= 628) and ( posX <= 890) and (posY >= 433) ;and (posY <= 867)
+    ;else if (posX >= 628) and ( posX <= 890) and (posY >= 433) ;and (posY <= 867)
+    else if (posX >= 650) and ( posX <= 915) and (posY >= 440) ;and (posY <= 867)
     {
         ;-->
         ret := 5
     }
+
+    ; 9998 화면번호로 호가그래프를 보기 위해 1,2를 호가그래프 창으로 변경했습니다
     ; 6th 호가창 위치일 경우
     ;else if (posX >= 1920 + 1226) and ( posX <= 1920+ 1841) and (posY >= 411) and (posY <= 812)
     ;else if (posX >= 1226) and ( posX <= 1841) and (posY >= 411) and (posY <= 812)
     ;else if (posX >= 936) and ( posX <= 1230) and (posY >= 431) and (posY <= 857)
-    else if (posX >= 927) and ( posX <= 1190) and (posY >= 433) ;and (posY <= 867)
+    ;else if (posX >= 927) and ( posX <= 1190) and (posY >= 433) ;and (posY <= 867)
+    else if (posX >= 950) and ( posX <= 1220) and (posY >= 440) ;and (posY <= 867)
     {
         ;-->
         ret := 6
@@ -1350,7 +1363,9 @@ CheckPos(posX, posY)
     ;else if (posX >= 1920) and ( posX <= 1920+ 615) and (posY >= 813)
     ;else if (posX >= 0) and ( posX <= 615) and (posY >= 813)
     ;else if (posX >= 1231) and ( posX <= 1540) and (posY >= 431) and (posY <= 857)
-    else if (posX >= 1234) and ( posX <= 1492) and (posY >= 433) ; and (posY <= 865)
+    ;else if (posX >= 1234) and ( posX <= 1492) and (posY >= 433) ; and (posY <= 865)
+    ; 9998 화면번호로 호가그래프를 보기 위해 1,2를 호가그래프 창으로 변경했습니다
+    else if (posX >= 1245) and ( posX <= 1510) and (posY >= 435) ; and (posY <= 865)
     {
         ;-->
         ret := 7
@@ -1359,7 +1374,9 @@ CheckPos(posX, posY)
     ;else if (posX >= 1920 + 1226) and (posY >= 813) 
     ;else if (posX >= 1226) and (posY >= 813) 
     ;else if (posX >= 1541) and ( posX <= 1848) and (posY >= 431) and (posY <= 857)
-    else if (posX >= 1545) and ( posX <= 1803) and (posY >= 438) ; and (posY <= 870)
+    ;else if (posX >= 1545) and ( posX <= 1803) and (posY >= 438) ; and (posY <= 870)
+    ; 9998 화면번호로 호가그래프를 보기 위해 1,2를 호가그래프 창으로 변경했습니다
+    else if (posX >= 1540) and ( posX <= 1805) and (posY >= 435) ; and (posY <= 865)
     {
         ;-->
         ret := 8
@@ -1405,44 +1422,52 @@ NumToSubjectPos(N)
         ;Pos := {"x" : 1920 + 30, "y" : 25}
         ;Pos := {"x" : 30, "y" : 25}
         ;Pos := {"x" : 656, "y" : 23}
-        Pos := {"x" : 720, "y" : 28}
+        ;Pos := {"x" : 720, "y" : 28}
+        Pos := {"x" : 650, "y" : 23}
     else if (N == 2)
         ;Pos := {"x" : 1920 + 642, "y" : 25}
         ;Pos := {"x" : 642, "y" : 25}
         ;Pos := {"x" : 961, "y" : 23}
-        Pos := {"x" : 1020, "y" : 28}
+        ;Pos := {"x" : 1020, "y" : 28}
+        Pos := {"x" : 960, "y" : 23}
     else if (N == 3)
         ;Pos := {"x" : 1920 + 1260, "y" : 25}
         ;Pos := {"x" : 1260, "y" : 25}
         ;Pos := {"x" : 1258, "y" : 23}
-        Pos := {"x" : 1326, "y" : 28}
+        ;Pos := {"x" : 1326, "y" : 28}
+        Pos := {"x" : 1340, "y" : 23}
     else if (N == 4)
         ;Pos := {"x" : 1920 + 30, "y" : 425}
         ;Pos := {"x" : 30, "y" : 425}
         ;Pos := {"x" : 1572, "y" : 23}
-        Pos := {"x" : 1635, "y" : 28}
+        ;Pos := {"x" : 1635, "y" : 28}
+        Pos := {"x" : 1630, "y" : 23}
     else if (N == 5) 
         ;Pos := {"x" : 1920 + 642, "y" : 425}
         ;Pos := {"x" : 642, "y" : 425}
         ;Pos := {"x" : 656, "y" : 450}
-        Pos := {"x" : 720, "y" : 447}
+        ;Pos := {"x" : 720, "y" : 447}
+        Pos := {"x" : 745, "y" : 452}
     else if (N == 6) 
         ;Pos := {"x" : 1920 + 1260, "y" : 425}
         ;Pos := {"x" : 1260, "y" : 425}
         ;Pos := {"x" : 961, "y" : 450}
-        Pos := {"x" : 1020, "y" : 447}
+        ;Pos := {"x" : 1020, "y" : 447}
+        Pos := {"x" : 1045, "y" : 452}
     else if (N == 7) 
         ;Pos := {"x" : 1920 + 30, "y" : 825}
         ;Pos := {"x" : 30, "y" : 825}
         ;Pos := {"x" : 1258, "y" : 450}
-        Pos := {"x" : 1325, "y" : 450}
+        ;Pos := {"x" : 1325, "y" : 450}
+        Pos := {"x" : 1335, "y" : 450}
     else if (N == 8) 
         ;Pos := {"x" : 1920 + 1260, "y" : 825}
         ;Pos := {"x" : 1260, "y" : 825}
         ;Pos := {"x" : 1572, "y" : 450}
-        Pos := {"x" : 1630, "y" : 447}
+        ;Pos := {"x" : 1630, "y" : 447}
+        Pos := {"x" : 1630, "y" : 450}
     ;우측 중앙 현재가 창
-    else if (N == 9) 
+    else if (N == 10) 
         ;Pos := {"x" : 1920 + 1260, "y" : 825}
         ;Pos := {"x" : 1260, "y" : 825}
         ;Pos := {"x" : 1572, "y" : 450}
@@ -1631,7 +1656,8 @@ LButton Up::
         {
             ; 검색연동 현재가창을 드래그할 경우 스왑이 아닌 드래그를 실행
             ; 혹은 그 아래 현재가창을 드래그할 경우 스왑이 아닌 드래그를 실행
-            if (clicked_num == 88 || clicked_num == 10)
+			; 혹은 현재가창으로의 드래그가 일어나도 스왑이 아닌 드래그만을 실행하게 합니다
+            if (clicked_num == 88 || clicked_num == 10 || cur_num == 10)
             {
                 start := NumToSubjectPos(clicked_num)
                 target := NumToSubjectPos(cur_num)
@@ -1657,6 +1683,20 @@ LButton Up::
 
                 DragProc(start, target)
             }
+			; 9998 호가 그래프 창 추가 변경이 되어 1과 5, 2와 6간의 스왑은 방지합니다
+			else if (cur_num == 5 || cur_num == 1) and (clicked_num == 5 || clicked_num == 1)
+			{
+				clicked_num := 0
+				lbutton_down := 0
+				return 
+			}
+			; 9998 호가 그래프 창 추가 변경이 되어 1과 5, 2와 6간의 스왑은 방지합니다
+			else if (cur_num == 6 || cur_num == 2) and (clicked_num == 6 || clicked_num == 2)
+			{
+				clicked_num := 0
+				lbutton_down := 0
+				return 
+			}
             else
             {
                 SwapWinProc(cur_num, clicked_num)
@@ -2621,7 +2661,7 @@ XButton1::
 
     ;
     ;오히려 우측 메인 호가창에서 사용한다면 그때는 stop주문창으로의 드래그를 행합니다
-    else if (start == 9)
+    else if (start == 10)
     {
         pos_A := NumToSubjectPos(start)
         pos_Main := {"x": 300, "y": 910}
