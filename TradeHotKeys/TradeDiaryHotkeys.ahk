@@ -1252,10 +1252,16 @@ CheckPos(posX, posY)
     
     ;(추가)좌측 큰 차트일 경우
     ;else if (posX >= 671) and (posX <= 1193) and (posY >=9) and (posY <= 403)
-    if (posX >= 671 - 1920) and (posX <= 1193 - 1920) and (posY >=9) and (posY <= 403)
+    ;if (posX >= 671 - 1920) and (posX <= 1193 - 1920) and (posY >=9) and (posY <= 403)
+    If (posX >= 650 - 1920) and (posX <= 1150 - 1920) and (posY >=9) and (posY <= 403)
     {
         ret := 99
     }
+	;(추가)xbutton1 에서 다시 체크하던 좌표 루틴을 여기로 넣습니다. 번호는 8282창이니 82로 ^^
+    else If (posX >= 1150 - 1920) and (posX <= 1720 - 1920) and (posY >=5) and (posY <= 518)
+	{ 
+		ret := 82
+	}
 
     ;(추가) 좌측상단 검색식 연동 차트를 우측 호가로 이동할 때를 대비해 그 창 포지션도 인식하도록 추가
     else if (posX >= 5) and (posX <= 625) and (posY >= 10) and (posY <= 410)
@@ -2601,8 +2607,51 @@ XButton1::
     ; [8282] 분틱차트 위치일 경우, 분<-->틱 상호교환
     ;If (posX >= 671) and (posX <= 1193) and (posY >=9) and (posY <= 403)
     ;If (posX >= 671 - 1920) and (posX <= 1193 - 1920) and (posY >=9) and (posY <= 403)
-    If (posX >= 650 - 1920) and (posX <= 1150 - 1920) and (posY >=9) and (posY <= 403)
+    ;If (posX >= 650 - 1920) and (posX <= 1150 - 1920) and (posY >=9) and (posY <= 403)
+
+    ;#####
+    ; [8282] 호가창 전체버튼 누르기
+    ;If (posX >= 1192) and (posX <= 1720) and (posY >=5) and (posY <= 518)
+    ;If (posX >= 1192 - 1920) and (posX <= 1720 - 1920) and (posY >=5) and (posY <= 518)
+    ;If (posX >= 1150 - 1920) and (posX <= 1720 - 1920) and (posY >=5) and (posY <= 518)
+
+
+
+
+
+    ;###############################################3
+    ;0999때문에 0998 버전을 주석처리 해놓는다
+    ; 첫 호가창 위치일 경우 (0999 버전)
+
+    start := CheckPos(posX, posY)
+    ;MsgBox, %start%
+    ;의미없는 포지션일 경우 아무 액션도 하지 않습니다
+    if (start == 0)
     {
+        return
+    }
+
+	; 위에 있던 if문을 checkpos 안으로 넣어서 여기로 내리고 정리합니다
+	; 더불어 분/틱 교환이 아닌 거꾸로 보기 기능으로 대체합니다
+	else if (start == 99)
+    {
+        MouseClick, Right, posX, posY
+		Sleep, 50
+		
+		Loop, 10
+		{
+			Send, {Down}
+			;Sleep, 10
+		}
+
+		Sleep, 50
+		Send, {Enter}
+
+		
+
+
+
+		/*
         global toggle
 
         toggle := toggle * -1
@@ -2627,14 +2676,12 @@ XButton1::
         MouseClick, Left, cX, 28
         Sleep, 50
         MouseMove, posX, posY
+		*/
+
         return 
     }
 
-    ;#####
-    ; [8282] 호가창 전체버튼 누르기
-    ;If (posX >= 1192) and (posX <= 1720) and (posY >=5) and (posY <= 518)
-    ;If (posX >= 1192 - 1920) and (posX <= 1720 - 1920) and (posY >=5) and (posY <= 518)
-    If (posX >= 1150 - 1920) and (posX <= 1720 - 1920) and (posY >=5) and (posY <= 518)
+	else if (start == 82)
     {
         ;MouseClick, Left, 1650, 50
         MouseClick, Left, 1623 - 1920, 43
@@ -2644,20 +2691,6 @@ XButton1::
     }
 
 
-
-
-
-    ;###############################################3
-    ;0999때문에 0998 버전을 주석처리 해놓는다
-    ; 첫 호가창 위치일 경우 (0999 버전)
-
-    start := CheckPos(posX, posY)
-    ;MsgBox, %start%
-    ;의미없는 포지션일 경우 아무 액션도 하지 않습니다
-    if (start == 0)
-    {
-        return
-    }
 
     ;
     ;오히려 우측 메인 호가창에서 사용한다면 그때는 stop주문창으로의 드래그를 행합니다
