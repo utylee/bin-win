@@ -1257,6 +1257,12 @@ CheckPos(posX, posY)
     {
         ret := 99
     }
+	;(추가)좌측 15분 차트도 거꾸로 보기 단축키가 있으면 편할 것 같아 추가함
+    else if (posX >= 20 - 1920) and (posX <= 586 - 1920) and (posY >=90) and (posY <= 305)
+	{
+        ret := 98
+	}
+
 	;(추가)xbutton1 에서 다시 체크하던 좌표 루틴을 여기로 넣습니다. 번호는 8282창이니 82로 ^^
     else If (posX >= 1150 - 1920) and (posX <= 1720 - 1920) and (posY >=5) and (posY <= 518)
 	{ 
@@ -2633,7 +2639,7 @@ XButton1::
 
 	; 위에 있던 if문을 checkpos 안으로 넣어서 여기로 내리고 정리합니다
 	; 더불어 분/틱 교환이 아닌 거꾸로 보기 기능으로 대체합니다
-	else if (start == 99)
+	else if (start == 99 or start == 98)
     {
         MouseClick, Right, posX, posY
 		Sleep, 50
