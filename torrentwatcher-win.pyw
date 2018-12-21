@@ -10,7 +10,7 @@ path = 'E:/Down/'
 #target = 'u:/3002/99-data/91-transmission-watch'
 target = 'u:/4001/99-data/91-transmission-watch'
 #target_media = 'u:/3002/00-MediaWorld'
-target_media = 'u:/3001/00-MediaWorld'
+target_media = 'u:/4002/00-MediaWorld-4002'
 
 
 before = dict([(f, None) for f in os.listdir(path)])
