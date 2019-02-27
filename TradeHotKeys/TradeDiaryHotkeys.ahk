@@ -91,7 +91,7 @@ XButton2::
         
         ;f = 389
         ;final = 3890
-        final = 1990
+        final = 4500
         cur = 0
         While ( cur < final)
 		{
@@ -108,9 +108,9 @@ XButton2::
 	}
 	return
 }
-
-return
 */
+
+;return
 
 
 ;오버워치 실행중 일 경우 LWin 윈도우키 비활성화
@@ -385,9 +385,11 @@ LAlt & ~1::
 */
 #IfWinExist
 
+; win + alt + up
 ;stockstory 크기세팅
 #!Up::
 {
+    /*
 	IfWinExist, FmpPlayerStockStory
 	{
 		;WinActivate
@@ -399,6 +401,7 @@ LAlt & ~1::
 		;WinActivate
 		WinMove, ahk_class PuTTY, , 572, 170 
 	}
+    */
 
     /*
 	IfWinExist, ahk_class _KiWoomClass
@@ -418,17 +421,21 @@ LAlt & ~1::
     */
 
 
+    /*
 	IfWinExist, Pro Evolution Soccer 2015
 	{
 		;WinActivate
 		WinMove, Pro Evolution Soccer 2015, , 170, 200
 	}	
+    */
 
+    /*
 	IfWinExist, ahk_class MozillaWindowClass
 	{
 		;WinActivate
 		WinMove, ahk_class MozillaWindowClass, , 390, 55, 1400, 980 
 	}	
+    */
 
 	IfWinExist, MINGW32 
 	{
@@ -441,7 +448,8 @@ LAlt & ~1::
 		;WinMove, ahk_class mintty, , 520, 135, 1100, 870 
 		;WinMove, ahk_class mintty, , 500, 130, 1200, 900 
         ;
-		WinMove, ahk_class mintty, , 563, 187, 1200, 900 
+		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
+		WinMove, ahk_class mintty, , 450, 187, 1200, 900 
 	}	
 	IfWinExist, ahk_class Vim
 	{
@@ -1435,49 +1443,57 @@ NumToSubjectPos(N)
         ;Pos := {"x" : 30, "y" : 25}
         ;Pos := {"x" : 656, "y" : 23}
         ;Pos := {"x" : 720, "y" : 28}
-        Pos := {"x" : 650, "y" : 23}
+        ;Pos := {"x" : 650, "y" : 23}
+        Pos := {"x" : 650, "y" : 28}
     else if (N == 2)
         ;Pos := {"x" : 1920 + 642, "y" : 25}
         ;Pos := {"x" : 642, "y" : 25}
         ;Pos := {"x" : 961, "y" : 23}
         ;Pos := {"x" : 1020, "y" : 28}
-        Pos := {"x" : 960, "y" : 23}
+        ;Pos := {"x" : 960, "y" : 23}
+        Pos := {"x" : 960, "y" : 28}
     else if (N == 3)
         ;Pos := {"x" : 1920 + 1260, "y" : 25}
         ;Pos := {"x" : 1260, "y" : 25}
         ;Pos := {"x" : 1258, "y" : 23}
         ;Pos := {"x" : 1326, "y" : 28}
-        Pos := {"x" : 1340, "y" : 23}
+        ;Pos := {"x" : 1340, "y" : 23}
+        Pos := {"x" : 1340, "y" : 28}
     else if (N == 4)
         ;Pos := {"x" : 1920 + 30, "y" : 425}
         ;Pos := {"x" : 30, "y" : 425}
         ;Pos := {"x" : 1572, "y" : 23}
         ;Pos := {"x" : 1635, "y" : 28}
-        Pos := {"x" : 1630, "y" : 23}
+        ;Pos := {"x" : 1630, "y" : 23}
+        Pos := {"x" : 1630, "y" : 28}
     else if (N == 5) 
         ;Pos := {"x" : 1920 + 642, "y" : 425}
         ;Pos := {"x" : 642, "y" : 425}
         ;Pos := {"x" : 656, "y" : 450}
         ;Pos := {"x" : 720, "y" : 447}
-        Pos := {"x" : 745, "y" : 452}
+        ;Pos := {"x" : 745, "y" : 452}
+        Pos := {"x" : 745, "y" : 457}
     else if (N == 6) 
         ;Pos := {"x" : 1920 + 1260, "y" : 425}
         ;Pos := {"x" : 1260, "y" : 425}
         ;Pos := {"x" : 961, "y" : 450}
         ;Pos := {"x" : 1020, "y" : 447}
-        Pos := {"x" : 1045, "y" : 452}
+        ;Pos := {"x" : 1045, "y" : 452}
+        Pos := {"x" : 1045, "y" : 457}
     else if (N == 7) 
         ;Pos := {"x" : 1920 + 30, "y" : 825}
         ;Pos := {"x" : 30, "y" : 825}
         ;Pos := {"x" : 1258, "y" : 450}
         ;Pos := {"x" : 1325, "y" : 450}
-        Pos := {"x" : 1335, "y" : 450}
+        ;Pos := {"x" : 1335, "y" : 450}
+        Pos := {"x" : 1335, "y" : 457}
     else if (N == 8) 
         ;Pos := {"x" : 1920 + 1260, "y" : 825}
         ;Pos := {"x" : 1260, "y" : 825}
         ;Pos := {"x" : 1572, "y" : 450}
         ;Pos := {"x" : 1630, "y" : 447}
-        Pos := {"x" : 1630, "y" : 450}
+        ;Pos := {"x" : 1630, "y" : 450}
+        Pos := {"x" : 1630, "y" : 457}
     ;우측 중앙 현재가 창
     else if (N == 10) 
         ;Pos := {"x" : 1920 + 1260, "y" : 825}
@@ -2639,16 +2655,40 @@ XButton1::
 
 	; 위에 있던 if문을 checkpos 안으로 넣어서 여기로 내리고 정리합니다
 	; 더불어 분/틱 교환이 아닌 거꾸로 보기 기능으로 대체합니다
+    ; 피보나치 조정대 차트툴 열기로 변경합니다
 	else if (start == 99 or start == 98)
     {
         MouseClick, Right, posX, posY
 		Sleep, 50
 		
+		Loop, 7
+		{
+			Send, {Up}
+			;Sleep, 10
+		}
+        Sleep, 50
+        Send, {Right}
+        Sleep, 50
+		Loop, 9
+		{
+			Send, {Down}
+			;Sleep, 10
+		}
+        Sleep, 50
+        Send, {Right}
+        Sleep, 50
+		Loop, 2
+		{
+			Send, {Down}
+			;Sleep, 10
+		}
+/*  
 		Loop, 10
 		{
 			Send, {Down}
 			;Sleep, 10
 		}
+*/
 
 		Sleep, 50
 		Send, {Enter}
