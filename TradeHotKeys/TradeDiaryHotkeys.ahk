@@ -451,6 +451,15 @@ LAlt & ~1::
 		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
 		WinMove, ahk_class mintty, , 450, 187, 1200, 900 
 	}	
+	IfWinExist, ahk_class mintty
+	{
+		;WinActivate
+		;WinMove, ahk_class mintty, , 520, 135, 1100, 870 
+		;WinMove, ahk_class mintty, , 500, 130, 1200, 900 
+        ;
+		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
+		WinMove, Cmder, , 400, 170, 1220, 900 
+	}	
 	IfWinExist, ahk_class Vim
 	{
 		WinMove, ahk_class Vim, , 566, 83, 1160, 992 
@@ -2749,7 +2758,7 @@ XButton1::
         return
     }
     pos_A := NumToSubjectPos(start)
-    pos_Main := {"x": 35, "y": 430}
+    pos_Main := {"x": 35, "y": 440}
 
     ;i := pos_A.x
     ;j := pos_A.y

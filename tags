@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+0	Session.vim	/^normal! 0$/;"	m
+PASSWD	netstart.bat	/^set PASSWD=sksmsqnwk11$/;"	v
+SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
+USER	netstart.bat	/^set USER=utylee$/;"	v
+command2	wsl-start.py	/^command2 = 'bash.exe -c "echo sksmsqnwk11 | sudo -S service ssh --full-restart;bash"'$/;"	v
+command3	wsl-start.py	/^command3 = 'bash.exe -c "echo sksmsqnwk11 | sudo -S service mysql start;bash"'$/;"	v
+commands	wsl-start.py	/^commands = [ command2,$/;"	v
+g:this_obsession	Session.vim	/^let g:this_obsession = v:this_session$/;"	v
+g:this_obsession_status	Session.vim	/^let g:this_obsession_status = 2$/;"	v
+g:this_session	Session.vim	/^let g:this_session = v:this_session$/;"	v
+params	wsl-start.py	/^params = dict()$/;"	v
+proc	wsl-start.py	/^        proc = subprocess.Popen(c, **params)$/;"	v
+s:l	Session.vim	/^let s:l = 1 - ((0 * winheight(0) + 20) \/ 41)$/;"	v
+s:so_save	Session.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
+s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+startinfo	wsl-start.py	/^    startinfo = subprocess.STARTUPINFO()$/;"	v
+zt	Session.vim	/^normal! zt$/;"	m

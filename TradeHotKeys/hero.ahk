@@ -51,10 +51,10 @@ Send, ^1
 Sleep 1000
 SetKeyDelay, 20
 Send {LWin Down}
-Send {8 Down}
+Send {7 Down}
 Sleep 100
 Send {LWin Up}
-Send {8 Up}
+Send {7 Up}
 
 WinWait, 영웅문4 Login 
 IfWinExist, 영웅문4 Login
@@ -67,7 +67,9 @@ Send {s}{k}{s}{m}{s}{q}{n}{w}{k}{1}{!}
 Send {Enter}
 WinWait, Utylee Asset
 SetKeyDelay, 0 
-Sleep 15000
+;업데이트가 자주 없어서 10초로 5초 줄여봅니다
+Sleep 10000
+;Sleep 15000
 ;Sleep 5000
 IfWinExist, ahk_class _NKHeroMainClass
 	WinActivate
@@ -106,6 +108,7 @@ IfWinExist, ahk_class _NKHeroMainClass
 이게 뭔가 했더니 한팔린 물량이 있던 것이 한두번이 아니다 
 */
 
+/*
 ; 왼 화살표 연타 및 탭 클릭으로  가장 왼탭으로 이동 
 IfWinExist, ahk_class _NKHeroMainClass
 	WinActivate
@@ -129,11 +132,13 @@ Sleep 200
 ;계좌번호 호가스캘 클릭
 MouseClick, Left, 120 - 1920, 866
 Sleep 200
+*/
 
 
 
 
 
+/*
 ; 스탑로스를 빼놓음
 ; 스탑로스 손절 부분만 다시 추가해놓음
 ; 다시 뺌.. 스탑로스 이후 에러생기며 버벅버벅 --;
@@ -173,6 +178,7 @@ Sleep 500
 ;영웅문4
 MouseClick, Left, 941 - 1920, 20
 
+*/
 
 
 
