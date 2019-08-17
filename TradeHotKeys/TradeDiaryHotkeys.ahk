@@ -1,4 +1,4 @@
-﻿SetTitleMatchMode, RegEx
+﻿;SetTitleMatchMode, RegEx
 #InstallKeybdHook
 #UseHook
 #Persistent    ;마치 while로 계속 떠있는 이벤트 룹같이 동작하도록 하는 명령어
@@ -385,6 +385,10 @@ LAlt & ~1::
 */
 #IfWinExist
 
+; 볼륨 조절 단축키를 추가합니다
+#F3::Send {Volume_Up 1}
+#F4::Send {Volume_Down 1}
+
 ; win + alt + up
 ;stockstory 크기세팅
 #!Up::
@@ -442,6 +446,7 @@ LAlt & ~1::
 		;WinActivate
 		WinMove, MINGW32, , 460, 55, 1200, 1100 
 	}	
+    
 	IfWinExist, ahk_class mintty
 	{
 		;WinActivate
@@ -451,6 +456,17 @@ LAlt & ~1::
 		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
 		WinMove, ahk_class mintty, , 450, 187, 1200, 900 
 	}	
+    
+	IfWinExist, ahk_class ConsoleWindowClass
+	{
+		;WinActivate
+		;WinMove, ahk_class mintty, , 520, 135, 1100, 870 
+		;WinMove, ahk_class mintty, , 500, 130, 1200, 900 
+        ;
+		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
+		WinMove, ahk_class ConsoleWindowClass, , 400, 170, 1220, 900 
+	}	
+	;IfWinExist, ahk_class mintty
 	IfWinExist, ahk_class mintty
 	{
 		;WinActivate
@@ -1245,9 +1261,11 @@ $LWin Up::
 
     return
 }
+#IfWinExist
 
 ;영웅문이 틀어져있을 경우
-#IfWinActive ahk_class _NKHeroMainClass
+;#IfWinActive, ahk_class _NKHeroMainClass
+#IfWinActive, Utylee Asset
 
 ; [호가창만으로 거래 0999저장화면 ver] 
 ; alt 드래그 시 두 호가 상호 교환
@@ -2630,6 +2648,7 @@ MButton::
 ; 마우스 뒤로 버튼
 XButton1::
 {
+    MsgBox, 1
     ; 마우스 커서의 포지션을 구합니다
     MouseGetPos, posX, posY
     Sleep, 10

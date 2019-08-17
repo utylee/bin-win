@@ -59,8 +59,10 @@ Send {7 Up}
 WinWait, 영웅문4 Login 
 IfWinExist, 영웅문4 Login
 	WinActivate
+	;WinActivate, 영웅문4 Login
 Sleep 2000
-SetKeyDelay, 100 
+;SetKeyDelay, 100 
+;SendInput {q}{n}{w}{k}{1}{1}
 Send {q}{n}{w}{k}{1}{1}
 Send {Tab}
 Send {s}{k}{s}{m}{s}{q}{n}{w}{k}{1}{!}
