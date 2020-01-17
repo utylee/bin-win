@@ -2648,7 +2648,6 @@ MButton::
 ; 마우스 뒤로 버튼
 XButton1::
 {
-    MsgBox, 1
     ; 마우스 커서의 포지션을 구합니다
     MouseGetPos, posX, posY
     Sleep, 10
