@@ -955,15 +955,53 @@ $LWin Up::
     return
 }
 */
+#L::return
 
 #IfWinActive ahk_class MozillaWindowClass 
-#l::
+;#L::return
+#L::^L
+/*
 {
+    ;MsgBox, fuck
+    Send,  
     return
 }
-#t::^t
-#s::^s
-#o::^o
+*/
+#i::
+{
+    Send, ^{i}
+    return
+}
+#b::
+{
+    Send, ^{b}
+    return
+}
+#d::
+{
+    Send, ^{d}
+    return
+}
+#t::
+{
+    Send, ^{t}
+    return
+}
+#s::
+{
+    Send, ^{s}
+    return
+}
+#w::
+{
+    Send, ^{w}
+    return
+}
+#o::
+{
+    Send, ^{o} 
+    return
+}
 
 #IfWinActive
 
@@ -1027,25 +1065,6 @@ $LWin Up::
 
 #+4::Send, !{F4}
 
-;키움HTS에서 삼등분선 자동 메뉴 선택
-#IfWinActive ahk_class _NKHeroMainClass
-#^1::
-{
-	IfWinExist, ahk_class _NKHeroMainClass
-		WinActivate
-    Send, {RButton}
-    Sleep 50
-    Send, {l}
-    Sleep 50
-    Loop, 9 
-    {
-        Send, {Down}
-        Sleep, 10
-    }
-    Send, {Enter}
-    return
-}
-#IfWinActive
 
 
 ; Alt+/+4 를 Alt+F4로 설정. 그러나 Win+Q 를 mac처럼 종료명령으로 사용하면 더 편할 듯 하다
@@ -1264,8 +1283,42 @@ $LWin Up::
 #IfWinExist
 
 ;영웅문이 틀어져있을 경우
-;#IfWinActive, ahk_class _NKHeroMainClass
-#IfWinActive, Utylee Asset
+#IfWinActive, ahk_class _NKHeroMainClass
+
+; 현재종목을 관심종목 관종으로 추가
+^0::
+{
+    MouseGetPos, posX, posY
+    cur_num := CheckPos(posX, posY)
+    if(cur_num == 10)
+    {
+        start := NumToSubjectPos(cur_num)
+        target := {"x":-1100 , "y":866} 
+
+        DragProc(start, target)
+    }
+
+    return
+}
+
+;키움HTS에서 삼등분선 자동 메뉴 선택
+#^1::
+{
+	IfWinExist, ahk_class _NKHeroMainClass
+		WinActivate
+    Send, {RButton}
+    Sleep 50
+    Send, {l}
+    Sleep 50
+    Loop, 9 
+    {
+        Send, {Down}
+        Sleep, 10
+    }
+    Send, {Enter}
+    return
+}
+;#IfWinActive, Utylee Asset
 
 ; [호가창만으로 거래 0999저장화면 ver] 
 ; alt 드래그 시 두 호가 상호 교환
@@ -1660,7 +1713,7 @@ SwapWinProc(A, B)
     ;temp좌표(1920 + 756, 1128)에서 B좌표로 드래그 합니다
     DragProc(pos_temp, pos_B)
     Sleep 20
-
+    return
 }
 
 ;LButton 하나의 드래그 만으로 종목 스왑에 대해 리서치
@@ -2544,6 +2597,7 @@ XButton2::
     togglescr := togglescr * -1
     return
 	*/
+    return
 }
 
 WheelLeft::
