@@ -1296,6 +1296,9 @@ $LWin Up::
         target := {"x":-1100 , "y":866} 
 
         DragProc(start, target)
+        ;원래 커서 포지션으로 옮기는 루틴을 추가해줍니다
+        Sleep, 50
+        MouseMove, posX, posY
     }
 
     return
