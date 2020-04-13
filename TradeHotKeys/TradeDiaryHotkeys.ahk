@@ -25,7 +25,7 @@ Gui, Show, Hide NA x-747 y180 h210 w25, Blues
 */
 
 
-SetTimer, timer_proc, 100
+;SetTimer, timer_proc, 100
 
 ; 8282호가창의 매도량 클릭의 전환
 ; 0 : 초기값, 혹은 매수포지션 mbutton 을 누르면 다시 2/3량 포지션으로 전환 재초기화
