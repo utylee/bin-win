@@ -25,6 +25,7 @@ Gui, Show, Hide NA x-747 y180 h210 w25, Blues
 */
 
 
+/*
 ;SetTimer, timer_proc, 100
 
 ; 8282호가창의 매도량 클릭의 전환
@@ -62,6 +63,7 @@ toggle0101[7] := 1
 toggle0101[8] := 1
 toggle0101[99] := 1 ;좌측 좀 큰차트에서의 토글을 위한 변수
 toggle0101[77] := 1 ;잔고 / 당일매매 영역의 토글을 위한 변수
+*/
 
 ;SetDefaultMouseSpeed, 0
 
@@ -385,9 +387,11 @@ LAlt & ~1::
 */
 #IfWinExist
 
+/*
 ; 볼륨 조절 단축키를 추가합니다
 #F3::Send {Volume_Up 1}
 #F4::Send {Volume_Down 1}
+*/
 
 ; win + alt + up
 ;stockstory 크기세팅
@@ -454,8 +458,18 @@ LAlt & ~1::
 		;WinMove, ahk_class mintty, , 500, 130, 1200, 900 
         ;
 		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
-		WinMove, ahk_class mintty, , 450, 187, 1200, 900 
+		WinMove, ahk_class mintty, , 450, 87, 1200, 930 
 	}	
+	IfWinExist, ahk_exe WindowsTerminal.exe
+	{
+		;WinActivate
+		;WinMove, ahk_class mintty, , 520, 135, 1100, 870 
+		;WinMove, ahk_class mintty, , 500, 130, 1200, 900 
+        ;
+		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
+		WinMove, ahk_exe WindowsTerminal.exe, , 450, 80, 1200, 1010
+	}	
+
     
 	IfWinExist, ahk_class ConsoleWindowClass
 	{
@@ -602,13 +616,16 @@ LAlt & ~1::
 
 ; win10 으로 업데이트후 할 필요없어보여 임시제거 
 
+/*
 LWin & E::
 {
 	;Run explorer F:\
 	Run explorer ;c:\Users\utylee 
 	return
 }
+*/
 
+/*
 
 ; 관심종목 1
 #!z::
@@ -748,6 +765,7 @@ LWin & E::
 	Send {LButton}
 	return
 }
+*/
 
 /*
 ; #!F4 지수캡쳐를 변경함
@@ -765,6 +783,8 @@ LWin & E::
 	return
 }
 */
+
+/*
 
 ; 일본니께이지수 보기
 #!5::
@@ -818,6 +838,7 @@ LWin & E::
 }
 ;
 
+*/
 
 
 /*
@@ -956,17 +977,12 @@ $LWin Up::
 }
 */
 #L::return
+#i::return
 
+/*
 #IfWinActive ahk_class MozillaWindowClass 
 ;#L::return
 #L::^L
-/*
-{
-    ;MsgBox, fuck
-    Send,  
-    return
-}
-*/
 #i::
 {
     Send, ^{i}
@@ -1004,8 +1020,9 @@ $LWin Up::
 }
 
 #IfWinActive
+*/
 
-
+/*
 ~ / & =::
 {
     slash_toggle := 1
@@ -1064,6 +1081,7 @@ $LWin Up::
 ^!2::Send, {F2}
 
 #+4::Send, !{F4}
+*/
 
 
 
@@ -1175,6 +1193,7 @@ $LWin Up::
 
 */
 
+/*
 #+j::
 {
     GetKeyState, state, C   
@@ -1236,6 +1255,7 @@ $LWin Up::
 
 
 
+*/
 
 
 
@@ -1282,6 +1302,7 @@ $LWin Up::
 }
 #IfWinExist
 
+/*
 ;영웅문이 틀어져있을 경우
 #IfWinActive, ahk_class _NKHeroMainClass
 
@@ -1322,7 +1343,9 @@ $LWin Up::
     return
 }
 ;#IfWinActive, Utylee Asset
+*/
 
+/*
 ; [호가창만으로 거래 0999저장화면 ver] 
 ; alt 드래그 시 두 호가 상호 교환
 
@@ -1332,14 +1355,12 @@ CheckPos(posX, posY)
 {
     ret := 0
 
-    /* 호가창 두개 길게 늘인 이후 오류가 생겨서 필요없는 기능같이 제외해놓았습니다
-    ;잔고/당일매매 영역일 경우
+    ;;;잔고/당일매매 영역일 경우
     ;if (posX >= 1920 + 620) and (posX <= 1920 + 1223) and (posY >= 820 ) and (posY <= 1076)
-    if (posX >= 620) and (posX <= 1223) and (posY >= 820 ) and (posY <= 1076)
-    {
-        ret := 77 
-    }
-    */
+    ;if (posX >= 620) and (posX <= 1223) and (posY >= 820 ) and (posY <= 1076)
+    ;{
+    ;    ret := 77 
+    ;}
     
     ;(추가)좌측 큰 차트일 경우
     ;else if (posX >= 671) and (posX <= 1193) and (posY >=9) and (posY <= 403)
@@ -1853,6 +1874,7 @@ LAlt & ~LButton::
 }
 */
 
+/*
 ; [호가창만으로 거래] F1 키 등을 분봉 클릭에서 현재 커서의 종목을 각 호가창으로의 할당 드래그로 변경
 F1::
 {
@@ -1998,6 +2020,7 @@ F12::
 
     return 
 }
+*/
 
 /*
 ;F1~F4까지 1,2,3,5분봉 클릭 등을 할당
@@ -2518,6 +2541,7 @@ XButton1::
 }
 */
 
+/*
 ;[호가만으로 거래] 현재 위치의 호가창을 본 창으로 드래그 한다
 ; 거기에 8282 호가창 거래시 전체 모드로 변경도 이 단축키로 하기로
 ~LButton & RButton::
@@ -2526,8 +2550,10 @@ XButton1::
     Send, {Space}
     return
 }
+*/
 
 
+/*
 ; 매도대기로 변경
 ;	.먼저, 2/3 대부분매도 물량 클릭 후
 ;	.8282 호가상 매도 위치포지션에 커서 대기	
@@ -2565,44 +2591,43 @@ XButton2::
 		return
 	}
 
-	/*
-    global togglescr
-    
-    ;가상화면 3일경우(기본)
-    if(togglescr == 1)
-    {
-        ;Ctrl + 1 누름
-        Send, {LCtrl Down}
-        Sleep 20
-        Send, {1 Down}
-        Sleep 20
+    ;global togglescr
+    ;
+    ;;가상화면 3일경우(기본)
+    ;if(togglescr == 1)
+    ;{
+        ;;Ctrl + 1 누름
+        ;Send, {LCtrl Down}
+        ;Sleep 20
+        ;Send, {1 Down}
+        ;Sleep 20
+;
+        ;Send, {1 Up}
+        ;Sleep 20
+        ;Send, {LCtrl Up}
+;
+    ;}
+    ;
+    ;;가상화면 1일경우
+    ;else 
+    ;{
+        ;;Ctrl + 3 누름
+        ;Send, {LCtrl Down}
+        ;Sleep 20
+        ;Send, {3 Down}
+        ;Sleep 20
+;
+        ;Send, {3 Up}
+        ;Sleep 20
+        ;Send, {LCtrl Up}
+    ;}
+;
+    ;;가상화면 1일경우
+    ;
 
-        Send, {1 Up}
-        Sleep 20
-        Send, {LCtrl Up}
-
-    }
-    
-    ;가상화면 1일경우
-    else 
-    {
-        ;Ctrl + 3 누름
-        Send, {LCtrl Down}
-        Sleep 20
-        Send, {3 Down}
-        Sleep 20
-
-        Send, {3 Up}
-        Sleep 20
-        Send, {LCtrl Up}
-    }
-
-    ;가상화면 1일경우
-    
-
-    togglescr := togglescr * -1
-    return
-	*/
+    ;togglescr := togglescr * -1
+    ;return
+	;
     return
 }
 
@@ -2642,66 +2667,7 @@ MButton::
     MouseMove, 1630 - 1920, 227
     return
 
-    /*
-    ; 마우스 커서의 포지션을 구합니다
-    MouseGetPos, posX, posY
-    Sleep, 10
 
-    ;현재호가창 번호를 좌표를 통해 지정합니다 (1~8번)
-    cur := CheckPos(posX, posY)
-
-    ;만약 의미없는 포지션일 경우 아무 액션도 하지 않습니다
-    if (cur == 0)
-    {
-        return
-    }
-
-    pos_T := NumToRightUpPos(cur)
-
-    ;해당 포지션 클릭 후 다시 원래 마우스 포지션으로 되돌립니다
-    MouseClick, Left, pos_T.x, pos_T.y
-    Sleep, 20
-    MouseMove, posX, posY
-    */
-
-    /*
-    global toggle0101
-
-    ; 마우스 커서의 포지션을 구합니다
-    MouseGetPos, posX, posY
-    Sleep, 10
-    
-    ;현재호가창 번호를 좌표를 통해 지정합니다 (1~8번)
-    cur := CheckPos(posX, posY)
-
-    ;만약 의미없는 포지션일 경우 아무 액션도 하지 않습니다
-    if (cur == 0)
-    {
-        return
-    }
-
-    posT := {"x" : 0, "y": 0}
-
-    ;플래그에 따라 tick 을 누를건지 분 을 누를 건지 결정합니다
-    If (toggle0101[cur] == 1)
-    {
-        posT := NumToMinuPos(cur)
-    }
-    else
-    {
-        posT := NumToTickPos(cur)
-    }
-
-    ;해당 포지션 클릭 후 다시 원래 마우스 포지션으로 되돌립니다
-    MouseClick, Left, posT.x, posT.y
-    Sleep, 20
-    MouseMove, posX, posY
-
-    ;다음 플래그로(분<--->틱) 전환해 놓습니다
-    toggle0101[cur] := toggle0101[cur] * -1
-
-    return 
-    */
 
 }
 ; 대형정면틱차트로 변경했으므로 마우스 뒤로 버튼 용도도 변경합니다
@@ -2772,47 +2738,9 @@ XButton1::
 			Send, {Down}
 			;Sleep, 10
 		}
-/*  
-		Loop, 10
-		{
-			Send, {Down}
-			;Sleep, 10
-		}
-*/
 
 		Sleep, 50
 		Send, {Enter}
-
-		
-
-
-
-		/*
-        global toggle
-
-        toggle := toggle * -1
-        ;cX := 1650
-        cX := 1650 - 1920
-
-        if(toggle == -1) 
-        {
-            ;cX := 1065
-            ;cX := 1065 - 1920
-            ;cX := 1045 - 1920
-            cX := 1015 - 1920
-        }
-        else
-        {
-            ;cX := 1085
-            ;cX := 1085 - 1920
-            cX := 1055 - 1920
-        }
-        
-        ;MouseClick, Left, cX, 30
-        MouseClick, Left, cX, 28
-        Sleep, 50
-        MouseMove, posX, posY
-		*/
 
         return 
     }
@@ -2850,363 +2778,11 @@ XButton1::
     ;마우스커서의 위치를 원래 위치로 되돌립니다
     MouseMove, posX, posY
 
-
-
-
-    /*
-
-    ;최하단의 임시 창의 좌표입니다
-    ;pos_temp := {"x" : 1920 + 650, "y" : 1101}
-    ;144hz 모니터로 바꾸면서 세로 해상도 줄어들어 임시로 우측차트으로 이동해봄 ^^
-    ;pos_temp := {"x" : 1920 + 1900, "y" : 45}
-    pos_temp := {"x" : 1900, "y" : 45}
-
-
-    ;If (posX >= 1920) and ( posX <= 1920+ 615) and (posY <= 410)
-    If (posX >= 0) and ( posX <= 615) and (posY <= 410)
-    {
-        ;MouseMove, 1920 + 37, 28
-        MouseMove, 37, 28
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    ;MouseMove, 1920 - 694, 50, 2 
-	    MouseMove, -694, 50, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    ; 2nd 호가창 위치일 경우
-    ;If (posX >= 1920 + 616) and ( posX <= 1920+ 1225) and (posY <= 410)
-    If (posX >= 616) and ( posX <= 1225) and (posY <= 410)
-    {
-        ;MouseMove, 1920 + 37 + 615, 28
-        MouseMove, 37 + 615, 28
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    ;MouseMove, 1920 - 694, 50, 2 
-	    MouseMove, -694, 50, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-
-    ; 3rd 호가창 위치일 경우
-    ;If (posX >= 1920 + 1226) and ( posX <= 1920+ 1841) and (posY <= 410)
-    If (posX >= 1226) and ( posX <= 1841) and (posY <= 410)
-    {
-        ;MouseMove, 1920 + 37 + 1225, 28
-        MouseMove, 37 + 1225, 28
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    ;MouseMove, 1920 - 694, 50, 2 
-	    MouseMove, -694, 50, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-
-    ; 4th 호가창 위치일 경우
-    ;If (posX >= 1920) and ( posX <= 1920+ 615) and (posY >= 411) and (posY <= 812)
-    If (posX >= 0) and ( posX <= 615) and (posY >= 411) and (posY <= 812)
-    {
-        ;MouseMove, 1920 + 37, 428
-        MouseMove, 37, 428
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    ;MouseMove, 1920 - 694, 50, 2 
-	    MouseMove, -694, 50, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    ; 5th 호가창 위치일 경우
-    ;If (posX >= 1920 + 616) and ( posX <= 1920+ 1225) and (posY >= 411) and (posY <= 812)
-    If (posX >= 616) and ( posX <= 1225) and (posY >= 411) and (posY <= 812)
-    {
-        ;MouseMove, 1920 + 37 + 615, 428
-        MouseMove, 37 + 615, 428
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    ;MouseMove, 1920 - 694, 50, 2 
-	    MouseMove, -694, 50, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    ; 6th 호가창 위치일 경우
-    ;If (posX >= 1920 + 1226) and ( posX <= 1920+ 1841) and (posY >= 411) and (posY <= 812)
-    If (posX >= 1226) and ( posX <= 1841) and (posY >= 411) and (posY <= 812)
-    {
-        ;MouseMove, 1920 + 37 + 1225, 428
-        MouseMove, 37 + 1225, 428
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    ;MouseMove, 1920 - 694, 50, 2 
-	    MouseMove, -694, 50, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    ; 7th 호가창 위치일 경우
-    ;If (posX >= 1920) and ( posX <= 1920+ 615) and (posY >= 813)
-    If (posX >= 0) and ( posX <= 615) and (posY >= 813)
-    {
-        ;MouseMove, 1920 + 37, 825
-        MouseMove, 37, 825
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    ;MouseMove, 1920 - 694, 50, 2 
-	    MouseMove, -694, 50, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    ; 8th 호가창 위치일 경우
-    ;If (posX >= 1920 + 1226) and (posY >= 813) 
-    If (posX >= 1226) and (posY >= 813) 
-    {
-        ;MouseMove, 1920 + 37 + 1225, 825
-        MouseMove, 37 + 1225, 825
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    ;MouseMove, 1920 - 694, 50, 2 
-	    MouseMove, -694, 50, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-
-    */
-
-
-
-    /*
-    ; 첫 호가창 위치일 경우
-    If (posX >= 1920) and ( posX <= 1920+ 320) and (posY <= 474)
-    {
-        MouseMove, 1920 + 37, 60
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    MouseMove, 1920 - 694, 77, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    ; 2nd 호가창 위치일 경우
-    If (posX >= 1920 + 321) and ( posX <= 1920+ 631) and (posY <= 474)
-    {
-        MouseMove, 1920 + 37 + 320, 60
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    MouseMove, 1920 - 694, 77, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-
-    ; 3rd 호가창 위치일 경우
-    If (posX >= 1920 + 632) and ( posX <= 1920+ 948) and (posY <= 474)
-    {
-        MouseMove, 1920 + 37 + 632, 60
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    MouseMove, 1920 - 694, 77, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-
-    ; 4th 호가창 위치일 경우
-    If (posX >= 1920 + 949) and ( posX <= 1920+ 1261) and (posY <= 474)
-    {
-        MouseMove, 1920 + 37 + 949, 60
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    MouseMove, 1920 - 694, 77, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    ; 5th 호가창 위치일 경우
-    If (posX >= 1920 + 1262) and ( posX <= 1920+ 1576) and (posY <= 474)
-    {
-        MouseMove, 1920 + 37 + 1262, 60
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    MouseMove, 1920 - 694, 77, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    ; 6th 호가창 위치일 경우
-    If (posX >= 1920 + 1577) and ( posX <= 1920+ 1891) and (posY <= 474)
-    {
-        MouseMove, 1920 + 37 + 1577, 60
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    MouseMove, 1920 - 694, 77, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    ; 7th 호가창 위치일 경우
-    If (posX >= 1920) and ( posX <= 1920+ 320) and (posY >= 475) and (posY <=909)
-    {
-        MouseMove, 1920 + 37, 495
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    MouseMove, 1920 - 694, 77, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    ; 8th 호가창 위치일 경우
-    If (posX >= 1920 + 321) and ( posX <= 1920+ 631) and (posY >= 475) and (posY <=909)
-    {
-        MouseMove, 1920 + 37 + 320, 495
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    MouseMove, 1920 - 694, 77, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-
-    ; 9th 호가창 위치일 경우
-    If (posX >= 1920 + 632) and ( posX <= 1920+ 948) and (posY >= 475) and (posY <=909)
-    {
-        MouseMove, 1920 + 37 + 632, 495
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    MouseMove, 1920 - 694, 77, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-
-    ; 10th 호가창 위치일 경우
-    If (posX >= 1920 + 949) and ( posX <= 1920+ 1261) and (posY >= 475) and (posY <=909)
-    {
-        MouseMove, 1920 + 37 + 949, 495
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    MouseMove, 1920 - 694, 77, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    ; 11th 호가창 위치일 경우
-    If (posX >= 1920 + 1262) and ( posX <= 1920+ 1576) and (posY >= 475) and (posY <=909) 
-    {
-        MouseMove, 1920 + 37 + 1262, 495 
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    MouseMove, 1920 - 694, 77, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    ; 6th 호가창 위치일 경우
-    If (posX >= 1920 + 1577) and ( posX <= 1920+ 1891) and (posY >= 475) and (posY <=909) 
-    {
-        MouseMove, 1920 + 37 + 1577, 495
-	    Send {LButton Down}
-	    Sleep 20
-	    ;MouseMove, 1585, -180, 2, R
-	    MouseMove, 1920 - 694, 77, 2 
-	    Send {LButton Up}
-
-        Sleep 10
-        ;마우스커서의 위치를 원래 위치로 되돌립니다
-        MouseMove, posX, posY
-        ;-->
-    }
-    */
-
     return
 }
 
 ;텍스트 박스 그리기
 
-/* [호가창만으로 거래] 때문에 단축키 임시 제거
-F11::
-*/
 NumpadAdd & Numpad7::
 {
 	IfWinExist, ahk_class _KiWoomClass
@@ -3379,34 +2955,10 @@ return
 	return
 }
 
-/*
-#!q::
-{
-	IfWinExist, ahk_class _KiWoomClass
-		WinActivate
-
-	Sleep 200
-	;MouseClick, Left, 1600 + 1920, 1114 
-	;살짝윗쪽으로 변경합니다.
-	;MouseClick, Left, 1600 + 1920, 1000 
-	;MouseClick, Left, 1580 + 1920, 1080 
-	MouseClick, Left, 1580 + 1920, 1100 - 18 
-
-	return
-}
-*/
 
 ;[호가창 거래] 원래 관심종목 상단 클릭 단축키였으나, 가상화면3의 종목 입력칸으로 변경
 #!i::
 {
-    /*
-	IfWinExist, ahk_class _KiWoomClass
-		WinActivate
-
-	Sleep 200
-	MouseClick, Left, 530, 836 
-	return
-    */
 	IfWinExist, ahk_class _KiWoomClass
     {
 		WinActivate
@@ -3447,54 +2999,6 @@ return
         ;저장화면 0989(지수) 단축키 누르기 Ctrl + [
         Sleep, 1000
         Send, ^[
-    /*
-	Sleep 100
-	;MouseMove, -4000, -4000, 0, R
-	MouseMove, 2210 - 1920, 700, 5 
-	MouseMove, 779, -120, 2 , R
-    Sleep 1000
-	MouseMove, 2110 - 1920, 600 - 27, 5
-	;Send {LButton}
-    Sleep 1000
-	MouseMove, 899, 377, 5, R
-    */
-	/*
-WinWait, 네이버 포토업로더 - Mozilla Firefox
-	IfWinExist, 네이버 포토업로더 - Mozilla Firefox
-		WinActivate
-	Sleep 100
-	WinMove, 네이버 포토업로더 - Mozilla Firefox, 0, 0 
-	Sleep 2000
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2495, 130, 5, R
-	Send {LButton}
-	Sleep 1200
-
-	;WinWait, blog.upphoto 
-	WinWait, 열기|blog.upphoto
-	;IfWinExist, blog.upphoto
-	IfWinExist, 열기|blog.upphoto
-		WinActivate
-	Sleep 700
-	
-	Send {1}{.}{p}{n}{g}{Enter}
-	Sleep 800
-
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1957, 17, 5, R
-	Sleep 100
-	Send {LButton}
-	Sleep 500
-
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2707, 690, 5, R
-	Sleep 100
-	Send {LButton}
-	IfWinExist, ahk_class MozillaWindowClass
-		WinActivate
-	Sleep 800
-	Send {Enter}
-    */
 
     return
 }
@@ -3556,28 +3060,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 ; [호가창 거래로 변경] 하면서 지수 위치 바뀜
 #^4::
 {
-
-    /* 상단 모니터인 영웅문 4 화면으로 바꿈 
-	IfWinExist, ahk_class _KiWoomClass
-		WinActivate
-	Sleep 500
-
-    ;가상화면 3으로 변경
-    Send {LCtrl Down}
-    Sleep 10
-    
-    Send {3 Down}
-    Sleep 10
-
-    Send {3 Up}
-    Sleep 10
-
-    Send {LCtrl Up}
-    Sleep 10
-    */
-
-
-
     ;SnagIt 캡쳐 가동
 	Send {LShift Down}
 	Send {PrintScreen Down}
@@ -3594,27 +3076,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 	Sleep 100 
 	Send {LButton Up}
 
-    /*
-    ;영역선택
-	;MouseMove, -4000, -4000, 0, R 
-	Sleep 20
-	;MouseMove, 12, 69, 2, R
-	MouseMove, 12 - 1920, 69, 2
-	Sleep 20
-    */
-
-    /*
-	Send {LButton Down}
-	Sleep 100
-    ;일봉 캡쳐 가로폭 수정
-	;MouseMove, 779, 764, 5, R
-    ;툴바를 하단으로 옮기면서 y좌표가 올라감
-	;MouseMove, 654, 823, 5, R
-	MouseMove, 654, 775, 5, R
-	Sleep 100 
-	Send {LButton Up}
-    */
-	
 	WinWait, Snagit Editor
 		WinActivate
 	Sleep 500
@@ -3751,19 +3212,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 
     ; 열기 버튼 안눌리는 문제 해결법
     Sleep, 2000
-    /*
-	IfWinExist, 파일 업로드|열기|blog.upphoto
-		WinActivate
-    Sleep 700
-    Send {Tab}{Tab}{Space}
-    */
-	;MouseMove, -4000, -4000, 0, R
-	;MouseMove, 1920 + 1195, 506, 5, R
-
-    /*
-	MouseMove, 1195, 506, 5
-    Send {LButton} 
-    */
     ; 열기 버튼 위치가 바뀌어서 그런지 자꾸 안돼서 키보드로 변경해봄
     Send {Tab}
     Sleep 1000
@@ -3781,18 +3229,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
     ;MouseClick, Left, 977, 175
     Send {LButton} 
     
-    ; 새탭으로 열린 올리기 버튼 누르기
-    /*
-    Sleep 2400 
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 977, 175, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-    */
-
-
-
 	IfWinExist, ahk_class MozillaWindowClass
 		WinActivate
 	Sleep 800
@@ -3802,498 +3238,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 	Sleep 800
     return 
 }
-
-/* [호가창 거래로 변경] 하면서 지수 위치 바뀜
-; 지수 캡쳐 및 업로드 (축소 70%)
-#!F4::
-{
-	IfWinExist, ahk_class _KiWoomClass
-		WinActivate
-	Sleep 50
-	
-	;선물, 코스닥 창 최상위로 만들기
-	MouseMove, -4000, -4000, 0, R 
-	Sleep 20
-	MouseMove, 28, 729, 0, R 
-	;MouseMove, 782, 703, 0, R 
-	Sleep 20
-	Send {LButton}
-	Sleep 100
-
-	MouseMove, -4000, -4000, 0, R 
-	Sleep 20
-	MouseMove, 32, 1119, 0, R 
-	;MouseMove, 782, 1090, 0, R 
-	Sleep 20
-	Send {LButton}
-	Sleep 100
-
-	;지수에서 십자선 지우기 프로세스
-	MouseMove, -4000, -4000, 0, R 
-	Sleep 20
-	MouseMove, 543, 555, 2, R
-	Sleep 20
-	MouseMove, 0, -192, 5, R
-	Sleep 20
-	MouseMove, 300, 0, 5, R
-	Sleep 20
-	MouseMove, 0, 550, 0, R
-	Sleep 20
-	MouseMove, -300, 0, 2, R
-	Sleep 20
-	MouseMove, 0, -145, 5, R
-	Sleep 20
-
-    ;SnagIt 캡쳐 가동
-	Send {LShift Down}
-	Send {PrintScreen Down}
-	Sleep 50
-	Send {LShift Up}
-	Send {PrintScreen Up}
-	Sleep 700
-
-    ;영역선택
-	MouseMove, -4000, -4000, 0, R 
-	Sleep 20
-	MouseMove, 20, 359, 2, R
-	Sleep 20
-
-	Send {LButton Down}
-	Sleep 100
-    ;일봉 캡쳐 가로폭 수정
-	;MouseMove, 779, 764, 5, R
-	MouseMove, 709, 764, 5, R
-	Sleep 100 
-	Send {LButton Up}
-	
-	WinWait, Snagit Editor
-		WinActivate
-	Sleep 500
-	;snag it editor 내의 리사이즈 단축키 누름 r
-	Send {r}	
-	Sleep 50
-
-	WinWait, Resize Image
-		WinActivate
-	Sleep 100
-
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-
-	Send {7}{0}
-	Sleep 2000 
-
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Enter}
-	Sleep 200 
-
-	;75%로 샤픈을 때림 단축키 s
-	Send {s}
-	Sleep 50	
-	WinWait, Sharpen 
-		WinActivate
-	Sleep 200
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {7}{5}
-	Sleep 50
-	Send {Enter}
-	Sleep 500 
-
-
-	;저장 후 업로드 프로세스
-	Send {LCtrl Down}
-	Send {s Down}
-	Sleep 50
-	Send {LCtrl Up}
-	Send {s Up}
-
-	WinWait, Save As
-	WinMove, Save As,,0, 0
-	IfWinExist, Save As
-		WinActivate
-	Sleep 500
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2332, 357, 0, R
-	Sleep 300
-	Send {LButton Down}
-	Sleep 20
-	MouseMove, -200, 0, 5, R
-	Sleep 100
-	Send {LButton Up}
-	Sleep 100
-
-	Send {1}
-	Sleep 20
-	Send {Enter}
-	Sleep 300
-	Send {Enter}
-
-	Sleep 500
-	Send {LCtrl Down}
-	Sleep 20
-	Send {w Down}
-	Sleep 20
-
-	Send {LCtrl Up}
-	Sleep 20
-	Send {w Up}
-	Sleep 2000 
-
-
-
-
-
-	;파폭으로 전환하여 사진/열기 1.png / 올리기 를 누른다
-	IfWinExist, ahk_class MozillaWindowClass
-		WinActivate
-	Sleep 100
-	WinMove, ahk_class MozillaWindowClass,,400, 0, 1400, 1050
-	Sleep 100
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2555, 130, 5, R
-	Send {LButton}
-
-
-    ;<--새탭에 띄우기로 바뀌면서 임시로 변경
-    ; 
-	;WinWait, 네이버 포토업로더 - Mozilla Firefox
-	;IfWinExist, 네이버 포토업로더 - Mozilla Firefox
-	;	WinActivate
-	;Sleep 100
-	;WinMove, 네이버 포토업로더 - Mozilla Firefox, 0, 0 
-	;Sleep 2000
-	;MouseMove, -4000, -4000, 0, R
-	;MouseMove, 2495, 130, 5, R
-	;Send {LButton}
-	;Sleep 1200
-    
-    ; 새탭으로 열린 올리기 버튼 누르기
-    Sleep 2400 
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 977, 175, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-
-	;WinWait, blog.upphoto 
-	WinWait, 열기|blog.upphoto
-	;IfWinExist, blog.upphoto
-	IfWinExist, 열기|blog.upphoto
-		WinActivate
-	Sleep 700
-	
-	Send {1}{.}{p}{n}{g}{Enter}
-	Sleep 800
-
-
-
-    ;<-- 새탭으로 열기로 변경되면서 임시 교체
-    
-	;MouseMove, -4000, -4000, 0, R
-	;MouseMove, 1957, 17, 5, R
-	;Sleep 100
-	;Send {LButton}
-	;Sleep 500
-;
-;	MouseMove, -4000, -4000, 0, R
-;	MouseMove, 2707, 690, 5, R
-;	Sleep 100
-;	Send {LButton}
-    
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 1190, 732, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-
-
-	IfWinExist, ahk_class MozillaWindowClass
-		WinActivate
-	Sleep 800
-	Send {Enter}
-
-
-	Sleep 800
-
-
-
-
-	;;;;;;;;;;;;;;;;;;;;;;;;
-	;지수 분봉 프로세스
-	IfWinExist, ahk_class _KiWoomClass
-		WinActivate
-	Sleep 50
-	
-	;지수분봉에서 십자선 지우기 프로세스
-
-	;MouseMove, -4000, -4000, 0, R 
-	;Sleep 20
-	;MouseMove, 521 + 1920 , 1084, 2, R
-	;Sleep 20
-	;MouseMove, 260, 0, 5, R
-	;Sleep 20
-	;MouseMove, 0, -100, 5, R
-	;Sleep 20
-;
-;	MouseMove, -4000, -4000, 0, R 
-;	Sleep 20
-;	MouseMove, 1920 + 1090, 1080, 0, R
-;	Sleep 20
-;	MouseMove, 220, 0, 2, R
-;	Sleep 20
-;	MouseMove, 0, -120, 5, R
-;	Sleep 20
-
-
-	MouseMove, -4000, -4000, 0, R 
-	Sleep 20
-	MouseMove, 1850 + 1920 , 100, 2, R
-	Sleep 20
-	MouseMove, 40, 0, 5, R
-	Sleep 20
-	MouseMove, 0, -100, 5, R
-	Sleep 20
-
-	MouseMove, -4000, -4000, 0, R 
-	Sleep 20
-	MouseMove, 1850 + 1920, 343, 0, R
-	Sleep 20
-	MouseMove, 220, 0, 2, R
-	Sleep 20
-	MouseMove, 0, -120, 5, R
-	Sleep 20
-
-	;캡쳐 시작
-	Send {LShift Down}
-	Send {PrintScreen Down}
-	Sleep 50
-	Send {LShift Up}
-	Send {PrintScreen Up}
-	Sleep 700
-
-	; 우측상단으로 지수 분봉을 옮겼기에 수정함
-	;MouseMove, -4000, -4000, 0, R 
-	;Sleep 20
-	;MouseMove, 1920 + 80, 984, 2, R
-	;Sleep 20
-;
-;	Send {LButton Down}
-;	Sleep 100
-;	MouseMove, 1013, 172, 5, R
-;	Sleep 100 
-;	Send {LButton Up}
-	
-
-	MouseMove, -4000, -4000, 0, R 
-	Sleep 20
-	MouseMove, 1920 + 1480, 100, 2, R
-	Sleep 20
-
-
-	Send {LButton Down}
-	Sleep 100
-	MouseMove, 400, 436, 5, R
-	Sleep 100 
-	Send {LButton Up}
-	
-	WinWait, Snagit Editor
-		WinActivate
-	Sleep 500
-	;snag it editor 내의 리사이즈 단축키 누름 r
-	Send {r}	
-	Sleep 50
-
-	WinWait, Resize Image
-		WinActivate
-	Sleep 100
-
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	
-	;80%로만 축소
-	Send {8}{0}
-	Sleep 2000 
-
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Enter}
-	Sleep 200 
-
-	;75%로 샤픈을 때림 단축키 s
-	Send {s}
-	Sleep 50	
-	WinWait, Sharpen 
-		WinActivate
-	Sleep 200
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {Tab}
-	Sleep 50
-	Send {7}{5}
-	Sleep 50
-	Send {Enter}
-	Sleep 500 
-
-	;저장 후 업로드 프로세스
-	Send {LCtrl Down}
-	Send {s Down}
-	Sleep 50
-	Send {LCtrl Up}
-	Send {s Up}
-
-	WinWait, Save As
-	WinMove, Save As,,0, 0
-	IfWinExist, Save As
-		WinActivate
-	Sleep 500
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2332, 357, 0, R
-	Sleep 300
-	Send {LButton Down}
-	Sleep 20
-	MouseMove, -200, 0, 5, R
-	Sleep 100
-	Send {LButton Up}
-	Sleep 100
-
-	Send {1}
-	Sleep 20
-	Send {Enter}
-	Sleep 300
-	Send {Enter}
-
-	Sleep 500
-	Send {LCtrl Down}
-	Sleep 20
-	Send {w Down}
-	Sleep 20
-
-	Send {LCtrl Up}
-	Sleep 20
-	Send {w Up}
-	Sleep 2000 
-
-	;파폭으로 전환하여 사진/열기 1.png / 올리기 를 누른다
-	IfWinExist, ahk_class MozillaWindowClass
-		WinActivate
-	Sleep 100
-	WinMove, ahk_class MozillaWindowClass,,400, 0, 1400, 1050
-	Sleep 100
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2555, 130, 5, R
-	Send {LButton}
-
-
-
-
-
-    ;<--새탭에 띄우기로 바뀌면서 임시로 변경
-    
-	;WinWait, 네이버 포토업로더 - Mozilla Firefox
-	;IfWinExist, 네이버 포토업로더 - Mozilla Firefox
-	;	WinActivate
-	;Sleep 100
-	;WinMove, 네이버 포토업로더 - Mozilla Firefox, 0, 0 
-	;Sleep 2000
-	;MouseMove, -4000, -4000, 0, R
-	;MouseMove, 2495, 130, 5, R
-	;Send {LButton}
-	;Sleep 1200
-    
-    ; 새탭으로 열린 올리기 버튼 누르기
-    Sleep 2400 
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 977, 175, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-
-
-	;WinWait, blog.upphoto
-	WinWait, 열기|blog.upphoto
-	;IfWinExist, blog.upphoto 
-	IfWinExist, 열기|blog.upphoto
-		WinActivate
-	Sleep 700
-	
-	Send {1}{.}{p}{n}{g}{Enter}
-	Sleep 800
-
-    ;<-- 새탭으로 열기로 변경되면서 임시 교체
-    
-	;MouseMove, -4000, -4000, 0, R
-	;MouseMove, 1957, 17, 5, R
-	;Sleep 100
-	;Send {LButton}
-	;Sleep 500
-;
-;	MouseMove, -4000, -4000, 0, R
-;	MouseMove, 2707, 690, 5, R
-;	Sleep 100
-;	Send {LButton}
-    
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 1190, 732, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-
-
-	IfWinExist, ahk_class MozillaWindowClass
-		WinActivate
-	Sleep 800
-	Send {Enter}
-
-
-	return
-}
-
-*/
-
 
 ;추가
  
@@ -4391,28 +3335,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 	Send {LButton}
 
 
-    ;<--새탭에 띄우기로 바뀌면서 임시로 변경
-    /*
-	WinWait, 네이버 포토업로더 - Mozilla Firefox
-	IfWinExist, 네이버 포토업로더 - Mozilla Firefox
-		WinActivate
-	Sleep 100
-	WinMove, 네이버 포토업로더 - Mozilla Firefox, 0, 0 
-	Sleep 2000
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2495, 130, 5, R
-	Send {LButton}
-	Sleep 1200
-    */
-    ; 새탭으로 열린 올리기 버튼 누르기
-    /*
-    Sleep 2400 
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 977, 175, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-    */
     ; 윈10
     Sleep 4000 
 	;MouseMove, -4000, -4000, 0, R
@@ -4432,12 +3354,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 	Sleep 400
 	
 	Send {1}{.}{p}{n}{g}
-    /*
-	IfWinExist, 파일 업로드|열기|blog.upphoto
-		WinActivate
-    Sleep 700
-    Send {Tab}{Tab}{Space}
-    */
 	;MouseMove, -4000, -4000, 0, R
 	;MouseMove, 1920 + 1195, 506, 5, R
 	MouseMove, 1195, 506, 5
@@ -4454,40 +3370,11 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
     ;MouseClick, Left, 977, 175
     Send {LButton} 
 
-    ;초안
-    /*
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1957, 17, 5, R
-	Sleep 100
-	Send {LButton}
-	Sleep 500
-
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2707, 690, 5, R
-	Sleep 100
-	Send {LButton}
-    */
-    ;<-- 새탭으로 열기로 변경되면서 임시 교체
-    /*
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 1190, 732, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-    */
-
-
-
 	IfWinExist, ahk_class MozillaWindowClass
 		WinActivate
 	Sleep 800
 	Send {Enter}
 	Sleep 800
-
-
-
-
-
 
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;
@@ -4646,28 +3533,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 
 
 
-    ;<--새탭에 띄우기로 바뀌면서 임시로 변경
-    /*
-	WinWait, 네이버 포토업로더 - Mozilla Firefox
-	IfWinExist, 네이버 포토업로더 - Mozilla Firefox
-		WinActivate
-	Sleep 100
-	WinMove, 네이버 포토업로더 - Mozilla Firefox, 0, 0 
-	Sleep 2000
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2495, 130, 5, R
-	Send {LButton}
-	Sleep 1200
-    */
-    /*
-    ; 새탭으로 열린 올리기 버튼 누르기
-    Sleep 2400 
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 977, 175, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-    */
     ; 윈10
     Sleep 4000 
 	;MouseMove, -4000, -4000, 0, R
@@ -4687,13 +3552,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 	Sleep 400
 	
 	Send {1}{.}{p}{n}{g}
-    /*
-    Sleep 500
-	IfWinExist, 파일 업로드|열기|blog.upphoto
-		WinActivate
-	Sleep 700
-    Send {Tab}{Tab}{Space}
-    */
 	;MouseMove, -4000, -4000, 0, R
 	;MouseMove, 1920 + 1195, 506, 5, R
 	MouseMove, 1195, 506, 5
@@ -4709,26 +3567,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 	MouseMove, 1693, 150, 5
     ;MouseClick, Left, 977, 175
     Send {LButton} 
-    ;<-- 새탭으로 열기로 변경되면서 임시 교체
-    /*
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1957, 17, 5, R
-	Sleep 100
-	Send {LButton}
-	Sleep 500
-
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2707, 690, 5, R
-	Sleep 100
-	Send {LButton}
-    */
-    /*
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 1190, 732, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-    */
 
 	IfWinExist, ahk_class MozillaWindowClass
 		WinActivate
@@ -4736,12 +3574,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 
 	;옆에 일봉도 올려야 하므로 라인을 넘기지 않는다
 	;Send {Enter}
-
-
-
-
-
-
 
 	;F9 일봉 파트
 
@@ -4890,31 +3722,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 	Send {LButton}
 
 
-
-
-
-    ;<--새탭에 띄우기로 바뀌면서 임시로 변경
-    /*
-	WinWait, 네이버 포토업로더 - Mozilla Firefox
-	IfWinExist, 네이버 포토업로더 - Mozilla Firefox
-		WinActivate
-	Sleep 100
-	WinMove, 네이버 포토업로더 - Mozilla Firefox, 0, 0 
-	Sleep 2000
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2495, 130, 5, R
-	Send {LButton}
-	Sleep 1200
-    */
-    /* 
-    ; 새탭으로 열린 올리기 버튼 누르기
-    Sleep 2400 
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 977, 175, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-    */
     ; 윈10
     Sleep 4000 
 	;MouseMove, -4000, -4000, 0, R
@@ -4951,26 +3758,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
     ;MouseClick, Left, 977, 175
     Send {LButton} 
 
-    ;<-- 새탭으로 열기로 변경되면서 임시 교체
-    /*
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1957, 17, 5, R
-	Sleep 100
-	Send {LButton}
-	Sleep 500
-
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2707, 690, 5, R
-	Sleep 100
-	Send {LButton}
-    */
-    /*
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 1190, 732, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-    */
 
 	IfWinExist, ahk_class MozillaWindowClass
 		WinActivate
@@ -6302,28 +5089,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 	MouseMove, 2555 - 1920, 130, 5
 	Send {LButton}
 
-    ;<--새탭에 띄우기로 바뀌면서 임시로 변경
-    /*
-	WinWait, 네이버 포토업로더 - Mozilla Firefox
-	IfWinExist, 네이버 포토업로더 - Mozilla Firefox
-		WinActivate
-	Sleep 100
-	WinMove, 네이버 포토업로더 - Mozilla Firefox, 0, 0 
-	Sleep 2000
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2495, 130, 5, R
-	Send {LButton}
-	Sleep 1200
-    */
-    ; 새탭으로 열린 올리기 버튼 누르기
-    /*
-    Sleep 2400 
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 977, 175, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-    */
     ; 윈10
     Sleep 4000 
 	;MouseMove, -4000, -4000, 0, R
@@ -6343,12 +5108,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 	Sleep 400
 	
 	Send {1}{.}{p}{n}{g}
-    /*
-	IfWinExist, 파일 업로드|열기|blog.upphoto
-		WinActivate
-    Sleep 700
-    Send {Tab}{Tab}{Space}
-    */
 	;MouseMove, -4000, -4000, 0, R
 	;MouseMove, 1920 + 1195, 506, 5, R
 	MouseMove, 1195, 506, 5
@@ -6365,30 +5124,6 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
     ;MouseClick, Left, 977, 175
     Send {LButton} 
 
-    ;초안
-    /*
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1957, 17, 5, R
-	Sleep 100
-	Send {LButton}
-	Sleep 500
-
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 2707, 690, 5, R
-	Sleep 100
-	Send {LButton}
-    */
-    ;<-- 새탭으로 열기로 변경되면서 임시 교체
-    /*
-	MouseMove, -4000, -4000, 0, R
-	MouseMove, 1920 + 1190, 732, 5, R
-    ;MouseClick, Left, 977, 175
-    Send {LButton} 
-    ;-->
-    */
-
-
-
 	IfWinExist, ahk_class MozillaWindowClass
 		WinActivate
 	Sleep 800
@@ -6397,6 +5132,7 @@ WinWait, 네이버 포토업로더 - Mozilla Firefox
 
 	return
 }
+*/
 
 
 /*
@@ -6572,6 +5308,7 @@ return
 */
 
 
+/*
 timer_proc:
 if (WinActive("ahk_class _NKHeroMainClass"))
 {
@@ -6605,4 +5342,5 @@ if (WinActive("ahk_class _NKHeroMainClass"))
 }
 
 return
+*/
 
