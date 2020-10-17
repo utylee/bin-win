@@ -978,6 +978,14 @@ $LWin Up::
 */
 #L::return
 #i::return
+#a::return
+#f::return
+#b::return
+#s::return
+#k::return
+#;::return
+#p::return
+#u::return
 
 /*
 #IfWinActive ahk_class MozillaWindowClass 
