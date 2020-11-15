@@ -986,6 +986,7 @@ $LWin Up::
 #;::return
 #p::return
 #u::return
+#h::return				; 자음모음이 분리되는 원인인 Window+H 단축키 (한국어지원안돼서)도 비활성화합니다	
 
 /*
 #IfWinActive ahk_class MozillaWindowClass 
