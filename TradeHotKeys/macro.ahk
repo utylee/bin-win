@@ -74,6 +74,7 @@ RandMove(x, y) {
 }
 
 #IfWinExist, ahk_exe Wow.exe
+MsgBox, 하하하 
 
 ;XButton1::
 8::
