@@ -1,3 +1,4 @@
+;SetTitleMatchMode, 2
 IfWinExist, ahk_exe Wow.exe
 {
 	;MsgBox, zzzzz
@@ -22,7 +23,7 @@ IfWinExist, ahk_exe Wow.exe
 		Sleep, t
 		Send, {d up}
 
-		Sleep, 20000
+		Sleep, 300000
 
 
 		/*
