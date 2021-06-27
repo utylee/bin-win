@@ -39,6 +39,8 @@ IfWinExist, ahk_exe Wow.exe
 		;ControlSend,, {d up},ahk_exe Wow.exe
 		;Send, {d up}
 
+		;Sleep 1000
+		;ControlSend,, {Enter},ahk_exe Wow.exe
 
 		Sleep 300000 
 

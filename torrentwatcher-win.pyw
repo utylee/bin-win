@@ -8,9 +8,13 @@ path = 'E:/Down/'
 #target = 'v:/99-data/91-transmission-watch'
 #target_media = 'v:/00-MediaWorld'
 #target = 'u:/3002/99-data/91-transmission-watch'
-target = 'u:/4001/99-data/91-transmission-watch'
+
+#target = 'u:/4001/99-data/91-transmission-watch'
+target = r'\\192.168.0.207\clark\4001\99-data\91-transmission-watch'
+
 #target_media = 'u:/3002/00-MediaWorld'
-target_media = 'u:/4002/00-MediaWorld-4002'
+#target_media = 'u:/4002/00-MediaWorld-4002'
+target_media = r'\\192.168.0.207\clark\4002\00-MediaWorld-4002'
 
 
 before = dict([(f, None) for f in os.listdir(path)])
