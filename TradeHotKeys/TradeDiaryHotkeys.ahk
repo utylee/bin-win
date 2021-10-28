@@ -458,7 +458,9 @@ LAlt & ~1::
 		;WinMove, ahk_class mintty, , 500, 130, 1200, 900 
         ;
 		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
-		WinMove, ahk_class mintty, , 450, 87, 1200, 930 
+
+		;WinMove, ahk_class mintty, , 450, 87, 1200, 930 
+		WinMove, ahk_class mintty, , 398, 45, 1210, 977 
 	}	
 	IfWinExist, ahk_exe WindowsTerminal.exe
 	{
