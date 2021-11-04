@@ -469,7 +469,8 @@ LAlt & ~1::
 		;WinMove, ahk_class mintty, , 500, 130, 1200, 900 
         ;
 		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
-		WinMove, ahk_exe WindowsTerminal.exe, , 450, 80, 1200, 1010
+		;WinMove, ahk_exe WindowsTerminal.exe, , 450, 80, 1200, 1010
+		WinMove, ahk_exe WindowsTerminal.exe, , 480, 80, 1050, 950
 	}	
 
     
