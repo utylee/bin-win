@@ -451,7 +451,8 @@ LAlt & ~1::
 		WinMove, MINGW32, , 460, 55, 1200, 1100 
 	}	
     
-	IfWinExist, ahk_class mintty
+	;IfWinExist, ahk_class mintty
+	IfWinExist, ahk_exe mintty.exe
 	{
 		;WinActivate
 		;WinMove, ahk_class mintty, , 520, 135, 1100, 870 
@@ -460,7 +461,8 @@ LAlt & ~1::
 		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
 
 		;WinMove, ahk_class mintty, , 450, 87, 1200, 930 
-		WinMove, ahk_class mintty, , 398, 45, 1210, 977 
+		;WinMove, ahk_class mintty, , 398, 45, 1210, 977 
+		WinMove, ahk_exe mintty.exe, , 398, 45, 1210, 977 
 	}	
 	IfWinExist, ahk_exe WindowsTerminal.exe
 	{
@@ -470,7 +472,8 @@ LAlt & ~1::
         ;
 		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
 		;WinMove, ahk_exe WindowsTerminal.exe, , 450, 80, 1200, 1010
-		WinMove, ahk_exe WindowsTerminal.exe, , 480, 80, 1050, 950
+		;WinMove, ahk_exe WindowsTerminal.exe, , 480, 80, 1050, 950
+		WinMove, ahk_exe WindowsTerminal.exe, , 410, 60, 1150, 1005 
 	}	
 
     
