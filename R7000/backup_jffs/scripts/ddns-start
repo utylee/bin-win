@@ -4,6 +4,9 @@
 # put 'hostname|token' in the 'Host Name' field under DDNS
 # e.g. myhost|abcdefgh-1234-5678-9876-f71b0ed7a7fe
 
+# utylee|5882867e-afb1-4242-82cd-ed3b3baa0eea
+# and chmod 777 ddns-start  maybe..
+
 DDNS_HOSTNAME_FIELD=$(nvram get ddns_hostname_x)
 SUBDOMAIN=$(echo "$DDNS_HOSTNAME_FIELD" | awk -F'|' '{print $1}')
 TOKEN=$(echo "$DDNS_HOSTNAME_FIELD" | awk -F'|' '{print $2}')
