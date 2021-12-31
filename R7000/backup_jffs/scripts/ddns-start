@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# register a subdomain at https://www.duckdns.org/ to get your token
+# put 'hostname|token' in the 'Host Name' field under DDNS
+# e.g. myhost|abcdefgh-1234-5678-9876-f71b0ed7a7fe
+
+# utylee|5882867e-afb1-4242-82cd-ed3b3baa0eea
+# and chmod 777 ddns-start  maybe..
+
+DDNS_HOSTNAME_FIELD=$(nvram get ddns_hostname_x)
+SUBDOMAIN=$(echo "$DDNS_HOSTNAME_FIELD" | awk -F'|' '{print $1}')
+TOKEN=$(echo "$DDNS_HOSTNAME_FIELD" | awk -F'|' '{print $2}')
+IPV4=$(nvram get wan0_ipaddr)
+IPV6=$(nvram get ipv6_wan_addr | awk -F'/' '{print $1}')
+
+REQUEST_URL="https://www.duckdns.org/update?domains=${SUBDOMAIN}&token=${TOKEN}&ip=${IPV4}&ipv6=${IPV6}"
+
+logger "DDNS Request URL: ${REQUEST_URL}"
+
+# no modification below needed
+RESULT=$(curl --silent "${REQUEST_URL}" 2>&1)
+logger "DDNS Request result: $RESULT"
+
+if [[ "$RESULT" == "OK" ]];
+then
+  /sbin/ddns_custom_updated 1
+else
+  /sbin/ddns_custom_updated 0
+fi
