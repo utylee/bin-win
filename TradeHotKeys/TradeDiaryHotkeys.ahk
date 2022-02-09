@@ -114,6 +114,18 @@ XButton2::
 
 ;return
 
+#L::return
+#i::return
+#a::return
+#f::return
+#b::return
+#s::return
+#k::return
+#;::return
+#p::return
+#u::return
+#h::return				; 자음모음이 분리되는 원인인 Window+H 단축키 (한국어지원안돼서)도 비활성화합니다	
+
 
 ;오버워치 실행중 일 경우 LWin 윈도우키 비활성화
 #IfWinExist, 오버워치
@@ -982,17 +994,6 @@ $LWin Up::
     return
 }
 */
-#L::return
-#i::return
-#a::return
-#f::return
-#b::return
-#s::return
-#k::return
-#;::return
-#p::return
-#u::return
-#h::return				; 자음모음이 분리되는 원인인 Window+H 단축키 (한국어지원안돼서)도 비활성화합니다	
 
 /*
 #IfWinActive ahk_class MozillaWindowClass 
