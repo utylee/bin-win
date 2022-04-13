@@ -80,37 +80,44 @@ toggle0101[77] := 1 ;잔고 / 당일매매 영역의 토글을 위한 변수
 ;#define MOUSEEVENTF_VIRTUALDESK 0x4000 /* map to entire virtual desktop */
 ;#define MOUSEEVENTF_ABSOLUTE 0x8000 /* absolute move */
 ; 오버워치 뒤로 돌기 매크로 테스트
-/*
-XButton2::
+#IfWinActive, ahk_exe r5apex.exe
+;XButton2::
+XButton1::
 {
-	IfWinExist, 오버워치
+	;IfWinExist, 오버워치
+	IfWinExist, ahk_exe r5apex.exe
 	{
 
-		WinActivate, 오버워치
+		;WinActivate, 오버워치
 	
 		;MouseMove, -100, 0, , R
 	;	Loop, 10
         
-        ;f = 389
-        ;final = 3890
-        final = 4500
+        ;;f = 389
+        ;;final = 3890
+        ;final = 4500
+		; apex상에서 센시 800x1.2였을 경우의 수치입니다
+        final = 6840
         cur = 0
         While ( cur < final)
 		{
             ;step := Rand(300,400)
-            Random, step, 390, 430
+
+            ;Random, step, 390, 430
+
+            step := 600
             if ( cur + step > final)
                 step := final - cur
 			;DllCall("mouse_event", uint, 1, int, 389, int, 0, uint, 0, int, 0)
 			DllCall("mouse_event", uint, 1, int, step, int, 0, uint, 0, int, 0)
-			Sleep 15	
+			Sleep 5	
             cur := cur + step
 		}
 	
 	}
 	return
 }
-*/
+#IfWinActive
 
 ;return
 
