@@ -1,0 +1,9 @@
+docker run -d
+--name=mympd
+--net="host"
+-e TZ=Asia/Seoul
+-e UMASK_SET=022
+-e MYMPD_SSL=false
+-e MYMPD_HTTP_PORT=88
+--restart unless-stopped
+ghcr.io/jcorporation/mympd/mympd:9.4.1
