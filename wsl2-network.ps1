@@ -12,7 +12,7 @@ if( $found ){
 
 #All the ports you want to forward separated by coma
 # 8824 를 ssh 포트로 쓰기에 추가했습니다
-$ports=@(80,443,8812, 8824, 3000, 5432);
+$ports=@(80,88,443,8812, 8824, 3000, 5432);
 #$ports=@(80,443);
 
 
