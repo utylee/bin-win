@@ -11,12 +11,14 @@ path = 'E:/Down/'
 
 #target = 'u:/4001/99-data/91-transmission-watch'
 #target = r'\\192.168.0.201\clark\4001\99-data\91-transmission-watch'
-target = r'\\192.168.1.205\clark\4001\99-data\91-transmission-watch'
+# target = r'\\192.168.1.205\clark\4001\99-data\91-transmission-watch'
+target = r'\\192.168.1.202\clark\4001\99-data\91-transmission-watch'
 
 #target_media = 'u:/3002/00-MediaWorld'
 #target_media = 'u:/4002/00-MediaWorld-4002'
 #target_media = r'\\192.168.0.201\clark\4002\00-MediaWorld-4002'
-target_media = r'\\192.168.1.205\clark\4002\00-MediaWorld-4002'
+# target_media = r'\\192.168.1.205\clark\4002\00-MediaWorld-4002'
+target_media = r'\\192.168.1.202\clark\4002\00-MediaWorld-4002'
 
 
 before = dict([(f, None) for f in os.listdir(path)])
@@ -40,7 +42,9 @@ while 1:
                 except:
                     continue
                 time.sleep(1)
-                os.remove(a)
+                # os.remove(a)
+                # 삭제가 아닌 확장자 변경으로 테스트해봅니다
+                os.rename(a,a + '.added')
     
             #elif added[0][-3:] == 'smi' :
             elif i[-3:] == 'smi' or i[-3:] == 'srt':
