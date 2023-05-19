@@ -1322,6 +1322,7 @@ $LWin Up::
 #IfWinExist
 
 
+/*
 ;#IfWinExist ahk_class _KiWoomClass
 #IfWinExist ahk_class _NKHeroMainClass
 #5::
@@ -1332,6 +1333,7 @@ $LWin Up::
     return
 }
 #IfWinExist
+*/
 
 /*
 ;영웅문이 틀어져있을 경우
