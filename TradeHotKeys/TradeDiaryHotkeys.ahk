@@ -79,6 +79,41 @@ toggle0101[77] := 1 ;잔고 / 당일매매 영역의 토글을 위한 변수
 ;#define MOUSEEVENTF_WHEEL 0x0800 /* wheel button rolled */
 ;#define MOUSEEVENTF_VIRTUALDESK 0x4000 /* map to entire virtual desktop */
 ;#define MOUSEEVENTF_ABSOLUTE 0x8000 /* absolute move */
+
+
+;히오스가 활성화 상태이면 캡쳐 영상 전송 속도 줄이기 통보
+Loop {
+
+	IfWinActive ahk_exe HeroesOfTheStorm_x64.exe
+		try{
+			whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+			;whr.Open("GET", "https://se-1.cellsynt.net/sms.php?username=demo&password=test123&destination=0046700123123&originatortype=numeric&originator=46700456456&charset=UTF-8&text=Test+123", true)
+			whr.Open("GET", "http://localhost:8007/low")
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+			;MsgBox % whr.ResponseText
+		} catch e {
+			; pass 명령어가 뭔지 몰라서 더미 명령줄을 추가했습니다
+			dummy := 1
+		}
+
+	IfWinNotActive ahk_exe HeroesOfTheStorm_x64.exe
+		try{
+			whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+			;whr.Open("GET", "https://se-1.cellsynt.net/sms.php?username=demo&password=test123&destination=0046700123123&originatortype=numeric&originator=46700456456&charset=UTF-8&text=Test+123", true)
+			whr.Open("GET", "http://localhost:8007/high")
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+			;MsgBox % whr.ResponseText
+		} catch e {
+			; pass 명령어가 뭔지 몰라서 더미 명령줄을 추가했습니다
+			dummy := 1
+		}
+	Sleep 5000
+}
+
 ; 오버워치 뒤로 돌기 매크로 테스트
 #IfWinActive, ahk_exe r5apex.exe
 !Tab::return
@@ -120,8 +155,8 @@ XButton1::
 	}
 	return
 }
-#IfWinActive
 */
+#IfWinActive
 
 ;return
 
@@ -409,8 +444,8 @@ LAlt & ~1::
 	}
 	return
 }
-*/
 #IfWinExist
+*/
 
 /*
 ; 볼륨 조절 단축키를 추가합니다
