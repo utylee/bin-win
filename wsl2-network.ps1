@@ -42,3 +42,8 @@ for( $i = 0; $i -lt $ports.length; $i++ ){
   iex "netsh interface portproxy delete v4tov4 listenport=$port listenaddress=$addr0";
   iex "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr0 connectport=$port connectaddress=$remoteport";
 }
+# netsh : portforwarding 명령어 입니다 계속 남아있기에 초기화하는 명령어는
+# 아래와 같습니다
+# netsh interface portproxy reset
+#
+# from) https://honsal.blogspot.com/2021/12/wsl2_9.html?showComment=1646052897453

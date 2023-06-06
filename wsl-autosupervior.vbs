@@ -1,4 +1,6 @@
 Set oShell = CreateObject("WScript.Shell")
+'mount가 끝난 이후에 실행되도록 합니다
+Wscript.sleep 22000
 oShell.Run "wsl -d Ubuntu20WSL2 sudo /etc/init.d/supervisor start", 0
 
 'https://gist.github.com/dentechy/de2be62b55cfd234681921d5a8b6be11 참조'
