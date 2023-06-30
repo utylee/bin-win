@@ -1,3 +1,9 @@
+
+####
+# 결국 아래를 사용하지 않습니다.
+# 언제부턴가 내부 ip를 인식하지 못하는 것인지 포워딩후에도 계속 접속이 되지 않아
+# $USER/.wslconfig 의 localhostForwarding 을 true로 준 후 아래 포워딩을
+# 내부 아이피 직접이 아닌 localhost 로 지정하여 문제를 해결하였습니다 
 $remoteport = bash.exe -c "ifconfig eth0 | grep 'inet '"
 $found = $remoteport -match '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}';
 
@@ -22,8 +28,9 @@ $ports=@(80,88,443,8080,8812, 8824, 3000, 3001, 3002, 5432);
 #한번 127.0.0.1로 바꾸고 나서 버그가 생긴느낌입니다.ipv6까지 nginx에서설정해줘야하질 않나
 # firefox에서는 localhost 접속이 안되질 않나..
 # 그래서 두개다 추가하기로 합니다 
-$addr0='0.0.0.0';
-$addr='127.0.0.1';
+# $addr0='127.0.0.1';
+$addr='0.0.0.0';
+# $addr0='192.168.1.204';
 $ports_a = $ports -join ",";
 
 
@@ -37,10 +44,12 @@ iex "New-NetFireWallRule -DisplayName 'WSL 2 Firewall Unlock' -Direction Inbound
 for( $i = 0; $i -lt $ports.length; $i++ ){
   $port = $ports[$i];
   iex "netsh interface portproxy delete v4tov4 listenport=$port listenaddress=$addr";
-  iex "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr connectport=$port connectaddress=$remoteport";
+  iex "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr connectport=$port connectaddress=localhost";
+  # 내부 아이피로 포워딩을 못해주는 문제 발생. 
+  # iex "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr connectport=$port connectaddress=$remoteport";
 
-  iex "netsh interface portproxy delete v4tov4 listenport=$port listenaddress=$addr0";
-  iex "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr0 connectport=$port connectaddress=$remoteport";
+  # iex "netsh interface portproxy delete v4tov4 listenport=$port listenaddress=$addr0";
+  # iex "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr0 connectport=$port connectaddress=$remoteport";
 }
 # netsh : portforwarding 명령어 입니다 계속 남아있기에 초기화하는 명령어는
 # 아래와 같습니다
