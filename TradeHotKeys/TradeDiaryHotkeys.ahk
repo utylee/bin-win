@@ -84,8 +84,15 @@ toggle0101[77] := 1 ;잔고 / 당일매매 영역의 토글을 위한 변수
 ;히오스가 활성화 상태이면 캡쳐 영상 전송 속도 줄이기 통보
 Loop {
 	whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+
+	; 각 게임별 실행중임을 표시하는 변수들입니다
+	a := 0
+	b := 0
+	c := 0
+
 	IfWinExist ahk_exe Overwatch.exe
 	{
+		a := 1
 		IfWinActive ahk_exe Overwatch.exe
 		;IfWinActive 오버워치 
 		;IfWinActive ahk_class TankWindowClass
@@ -97,7 +104,6 @@ Loop {
 				; Using 'true' above and the call below allows the script to remain responsive.
 				whr.WaitForResponse()
 				dummy := whr.ResponseText
-				Sleep 100
 				;MsgBox % whr.ResponseText
 			} catch e {
 				; pass 명령어가 뭔지 몰라서 더미 명령줄을 추가했습니다
@@ -115,7 +121,6 @@ Loop {
 				; Using 'true' above and the call below allows the script to remain responsive.
 				whr.WaitForResponse()
 				dummy := whr.ResponseText
-				Sleep 100
 				;MsgBox % whr.ResponseText
 			} catch e {
 				; pass 명령어가 뭔지 몰라서 더미 명령줄을 추가했습니다
@@ -125,6 +130,7 @@ Loop {
 
 	IfWinExist ahk_exe HeroesOfTheStorm_x64.exe
 	{
+		b := 1
 		IfWinActive ahk_exe HeroesOfTheStorm_x64.exe
 			try{
 				;whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
@@ -156,6 +162,7 @@ Loop {
 
 	IfWinExist ahk_exe r5apex.exe
 	{
+		c := 1
 		IfWinActive ahk_exe r5apex.exe
 			try{
 				;whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
@@ -184,6 +191,17 @@ Loop {
 				dummy := 1
 			}
 	}
+
+	; 아무 창도 없을 경우에는 높은 속도로 설정합니다. 게임 종료하고 나니 low로 
+	; 전송이 되고 있는 걸 발견하였습니다
+	If (a < 1 and b < 1 and c < 1)
+	{
+		whr.Open("GET", "http://localhost:8007/high")
+		whr.Send()
+		; Using 'true' above and the call below allows the script to remain responsive.
+		whr.WaitForResponse()
+	}
+		
 	Sleep 5000
 }
 
