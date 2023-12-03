@@ -73,7 +73,7 @@ F7::
 		Send, ^+{i}
 
 		; 개발자 네트워크에 grst 입력
-		Sleep, 3000
+		Sleep, 10000
 		MouseMove, 110, 400
 		MouseClick, left
 
