@@ -69,7 +69,7 @@ F7::
 		Send, {Enter}
 
 		; 개발자 콘솔 열기
-		Sleep, 6000
+		Sleep, 10000
 		Send, ^+{i}
 
 		; 개발자 네트워크에 grst 입력
@@ -80,12 +80,12 @@ F7::
 		Send, grst
 
 		; youtube 재클릭 리프레시
-		Sleep, 1000
+		Sleep, 2000
 		MouseMove, 110, 150
 		MouseClick, left
 
 		; grst 항목 클릭
-		Sleep, 20000
+		Sleep, 30000
 		MouseMove, 180, 500
 		MouseClick, left
 
