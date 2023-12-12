@@ -33,7 +33,7 @@ F7::
 	
 	IfWinExist ahk_exe firefox.exe
 	{
-		SendMode Input
+		;SendMode Input
 		;활성화 하고 새로운 탭을 엽니다
 		Sleep, 2000
 		WinActivate, ahk_exe firefox.exe
@@ -144,12 +144,15 @@ F7::
 		;SendMode Input
 		;cookies.txt 입력 후 엔터
 		;위치는 '다운로드' 폴더입니다
-		Sleep, 4000
+		Sleep, 1000
+		Sleep, 5000
 		Send, cookies.txt
+		Sleep, 2000
 		Sleep, 2000
 		Send, {Enter}
 		
 		;파일 변경 확인 메세지에 또 yes를 누릅니다
+		Sleep, 1000
 		Sleep, 1000
 		Send, y
 
