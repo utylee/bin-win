@@ -33,7 +33,7 @@ F7::
 	
 	IfWinExist ahk_exe firefox.exe
 	{
-		SendMode Input
+		;SendMode Input
 		;활성화 하고 새로운 탭을 엽니다
 		Sleep, 2000
 		WinActivate, ahk_exe firefox.exe
@@ -69,23 +69,23 @@ F7::
 		Send, {Enter}
 
 		; 개발자 콘솔 열기
-		Sleep, 6000
+		Sleep, 10000
 		Send, ^+{i}
 
 		; 개발자 네트워크에 grst 입력
-		Sleep, 3000
+		Sleep, 10000
 		MouseMove, 110, 400
 		MouseClick, left
 
 		Send, grst
 
 		; youtube 재클릭 리프레시
-		Sleep, 1000
+		Sleep, 2000
 		MouseMove, 110, 150
 		MouseClick, left
 
 		; grst 항목 클릭
-		Sleep, 20000
+		Sleep, 30000
 		MouseMove, 180, 500
 		MouseClick, left
 
@@ -144,12 +144,15 @@ F7::
 		;SendMode Input
 		;cookies.txt 입력 후 엔터
 		;위치는 '다운로드' 폴더입니다
-		Sleep, 4000
+		Sleep, 1000
+		Sleep, 5000
 		Send, cookies.txt
+		Sleep, 2000
 		Sleep, 2000
 		Send, {Enter}
 		
 		;파일 변경 확인 메세지에 또 yes를 누릅니다
+		Sleep, 1000
 		Sleep, 1000
 		Send, y
 
