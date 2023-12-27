@@ -82,6 +82,8 @@ toggle0101[77] := 1 ;잔고 / 당일매매 영역의 토글을 위한 변수
 
 
 ;히오스가 활성화 상태이면 캡쳐 영상 전송 속도 줄이기 통보
+
+;whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
 Loop {
 	whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
 
@@ -89,6 +91,7 @@ Loop {
 	a := 0
 	b := 0
 	c := 0
+	d := 0 
 
 	IfWinExist ahk_exe Overwatch.exe
 	{
@@ -192,17 +195,53 @@ Loop {
 			}
 	}
 
+	IfWinExist ahk_exe Discovery.exe
+	{
+		d := 1
+		IfWinActive ahk_exe Discovery.exe
+			try{
+				;whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+				;whr.Open("GET", "https://se-1.cellsynt.net/sms.php?username=demo&password=test123&destination=0046700123123&originatortype=numeric&originator=46700456456&charset=UTF-8&text=Test+123", true)
+				whr.Open("GET", "http://localhost:8007/low")
+				whr.Send()
+				; Using 'true' above and the call below allows the script to remain responsive.
+				whr.WaitForResponse()
+				;MsgBox % whr.ResponseText
+			} catch e {
+				; pass 명령어가 뭔지 몰라서 더미 명령줄을 추가했습니다
+				dummy := 1
+			}
+
+		IfWinNotActive ahk_exe Discovery.exe
+			try{
+				;whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+				;whr.Open("GET", "https://se-1.cellsynt.net/sms.php?username=demo&password=test123&destination=0046700123123&originatortype=numeric&originator=46700456456&charset=UTF-8&text=Test+123", true)
+				whr.Open("GET", "http://localhost:8007/high")
+				whr.Send()
+				; Using 'true' above and the call below allows the script to remain responsive.
+				whr.WaitForResponse()
+				;MsgBox % whr.ResponseText
+			} catch e {
+				; pass 명령어가 뭔지 몰라서 더미 명령줄을 추가했습니다
+				dummy := 1
+			}
+	}
+
 	; 아무 창도 없을 경우에는 높은 속도로 설정합니다. 게임 종료하고 나니 low로 
 	; 전송이 되고 있는 걸 발견하였습니다
-	If (a < 1 and b < 1 and c < 1)
+	If (a < 1 and b < 1 and c < 1 and d < 1)
 	{
-		whr.Open("GET", "http://localhost:8007/high")
-		whr.Send()
-		; Using 'true' above and the call below allows the script to remain responsive.
-		whr.WaitForResponse()
+		try {
+			whr.Open("GET", "http://localhost:8007/high")
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+		} catch e {
+			dummy := 1
+		}
 	}
 		
-	Sleep 5000
+	Sleep 10000
 }
 
 ; 오버워치 뒤로 돌기 매크로 테스트
