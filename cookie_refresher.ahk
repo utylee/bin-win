@@ -144,6 +144,12 @@ F7::
 		;SendMode Input
 		;cookies.txt 입력 후 엔터
 		;위치는 '다운로드' 폴더입니다
+		WinWait, 다른 이름으로 저장,,5
+		if ErrorLevel
+		{
+			MsgBox, 다른 이름으로 저장 창을 찾을 수 없습니다. 종료합니다
+			return
+		}
 		Sleep, 1000
 		Sleep, 5000
 		Send, cookies.txt
