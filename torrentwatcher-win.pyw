@@ -4,7 +4,7 @@ import shutil
 
 #path = 'f:\\down\\'
 #path = 'D:/D_Down/'
-path = 'E:/Down/'
+path = 'G:/Down/'
 #path = 'E:\\Down\\'
 #target = 'w:\\99-data\\91-transmission-watch\\'
 #target = 'v:/99-data/91-transmission-watch'
@@ -15,7 +15,7 @@ path = 'E:/Down/'
 #target = r'\\192.168.0.201\clark\4001\99-data\91-transmission-watch'
 # target = r'\\192.168.1.205\clark\4001\99-data\91-transmission-watch'
 target = r'\\192.168.1.202\clark\4001\99-data\91-transmission-watch'
-backup_target = r'E:/magnets/'
+backup_target = r'G:/magnets/'
 
 #target_media = 'u:/3002/00-MediaWorld'
 #target_media = 'u:/4002/00-MediaWorld-4002'
