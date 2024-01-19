@@ -2,9 +2,10 @@ import os
 import time
 import shutil
 
+INTV = 5         # 주기를 1초에서 5초로 변경합니다
 #path = 'f:\\down\\'
 #path = 'D:/D_Down/'
-path = 'E:/Down/'
+path = 'G:/Down/'
 #path = 'E:\\Down\\'
 #target = 'w:\\99-data\\91-transmission-watch\\'
 #target = 'v:/99-data/91-transmission-watch'
@@ -15,7 +16,7 @@ path = 'E:/Down/'
 #target = r'\\192.168.0.201\clark\4001\99-data\91-transmission-watch'
 # target = r'\\192.168.1.205\clark\4001\99-data\91-transmission-watch'
 target = r'\\192.168.1.202\clark\4001\99-data\91-transmission-watch'
-backup_target = r'E:/magnets/'
+backup_target = r'G:/magnets/'
 
 #target_media = 'u:/3002/00-MediaWorld'
 #target_media = 'u:/4002/00-MediaWorld-4002'
@@ -27,7 +28,7 @@ target_media = r'\\192.168.1.202\clark\4002\00-MediaWorld-4002'
 before = dict([(f, None) for f in os.listdir(path)])
 
 while 1:
-    time.sleep(1)
+    time.sleep(INTV)
     after = dict([(f, None) for f in os.listdir(path)])
     added = [f for f in after if not f in before]
     removed = [f for f in before if not f in after]
@@ -40,6 +41,11 @@ while 1:
                 # print(i)
                 #a = path + "".join(added)
                 a = path + "".join(i)
+                
+                # 사이즈가 0일 경우 복사를 하지 않고 다음 주기로 그냥 넘깁니다
+                if os.stat(a).st_size == 0:
+                    continue
+
                 try:
                     shutil.copy(a, target)
                 except:
@@ -60,6 +66,11 @@ while 1:
                 # print(i)
                 #a = path + "".join(added)
                 a = path + "".join(i)
+
+                # 사이즈가 0일 경우 복사를 하지 않고 다음 주기로 그냥 넘깁니다
+                if os.stat(a).st_size == 0:
+                    continue
+
                 try:
                     shutil.copy(a, target_media)
                 except:
