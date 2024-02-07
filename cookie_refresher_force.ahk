@@ -20,7 +20,6 @@ ImmGetDefaultIMEWnd(hWnd)
     return DllCall("imm32\ImmGetDefaultIMEWnd", Uint,hWnd, Uint)
 } 
 
-F7::
 {
 	;SendMode Input
 	; 파이어폭스가 있으면 
@@ -150,30 +149,31 @@ F7::
 			MsgBox, 다른 이름으로 저장 창을 찾을 수 없습니다. 종료합니다
 			return
 		}
-		Sleep, 1000
-		;Sleep, 5000
+		Sleep, 5000
+		WinActivate, 다른 이름으로 저장
 		Send, cookies.txt
-		WinWaitActive, 다른 이름으로 저장,,10
-		if ErrorLevel
-		{
-			MsgBox, 다른 이름으로 저장 창을 찾을 수 없습니다. 종료합니다
-			return
-		}
+		Send, {Enter}
 		;Sleep, 2000
 		Sleep, 2000
-		Send, {Enter}
 		
-		Sleep, 2000
+		WinActivate, 다른 이름으로 저장
+		Sleep, 3000
+		Send, y
 		;파일 변경 확인 메세지에 또 yes를 누릅니다
 		;WinWaitActive, 다른 이름으로 저장 확인,,5
 		;if ErrorLevel
 		;{
-		;	MsgBox, 다른 이름으로 저장 확인 창을 찾을 수 없습니다. 종료합니다
-		;	return
+			;MsgBox, 다른 이름으로 저장 확인 창을 찾을 수 없습니다. 종료합니다
+			;return
 		;}
 		;Sleep, 100000
-		Sleep, 2000
-		Send, y
+		;Send, {Left}
+		;Sleep, 1000
+		;Send, {Enter} 
+		;IfWinActive, 다른 이름으로 저장 확인
+		;{
+			;MsgBox, came
+		;}
 
 		; studio.youtube.com 창을 닫습니다
 		Sleep, 5000
@@ -183,16 +183,19 @@ F7::
 		Sleep, 2000
 		WinActivate, ahk_exe firefox.exe
 		
-		Sleep, 1000
+		;Sleep, 1000
+		Sleep, 3000
 		Send, ^{t}
 
 		
 		Sleep, 2000
-		Send, http://utylee.duckdns.org/youtube/cookie/cook
+		Send, http://utylee.duckdns.org/youtube/uploader/cook
+		;Send, http://utylee.duckdns.org/youtube/cookie/cook
 		Send, {Enter}
 
 		; cookies 갱신웹을 닫습니다
-		Sleep, 8000
+		Sleep, 10000
+		WinActivate, ahk_exe firefox.exe
 		Send, ^{w}
 
 	}
