@@ -82,8 +82,9 @@ toggle0101[77] := 1 ;잔고 / 당일매매 영역의 토글을 위한 변수
 
 
 ;히오스가 활성화 상태이면 캡쳐 영상 전송 속도 줄이기 통보
+; find_finals.pyw로 대체합니다. finals에서 ahk를 불법도구로 인식합니다
 
-;whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+/*
 Loop {
 	whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
 
@@ -275,6 +276,7 @@ Loop {
 		
 	Sleep 10000
 }
+*/
 
 ; 오버워치 뒤로 돌기 매크로 테스트
 ;#IfWinActive, ahk_exe r5apex.exe
