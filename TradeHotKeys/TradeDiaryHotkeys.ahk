@@ -332,6 +332,8 @@ XButton1::
 #s::return
 #k::return
 #;::return
+#+::return
+#=::return				; 윈도우 돋보기
 ;#p::return
 #u::return
 #h::return				; 자음모음이 분리되는 원인인 Window+H 단축키 (한국어지원안돼서)도 비활성화합니다	
@@ -637,12 +639,20 @@ LAlt & ~1::
 
 	;IfWinExist, ahk_class _KiWoomClass
 	;IfWinExist, ahk_class _KiWoomClass
+	/*
 	IfWinExist, ahk_class _NKHeroMainClass
 	{
 		;;WinActivate
 		;WinMove, ahk_class _KiWoomClass, , -1920, 0, 3840, 1160
-		;WinMove, ahk_exe nkrunlite.exe, , -1920, 0, 3840, 1160
-		WinMove, ahk_class _NKHeroMainClass, , -1920, 0, 3840, 1160
+		WinMove, ahk_exe nkrunlite.exe, , -1920, 0, 3840, 1160
+		;WinMove, ahk_class _NKHeroMainClass, , -1920, 0, 3840, 1160
+	}
+	*/
+	IfWinExist, ahk_exe nkrunlite.exe
+	{
+		;;WinActivate
+		;WinMove, ahk_class _KiWoomClass, , -1920, 0, 3840, 1160
+		WinMove, ahk_exe nkrunlite.exe, , -1920, 0, 3840, 1160
 	}
 
     ;두개를 띄우기에 레이아웃 망칠 확률이 높다
@@ -700,6 +710,7 @@ LAlt & ~1::
 		;WinMove, ahk_exe WindowsTerminal.exe, , 450, 80, 1200, 1010
 		;WinMove, ahk_exe WindowsTerminal.exe, , 480, 80, 1050, 950
 		WinMove, ahk_exe WindowsTerminal.exe, , 410, 60, 1150, 1005 
+		;WinMove, ahk_exe WindowsTerminal.exe, , 410, 60, 750, 1005 
 	}	
 
     
