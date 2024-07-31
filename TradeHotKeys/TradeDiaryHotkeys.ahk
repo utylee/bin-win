@@ -82,8 +82,9 @@ toggle0101[77] := 1 ;잔고 / 당일매매 영역의 토글을 위한 변수
 
 
 ;히오스가 활성화 상태이면 캡쳐 영상 전송 속도 줄이기 통보
+; find_finals.pyw로 대체합니다. finals에서 ahk를 불법도구로 인식합니다
 
-;whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+/*
 Loop {
 	whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
 
@@ -227,6 +228,38 @@ Loop {
 			}
 	}
 
+	IfWinExist ahk_exe cs2.exe
+	{
+		c := 1
+		IfWinActive ahk_exe cs2.exe
+			try{
+				;whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+				;whr.Open("GET", "https://se-1.cellsynt.net/sms.php?username=demo&password=test123&destination=0046700123123&originatortype=numeric&originator=46700456456&charset=UTF-8&text=Test+123", true)
+				whr.Open("GET", "http://localhost:8007/low")
+				whr.Send()
+				; Using 'true' above and the call below allows the script to remain responsive.
+				whr.WaitForResponse()
+				;MsgBox % whr.ResponseText
+			} catch e {
+				; pass 명령어가 뭔지 몰라서 더미 명령줄을 추가했습니다
+				dummy := 1
+			}
+
+		IfWinNotActive ahk_exe cs2.exe
+			try{
+				;whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+				;whr.Open("GET", "https://se-1.cellsynt.net/sms.php?username=demo&password=test123&destination=0046700123123&originatortype=numeric&originator=46700456456&charset=UTF-8&text=Test+123", true)
+				whr.Open("GET", "http://localhost:8007/high")
+				whr.Send()
+				; Using 'true' above and the call below allows the script to remain responsive.
+				whr.WaitForResponse()
+				;MsgBox % whr.ResponseText
+			} catch e {
+				; pass 명령어가 뭔지 몰라서 더미 명령줄을 추가했습니다
+				dummy := 1
+			}
+	}
+
 	; 아무 창도 없을 경우에는 높은 속도로 설정합니다. 게임 종료하고 나니 low로 
 	; 전송이 되고 있는 걸 발견하였습니다
 	If (a < 1 and b < 1 and c < 1 and d < 1)
@@ -243,6 +276,7 @@ Loop {
 		
 	Sleep 10000
 }
+*/
 
 ; 오버워치 뒤로 돌기 매크로 테스트
 ;#IfWinActive, ahk_exe r5apex.exe
@@ -298,6 +332,8 @@ XButton1::
 #s::return
 #k::return
 #;::return
+#+::return
+#=::return				; 윈도우 돋보기
 ;#p::return
 #u::return
 #h::return				; 자음모음이 분리되는 원인인 Window+H 단축키 (한국어지원안돼서)도 비활성화합니다	
@@ -603,12 +639,20 @@ LAlt & ~1::
 
 	;IfWinExist, ahk_class _KiWoomClass
 	;IfWinExist, ahk_class _KiWoomClass
+	/*
 	IfWinExist, ahk_class _NKHeroMainClass
 	{
 		;;WinActivate
 		;WinMove, ahk_class _KiWoomClass, , -1920, 0, 3840, 1160
-		;WinMove, ahk_exe nkrunlite.exe, , -1920, 0, 3840, 1160
-		WinMove, ahk_class _NKHeroMainClass, , -1920, 0, 3840, 1160
+		WinMove, ahk_exe nkrunlite.exe, , -1920, 0, 3840, 1160
+		;WinMove, ahk_class _NKHeroMainClass, , -1920, 0, 3840, 1160
+	}
+	*/
+	IfWinExist, ahk_exe nkrunlite.exe
+	{
+		;;WinActivate
+		;WinMove, ahk_class _KiWoomClass, , -1920, 0, 3840, 1160
+		WinMove, ahk_exe nkrunlite.exe, , -1920, 0, 3840, 1160
 	}
 
     ;두개를 띄우기에 레이아웃 망칠 확률이 높다
@@ -666,6 +710,7 @@ LAlt & ~1::
 		;WinMove, ahk_exe WindowsTerminal.exe, , 450, 80, 1200, 1010
 		;WinMove, ahk_exe WindowsTerminal.exe, , 480, 80, 1050, 950
 		WinMove, ahk_exe WindowsTerminal.exe, , 410, 60, 1150, 1005 
+		;WinMove, ahk_exe WindowsTerminal.exe, , 410, 60, 750, 1005 
 	}	
 
     

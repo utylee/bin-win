@@ -15,14 +15,16 @@ path = 'G:/Down/'
 #target = 'u:/4001/99-data/91-transmission-watch'
 #target = r'\\192.168.0.201\clark\4001\99-data\91-transmission-watch'
 # target = r'\\192.168.1.205\clark\4001\99-data\91-transmission-watch'
-target = r'\\192.168.1.202\clark\4001\99-data\91-transmission-watch'
+# target = r'\\192.168.1.202\clark\4001\99-data\91-transmission-watch'
+target = r'\\192.168.1.202\8001\99-data\91-transmission-watch'
 backup_target = r'G:/magnets/'
 
 #target_media = 'u:/3002/00-MediaWorld'
 #target_media = 'u:/4002/00-MediaWorld-4002'
 #target_media = r'\\192.168.0.201\clark\4002\00-MediaWorld-4002'
 # target_media = r'\\192.168.1.205\clark\4002\00-MediaWorld-4002'
-target_media = r'\\192.168.1.202\clark\4002\00-MediaWorld-4002'
+# target_media = r'\\192.168.1.202\clark\4002\00-MediaWorld-4002'
+target_media = r'\\192.168.1.202\8001'
 
 
 before = dict([(f, None) for f in os.listdir(path)])
@@ -44,6 +46,9 @@ while 1:
                 
                 # 사이즈가 0일 경우 복사를 하지 않고 다음 주기로 그냥 넘깁니다
                 if os.stat(a).st_size == 0:
+                    # 그냥 넘기기 전에 리스트에서 항목을 제거합니다. 다음에 다시 추가되도록
+                    del after[i]
+                    before = after
                     continue
 
                 try:
