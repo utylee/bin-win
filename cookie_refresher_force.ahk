@@ -156,9 +156,15 @@ ImmGetDefaultIMEWnd(hWnd)
 		;Sleep, 2000
 		Sleep, 2000
 		
-		WinActivate, 다른 이름으로 저장
+		;WinActivate, 다른 이름으로 저장 확인
+		WinActivate, ahk_exe firefox.exe
+		Sleep, 1000
+		;WinActivate, 다른 이름으로 저장
+		;Send, y
+		Send, {Left}
+		Sleep, 1000
+		Send, {Enter} 
 		Sleep, 3000
-		Send, y
 		;파일 변경 확인 메세지에 또 yes를 누릅니다
 		;WinWaitActive, 다른 이름으로 저장 확인,,5
 		;if ErrorLevel
@@ -176,11 +182,12 @@ ImmGetDefaultIMEWnd(hWnd)
 		;}
 
 		; studio.youtube.com 창을 닫습니다
+		WinActivate, ahk_exe firefox.exe
 		Sleep, 5000
 		Send, ^{w}
 
 		; cookies 갱신 페이지를 엽니다
-		Sleep, 2000
+		Sleep, 3000
 		WinActivate, ahk_exe firefox.exe
 		
 		;Sleep, 1000
