@@ -1,14 +1,6 @@
 Set oShell = CreateObject("WScript.Shell")
-'대부분 예제가 대문자 Sleep으로 표기되어있는데 소문자일 경우가 동작합니다
-'Wscript.Sleep 10000
-'20초 딜레이를 줍니다
-Wscript.sleep 20000
-'oShell.Run "wsl -d Ubuntu20WSL2 sudo /usr/bin/mount -t cifs '\\\\192.168.1.202\\clark' /mnt/clark -o username=utylee,password=sksmsqnwk11,file_mode=0777,dir_mode=0777,iocharset=utf8", 0
-'oShell.Run "wsl -d Ubuntu20WSL2 sudo /usr/bin/mount -t drvfs //192.168.1.202/clark /mnt/clark ", 0
-oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.202/8001 /mnt/8001 ", 0
-oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.202/4001 /mnt/4001 ", 0
-
-'oShell.Run "wsl -d Ubuntu20WSL2 sudo mount -t drvfs '\\\\192.168.1.202\\clark' /mnt/clark", 0
+'oShell.Run "wsl -d Ubuntu-20.04 sudo /etc/init.d/ssh start", 0
+oShell.Run "wsl -d Ubuntu20WSL1 sudo /etc/init.d/ssh start", 0
 
 'https://gist.github.com/dentechy/de2be62b55cfd234681921d5a8b6be11 참조'
 '혹은 https://github.com/utylee/autossh 방법으로 조합해서 간단한 vbs, admin run as 방법을 조합한 방법이다'
