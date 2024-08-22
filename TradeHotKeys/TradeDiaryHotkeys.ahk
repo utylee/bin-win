@@ -649,6 +649,23 @@ LAlt & ~1::
 		;WinMove, ahk_class _NKHeroMainClass, , -1920, 0, 3840, 1160
 	}
 	*/
+
+	;; 제목 중 일부와 match되면 되는 선택하는 모드입니다
+	;;
+	;;1 = A window's title must start with the specified WinTitle to be a match.
+	;;2 = A window's title can contain WinTitle anywhere inside it to be a match.
+	;;3 = A window's title must exactly match WinTitle to be a match.
+	SetTitleMatchMode, 1
+
+	;;IfWinExist, Android Emulator - Flutter:5554
+	IfWinExist, Android Emulator
+	{
+		;;WinActivate
+		;;WinMove, Android Emulator - Flutter:5554,  , 1, 135 
+		;;WinMove, Android Emulator - Flutter:5554,  , 1, 7 
+		WinMove, Android Emulator , , 1, 7 
+	}
+
 	IfWinExist, ahk_exe nkrunlite.exe
 	{
 		;;WinActivate
