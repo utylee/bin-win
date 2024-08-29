@@ -727,7 +727,8 @@ LAlt & ~1::
 		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
 		;WinMove, ahk_exe WindowsTerminal.exe, , 450, 80, 1200, 1010
 		;WinMove, ahk_exe WindowsTerminal.exe, , 480, 80, 1050, 950
-		WinMove, ahk_exe WindowsTerminal.exe, , 410, 60, 1150, 1005 
+		; WinMove, ahk_exe WindowsTerminal.exe, , 410, 60, 1150, 1005 
+		WinMove, ahk_exe WindowsTerminal.exe, , 410, 50, 1150, 1005 
 		;WinMove, ahk_exe WindowsTerminal.exe, , 410, 60, 750, 1005 
 	}	
 
@@ -753,7 +754,8 @@ LAlt & ~1::
 	}	
 	IfWinExist, ahk_class Vim
 	{
-		WinMove, ahk_class Vim, , 566, 83, 1160, 992 
+		; WinMove, ahk_class Vim, , 566, 83, 1160, 992 
+		WinMove, ahk_class Vim, , 566, 63, 1160, 992 
 	}	
 
 	return
@@ -1544,6 +1546,28 @@ $LWin Up::
 {
     IfWinExist, ahk_class MozillaWindowClass
         WinActivate
+    
+    return
+}
+#IfWinExist
+
+
+#IfWinExist ahk_class MozillaWindowClass
+#4::
+{
+
+	;; 제목 중 일부와 match되면 되는 선택하는 모드입니다
+	;;
+	;;1 = A window's title must start with the specified WinTitle to be a match.
+	;;2 = A window's title can contain WinTitle anywhere inside it to be a match.
+	;;3 = A window's title must exactly match WinTitle to be a match.
+	SetTitleMatchMode, 1
+
+	;;IfWinExist, Android Emulator - Flutter:5554
+	IfWinExist, Android Emulator
+	{
+		WinActivate
+	}
     
     return
 }
