@@ -7,7 +7,9 @@ Wscript.sleep 20000
 
 ' wsl1에서는 cifs 지원이 안되고 drvfs 를 사용해야하나 봅니다
 'oShell.Run "wsl -d Ubuntu-20.04 sudo /usr/bin/mount -t cifs //192.168.1.202/clark /mnt/clark -o 'username=utylee,password=sksmsqnwk11,file_mode=0777,dir_mode=0777,iocharset=utf8'", 0
-oShell.Run "wsl -d Ubuntu-20.04 sudo /usr/bin/mount -t drvfs //192.168.1.202/clark /mnt/clark"
+' oShell.Run "wsl -d Ubuntu-20.04 sudo /usr/bin/mount -t drvfs //192.168.1.202/clark /mnt/clark"
+oShell.Run "wsl -d Ubuntu-20.04 sudo /usr/bin/mount -t drvfs //192.168.1.202/8001 /mnt/8001"
+oShell.Run "wsl -d Ubuntu-20.04 sudo /usr/bin/mount -t drvfs //192.168.1.202/4001 /mnt/4001"
 
 
 'oShell.Run "wsl -d Ubuntu20WSL2 sudo mount -t drvfs '\\\\192.168.1.202\\clark' /mnt/clark", 0
