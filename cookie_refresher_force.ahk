@@ -21,6 +21,19 @@ ImmGetDefaultIMEWnd(hWnd)
 } 
 
 {
+	whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+	try{
+		;whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+		;whr.Open("GET", "https://se-1.cellsynt.net/sms.php?username=demo&password=test123&destination=0046700123123&originatortype=numeric&originator=46700456456&charset=UTF-8&text=Test+123", true)
+		whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/openfirefox",true)
+		whr.Send()
+		; Using 'true' above and the call below allows the script to remain responsive.
+		whr.WaitForResponse()
+		;MsgBox % whr.ResponseText
+	} catch e {
+		; pass 명령어가 뭔지 몰라서 더미 명령줄을 추가했습니다
+		dummy := 1
+	}
 	;SendMode Input
 	; 파이어폭스가 있으면 
 	;IfWinExist ahk_class MozillaWindowClass
@@ -36,27 +49,20 @@ ImmGetDefaultIMEWnd(hWnd)
 		;활성화 하고 새로운 탭을 엽니다
 		Sleep, 2000
 		WinActivate, ahk_exe firefox.exe
-		
-		whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
-		b := 1
-
-		try{
-			;whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
-			;whr.Open("GET", "https://se-1.cellsynt.net/sms.php?username=demo&password=test123&destination=0046700123123&originatortype=numeric&originator=46700456456&charset=UTF-8&text=Test+123", true)
-			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/openfirefox")
-			whr.Send()
-			; Using 'true' above and the call below allows the script to remain responsive.
-			whr.WaitForResponse()
-			;MsgBox % whr.ResponseText
-		} catch e {
-			; pass 명령어가 뭔지 몰라서 더미 명령줄을 추가했습니다
-			dummy := 1
-		}
 
 		Sleep, 1000
 		Send, ^{t}
 
 		Sleep, 1000
+		; connecting to studio.youtube.com
+		try{
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/connectstudio", true)
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+		} catch e {
+			dummy := 1
+		}
 
 		;한영키 여부를 감지해서 영어로 변환해줍니다
 		;ret := IME_CHECK("A")
@@ -81,22 +87,12 @@ ImmGetDefaultIMEWnd(hWnd)
 
 		Sleep, 2000
 
-		; connecting to studio.youtube.com
-		try{
-			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/connectstudio")
-			whr.Send()
-			; Using 'true' above and the call below allows the script to remain responsive.
-			whr.WaitForResponse()
-		} catch e {
-			dummy := 1
-		}
-
 		Send, studio.youtube.com
 		Send, {Enter}
 
 		; opening dev tool console
 		try{
-			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/opendevconsole")
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/opendevconsole", true)
 			whr.Send()
 			; Using 'true' above and the call below allows the script to remain responsive.
 			whr.WaitForResponse()
@@ -109,7 +105,7 @@ ImmGetDefaultIMEWnd(hWnd)
 
 		; input grst
 		try{
-			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/typegrst")
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/typegrst", true)
 			whr.Send()
 			; Using 'true' above and the call below allows the script to remain responsive.
 			whr.WaitForResponse()
@@ -117,7 +113,7 @@ ImmGetDefaultIMEWnd(hWnd)
 			dummy := 1
 		}
 		; 개발자 네트워크에 grst 입력
-		Sleep, 10000
+		Sleep, 15000
 		MouseMove, 110, 400
 		MouseClick, left
 
@@ -125,7 +121,7 @@ ImmGetDefaultIMEWnd(hWnd)
 
 		; refreshing studio 
 		try{
-			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/refreshstudio")
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/refreshstudio", true)
 			whr.Send()
 			; Using 'true' above and the call below allows the script to remain responsive.
 			whr.WaitForResponse()
@@ -142,7 +138,7 @@ ImmGetDefaultIMEWnd(hWnd)
 
 		; grst manipulating
 		try{
-			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/grsting")
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/grsting", true)
 			whr.Send()
 			; Using 'true' above and the call below allows the script to remain responsive.
 			whr.WaitForResponse()
@@ -186,7 +182,7 @@ ImmGetDefaultIMEWnd(hWnd)
 
 		; cooking 
 		try{
-			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/cooking")
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/cooking", true)
 			whr.Send()
 			; Using 'true' above and the call below allows the script to remain responsive.
 			whr.WaitForResponse()
@@ -257,7 +253,7 @@ ImmGetDefaultIMEWnd(hWnd)
 
 		; finalizing 
 		try{
-			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/finalizing")
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/finalizing", true)
 			whr.Send()
 			; Using 'true' above and the call below allows the script to remain responsive.
 			whr.WaitForResponse()
@@ -286,7 +282,7 @@ ImmGetDefaultIMEWnd(hWnd)
 
 		; closing 
 		try{
-			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/closefirefox")
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/closefirefox", true)
 			whr.Send()
 			; Using 'true' above and the call below allows the script to remain responsive.
 			whr.WaitForResponse()
@@ -300,7 +296,7 @@ ImmGetDefaultIMEWnd(hWnd)
 
 		; finished 
 		try{
-			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/finished")
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/finished", true)
 			whr.Send()
 			; Using 'true' above and the call below allows the script to remain responsive.
 			whr.WaitForResponse()
