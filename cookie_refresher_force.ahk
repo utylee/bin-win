@@ -21,6 +21,19 @@ ImmGetDefaultIMEWnd(hWnd)
 } 
 
 {
+	whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+	try{
+		;whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+		;whr.Open("GET", "https://se-1.cellsynt.net/sms.php?username=demo&password=test123&destination=0046700123123&originatortype=numeric&originator=46700456456&charset=UTF-8&text=Test+123", true)
+		whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/openfirefox",true)
+		whr.Send()
+		; Using 'true' above and the call below allows the script to remain responsive.
+		whr.WaitForResponse()
+		;MsgBox % whr.ResponseText
+	} catch e {
+		; pass 명령어가 뭔지 몰라서 더미 명령줄을 추가했습니다
+		dummy := 1
+	}
 	;SendMode Input
 	; 파이어폭스가 있으면 
 	;IfWinExist ahk_class MozillaWindowClass
@@ -36,11 +49,20 @@ ImmGetDefaultIMEWnd(hWnd)
 		;활성화 하고 새로운 탭을 엽니다
 		Sleep, 2000
 		WinActivate, ahk_exe firefox.exe
-		
+
 		Sleep, 1000
 		Send, ^{t}
 
 		Sleep, 1000
+		; connecting to studio.youtube.com
+		try{
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/connectstudio", true)
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+		} catch e {
+			dummy := 1
+		}
 
 		;한영키 여부를 감지해서 영어로 변환해줍니다
 		;ret := IME_CHECK("A")
@@ -64,20 +86,48 @@ ImmGetDefaultIMEWnd(hWnd)
 		}
 
 		Sleep, 2000
+
 		Send, studio.youtube.com
 		Send, {Enter}
 
+		; opening dev tool console
+		try{
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/opendevconsole", true)
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+		} catch e {
+			dummy := 1
+		}
 		; 개발자 콘솔 열기
 		Sleep, 10000
 		Send, ^+{i}
 
+		; input grst
+		try{
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/typegrst", true)
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+		} catch e {
+			dummy := 1
+		}
 		; 개발자 네트워크에 grst 입력
-		Sleep, 10000
+		Sleep, 15000
 		MouseMove, 110, 400
 		MouseClick, left
 
 		Send, grst
 
+		; refreshing studio 
+		try{
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/refreshstudio", true)
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+		} catch e {
+			dummy := 1
+		}
 		; youtube 재클릭 리프레시
 		Sleep, 2000
 		MouseMove, 110, 150
@@ -85,6 +135,16 @@ ImmGetDefaultIMEWnd(hWnd)
 
 		; grst 항목 클릭
 		Sleep, 30000
+
+		; grst manipulating
+		try{
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/grsting", true)
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+		} catch e {
+			dummy := 1
+		}
 		MouseMove, 180, 500
 		MouseClick, left
 
@@ -119,6 +179,16 @@ ImmGetDefaultIMEWnd(hWnd)
 		Sleep, 1000
 		Send, {Enter}
 		;MsgBox, pink	
+
+		; cooking 
+		try{
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/cooking", true)
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+		} catch e {
+			dummy := 1
+		}
 
 		; 쿠키 확장프로그램 클릭
 		Sleep, 1000
@@ -181,6 +251,16 @@ ImmGetDefaultIMEWnd(hWnd)
 			;MsgBox, came
 		;}
 
+		; finalizing 
+		try{
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/finalizing", true)
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+		} catch e {
+			dummy := 1
+		}
+
 		; studio.youtube.com 창을 닫습니다
 		WinActivate, ahk_exe firefox.exe
 		Sleep, 5000
@@ -200,10 +280,29 @@ ImmGetDefaultIMEWnd(hWnd)
 		;Send, http://utylee.duckdns.org/youtube/cookie/cook
 		Send, {Enter}
 
+		; closing 
+		try{
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/closefirefox", true)
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+		} catch e {
+			dummy := 1
+		}
 		; cookies 갱신웹을 닫습니다
 		Sleep, 10000
 		WinActivate, ahk_exe firefox.exe
 		Send, ^{w}
+
+		; finished 
+		try{
+			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/finished", true)
+			whr.Send()
+			; Using 'true' above and the call below allows the script to remain responsive.
+			whr.WaitForResponse()
+		} catch e {
+			dummy := 1
+		}
 
 	}
 	/* else */
