@@ -1,7 +1,9 @@
 Set oShell = CreateObject("WScript.Shell")
 'mount가 끝난 이후에 실행되도록 합니다
 Wscript.sleep 22000
-oShell.Run "usbipd attach --wsl -b 1-1", 0
+' oShell.Run "usbipd attach --wsl -b 1-2", 0
+oShell.Run "usbipd attach --wsl --hardware-id 04e8:396d", 0
+
 
 ' ' admin으로 실행하게해주는 스크립트입니다 '
 ' Set oShell = CreateObject("Shell.Application")
