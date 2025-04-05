@@ -5,6 +5,7 @@ import shutil
 INTV = 5         # 주기를 1초에서 5초로 변경합니다
 #path = 'f:\\down\\'
 #path = 'D:/D_Down/'
+# path = 'I:/Down/'
 path = 'G:/Down/'
 #path = 'E:\\Down\\'
 #target = 'w:\\99-data\\91-transmission-watch\\'
@@ -17,7 +18,7 @@ path = 'G:/Down/'
 # target = r'\\192.168.1.205\clark\4001\99-data\91-transmission-watch'
 # target = r'\\192.168.1.202\clark\4001\99-data\91-transmission-watch'
 target = r'\\192.168.1.202\8001\99-data\91-transmission-watch'
-backup_target = r'G:/magnets/'
+backup_target = r'I:/magnets/'
 
 #target_media = 'u:/3002/00-MediaWorld'
 #target_media = 'u:/4002/00-MediaWorld-4002'
