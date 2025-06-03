@@ -1,11 +1,12 @@
 ﻿;SetTitleMatchMode, RegEx
 #InstallKeybdHook
-#UseHook
+#UseHook On
 #Persistent    ;마치 while로 계속 떠있는 이벤트 룹같이 동작하도록 하는 명령어
 ;SetKeyDelay, 70
 ;SetKeyDelay, 100
 ; 마우스 이동을 활성윈도우가 아닌 절대좌표를 이용합니다
 Coordmode, Mouse, Screen
+; Coordmode, Pixel, Screen
 ;CoordMode, ToolTip|Pixel|Mouse|Caret|Menu [, Screen|Window|Client]
 
 
@@ -320,11 +321,12 @@ XButton1::
 	return
 }
 */
-#IfWinActive
+;#IfWinActive
 
 ;return
 
 #L::return
+;#l::return
 #i::return
 #a::return
 #f::return
@@ -339,6 +341,7 @@ XButton1::
 #u::return
 #h::return				; 자음모음이 분리되는 원인인 Window+H 단축키 (한국어지원안돼서)도 비활성화합니다	
 
+LWin & Tab::AltTab
 
 /*
 ;오버워치 실행중 일 경우 LWin 윈도우키 비활성화
@@ -719,8 +722,9 @@ LAlt & ~1::
 		WinMove, ahk_exe mintty.exe, , 398, 45, 1210, 977 
 	}	
 	IfWinExist, ahk_exe WindowsTerminal.exe
-	{
-		;WinActivate
+	{	
+		;MsgBox, 하하
+		; WinActivate
 		;WinMove, ahk_class mintty, , 520, 135, 1100, 870 
 		;WinMove, ahk_class mintty, , 500, 130, 1200, 900 
         ;
@@ -819,8 +823,8 @@ LAlt & ~1::
 
 	Send, {Enter}
 	Sleep 100
-	return
 */
+	return
 }
 
 /* 자꾸 창 옮기기의 오타가 생겨서 안 쓰는 키이니 빼놓기로
@@ -1194,7 +1198,6 @@ S Up::
 ;^SC029::Send, `` 
 ;+SC029::SendRaw, ~ 
 
-LWin & Tab::AltTab
 
 
 /*
@@ -5629,3 +5632,4 @@ if (WinActive("ahk_class _NKHeroMainClass"))
 return
 */
 
+#UseHook Off
