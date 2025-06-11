@@ -103,6 +103,7 @@ ImmGetDefaultIMEWnd(hWnd)
 		Sleep, 10000
 		Send, ^+{i}
 
+
 		; input grst
 		try{
 			whr.Open("GET", "http://utylee.duckdns.org/youtube/uploader/ws/typegrst", true)
@@ -114,7 +115,16 @@ ImmGetDefaultIMEWnd(hWnd)
 		}
 		; 개발자 네트워크에 grst 입력
 		Sleep, 15000
-		MouseMove, 110, 400
+
+		; select network tap of dev console
+		;MouseMove, 470, 525
+		MouseMove, 535, 575
+		MouseClick, left
+		Sleep, 2000
+
+		; input grst
+		;MouseMove, 110, 400
+		MouseMove, 150, 635
 		MouseClick, left
 
 		Send, grst
@@ -130,7 +140,8 @@ ImmGetDefaultIMEWnd(hWnd)
 		}
 		; youtube 재클릭 리프레시
 		Sleep, 2000
-		MouseMove, 110, 150
+		;MouseMove, 110, 150
+		MouseMove, 215, 215 
 		MouseClick, left
 
 		; grst 항목 클릭
@@ -145,21 +156,28 @@ ImmGetDefaultIMEWnd(hWnd)
 		} catch e {
 			dummy := 1
 		}
-		MouseMove, 180, 500
+
+		;click first item
+		;MouseMove, 180, 500
+		MouseMove, 315, 735
 		MouseClick, left
 
-		;
+		;click response tap
 		Sleep, 1000
-		MouseMove, 450, 480
+		;MouseMove, 450, 480
+		MouseMove, 1030, 680
 		MouseClick, left
 
+		;click string item
 		Sleep, 1000
-		MouseMove, 450, 580
+		;MouseMove, 450, 580
+		MouseMove, 965, 850
 		MouseClick, left
 
 		;모두선택
 		Sleep, 1000
-		MouseMove, 450, 580
+		;MouseMove, 450, 580
+		MouseMove, 965, 850
 		MouseClick, right
 
 		Sleep, 1000
@@ -170,7 +188,8 @@ ImmGetDefaultIMEWnd(hWnd)
 		
 		;복사
 		Sleep, 1000
-		MouseMove, 450, 580
+		;MouseMove, 450, 580
+		MouseMove, 965, 850
 		MouseClick, right
 
 		Sleep, 1000
@@ -200,13 +219,15 @@ ImmGetDefaultIMEWnd(hWnd)
 
 		MouseMove, 0, 0
 		Sleep, 200
-		MouseMove, 780, 52, ,R
+		;MouseMove, 780, 52, ,R
+		MouseMove, 1610, 100, ,R
 		Sleep, 200
 		MouseClick, left
 
 		; cookies: current site 드롭다운 클릭
 		Sleep, 1000
-		MouseMove, 0, 85, , R
+		;MouseMove, 0, 85, , R
+		MouseMove, 0, 100, , R
 		Sleep, 1000
 		MouseClick, left
 
