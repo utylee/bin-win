@@ -732,8 +732,12 @@ LAlt & ~1::
 		;WinMove, ahk_exe WindowsTerminal.exe, , 450, 80, 1200, 1010
 		;WinMove, ahk_exe WindowsTerminal.exe, , 480, 80, 1050, 950
 		; WinMove, ahk_exe WindowsTerminal.exe, , 410, 60, 1150, 1005 
-		WinMove, ahk_exe WindowsTerminal.exe, , 410, 50, 1150, 1005 
 		;WinMove, ahk_exe WindowsTerminal.exe, , 410, 60, 750, 1005 
+
+		; WinMove, ahk_exe WindowsTerminal.exe, , 410, 50, 1150, 1005 
+		; 125% 배율 확대 후 조정
+		; WinMove, ahk_exe WindowsTerminal.exe, , 410, 50, 1150, 980 
+		WinMove, ahk_exe WindowsTerminal.exe, , 410, 50, 1150, 980 
 	}	
 
     
