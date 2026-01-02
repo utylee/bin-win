@@ -1,16 +1,4 @@
 Set oShell = CreateObject("WScript.Shell")
-'대부분 예제가 대문자 Sleep으로 표기되어있는데 소문자일 경우가 동작합니다
-'Wscript.Sleep 10000
-'20초 딜레이를 줍니다
-Wscript.Sleep 20000
-'oShell.Run "wsl -d Ubuntu20WSL2 sudo /usr/bin/mount -t cifs '\\\\192.168.1.202\\clark' /mnt/clark -o username=utylee,password=sksmsqnwk11,file_mode=0777,dir_mode=0777,iocharset=utf8", 0
-'oShell.Run "wsl -d Ubuntu20WSL2 sudo /usr/bin/mount -t drvfs //192.168.1.202/clark /mnt/clark ", 0
-oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.202/8001 /mnt/8001 ", 0
-oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.202/4001 /mnt/4001 ", 0
-
-Wscript.Sleep 60000
-' oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.107/_share_mac /mnt/107mac", 0
-' oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.108/_share_mac2 /mnt/108mac", 0
 oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.100.107/_share_mac /mnt/107mac", 0
 oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.100.108/_share_mac2 /mnt/108mac", 0
 
