@@ -19,7 +19,10 @@ path = 'G:/Down/'
 # target = r'\\192.168.1.202\clark\4001\99-data\91-transmission-watch'
 # target = r'\\192.168.1.202\8001\99-data\91-transmission-watch'
 # target = r'\\192.168.100.108\91-transmission-watch'
-target = r'\\192.168.100.108\_share_mac2\91-transmission-watch'
+target_org = r'\\192.168.1.202\8001\99-data\91-transmission-watch'
+# target_org = r'v:\99-data\91-transmission-watch'
+target_together = r'\\192.168.100.108\_share_mac2\91-transmission-watch'
+# target_together = r'q:\91-transmission-watch'
 backup_target = r'I:/magnets/'
 
 #target_media = 'u:/3002/00-MediaWorld'
@@ -54,19 +57,28 @@ while 1:
                     before = after
                     continue
 
+                target = target_org
+                if '같이' in i:
+                    target = target_together
+
                 try:
+                    print(f'a:{a}, target:{target}')
                     shutil.copy(a, target)
                 except:
+                    print('target copy errored') 
                     continue
                 time.sleep(1)
                 # os.remove(a)
                 # 삭제가 아닌 확장자 변경으로 테스트해봅니다
+                print(f'renaming')
                 renamed = a + '.added'
                 os.rename(a, renamed)
+                print(f'a:{a}, renamed:{renamed}')
                 # os.rename(a, a + '.added')
 
                 # 백업 폴더에 torrent 파일을 옮깁니다
                 shutil.copy(renamed,  backup_target)
+                print(f'a:{a}, renamed:{renamed}')
                 os.remove(renamed)
 
             # elif added[0][-3:] == 'smi' :

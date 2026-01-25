@@ -7,7 +7,7 @@
 
 # ===== 사용자 설정 =====
 $ssid = "AX3001_5G"  # 연결할 SSID
-$interface = "Wi-Fi 2"  # 본인의 무선 어댑터 이름
+$interface = "Wi-Fi 4"  # 본인의 무선 어댑터 이름
 $logPath = "C:\Users\utylee\wifi_log.txt"
 
 # ===== 인터페이스 정보 가져오기 =====

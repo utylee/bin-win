@@ -8,8 +8,17 @@
 # ### ===> wsl, wsl2 를 동시에 사용하면서 default가 wsl1으로 설정되어 생긴 문제였습니다
 # wsl1의 bash.exe 이다 보니 내부 wsl2 ip가 아닌 192.168.1.204 를 가져와서
 # 포워딩이 전혀 안되고 있는 꼴이었습니다
-$remoteport = bash.exe -c "ifconfig eth0 | grep 'inet '"
+
+
+$distribution = "Ubuntu24WSL2"
+
+# $remoteport = wsl --distribution $distribution bash -c "ifconfig lo | grep 'inet '"
+$remoteport = wsl --distribution $distribution bash -c "ifconfig eth0 | grep 'inet '"
+
+# $remoteport = bash.exe -c "ifconfig eth0 | grep 'inet '"
 $found = $remoteport -match '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}';
+echo $found;
+echo $remoteport;
 
 if( $found ){
   $remoteport = $matches[0];
@@ -26,6 +35,7 @@ if( $found ){
 # $ports=@(80,88,443,8080,8812, 8824, 3000, 3001, 3002, 5432);
 $ports=@(80,88,443, 631, 8000, 8123, 8812, 8824, 3000, 3001, 3002, 5432, 9991);
 #$ports=@(80,443);
+echo $ports;
 
 
 #[Static ip]
@@ -51,6 +61,7 @@ for( $i = 0; $i -lt $ports.length; $i++ ){
   iex "netsh interface portproxy delete v4tov4 listenport=$port listenaddress=$addr";
   # iex "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr connectport=$port connectaddress=localhost";
   # 내부 아이피로 포워딩을 못해주는 문제 발생. 
+  echo "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr conn      ectport=$port connectaddress=$remoteport";
   iex "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr connectport=$port connectaddress=$remoteport";
 
   # iex "netsh interface portproxy delete v4tov4 listenport=$port listenaddress=$addr0";
