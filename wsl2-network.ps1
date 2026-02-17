@@ -27,13 +27,16 @@ if( $found ){
   exit;
 }
 
+netsh interface portproxy reset
+
 #[Ports]
 
 #All the ports you want to forward separated by coma
 # 8826 를 ssh 포트로 쓰기에 추가했습니다
 # react 개발을 위해 3000번대들도 여러 개 열어놔줍니다
 # $ports=@(80,88,443,8080,8812, 8824, 3000, 3001, 3002, 5432);
-$ports=@(80,88,443, 631, 8000, 8123, 8812, 8824, 3000, 3001, 3002, 5432, 9991);
+$ports=@(80,88,443, 631, 1234, 8000, 8123, 8812, 8813, 8824, 3000, 3001, 3002, 5432, 9991, 11434, 11435, 18000);
+$ports+=@(8080..8087);
 #$ports=@(80,443);
 echo $ports;
 
@@ -61,7 +64,7 @@ for( $i = 0; $i -lt $ports.length; $i++ ){
   iex "netsh interface portproxy delete v4tov4 listenport=$port listenaddress=$addr";
   # iex "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr connectport=$port connectaddress=localhost";
   # 내부 아이피로 포워딩을 못해주는 문제 발생. 
-  echo "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr conn      ectport=$port connectaddress=$remoteport";
+  echo "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr connectport=$port connectaddress=$remoteport";
   iex "netsh interface portproxy add v4tov4 listenport=$port listenaddress=$addr connectport=$port connectaddress=$remoteport";
 
   # iex "netsh interface portproxy delete v4tov4 listenport=$port listenaddress=$addr0";
