@@ -129,7 +129,7 @@ return {
 			-- { family = "JetBrainsMono NFM Light", weight = "Light" },
 		  -- { family = "Maple Mono NL NF", weight = "Regular" },
 		  -- { family = "FiraCode Nerd Font Mono", weight = "Light" },
-		  { family = "Cascadia Mono NF", weight = "Regular" },
+		  { family = "Cascadia Mono NF", weight = "DemiLight" },
 		  { family = "Noto Sans KR", weight = "Regular" },
 		  { family = "Symbols Nerd Font Mono" },
 		}),
