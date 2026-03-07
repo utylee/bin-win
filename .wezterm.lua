@@ -85,20 +85,32 @@ return {
 	  -- { family = "Symbols Nerd Font Mono" },
   -- }),
   font = wezterm.font_with_fallback({
-	  { family = "FiraCode Nerd Font Mono", weight = "Light" },
+	  -- { family = "FiraCode Nerd Font Mono", weight = "Light" },
+	  -- { family = "JetBrainsMono NFM ExtraLight", weight = "Light" },
+	  -- { family = "JetBrainsMono NFM Thin", weight = "Light" },
+	  -- { family = "JetBrainsMono NFM Light", weight = "Light" },
+	  -- { family = "JetBrainsMono NFM ExtraLight", weight = "ExtraLight" },
+	  -- { family = "JetBrainsMono NFM ExtraLight", weight = "Thin" },
+	  -- { family = "JetBrainsMono NFM ExtraLight", weight = "Thin" },
 		  -- { family = "Maple Mono NL NF", weight = "Regular" },
 		  -- { family = "Maple Mono NL NF", weight = "Light" },
+		  -- { family = "Maple Mono NF Thin", weight = "가늘게" },
+		  -- { family = "Maple Mono NL NF Thin", weight="Regular"},
+		  -- { family = "Maple Mono NL NF ExtraLight", weight="Regular"},
+		  -- { family = "Maple Mono NF ExtraLight"},
 		  -- { family = "Maple Mono NL NF"},
 	  -- { family = "RecMonoLinear Nerd Font Mono", weight = "Regular" },
 	  -- { family = "CommitMono Nerd Font Mono", weight = "Regular" },
 	  -- { family = "FiraCode Nerd Font Mono", weight = "Regular" },
 	  -- { family = "JetBrains Mono", weight = "ExtraLight" },
-    -- { family = "Cascadia Mono NF", weight = "Light" },
+    { family = "Cascadia Mono NF", weight = "Light" },
+    -- { family = "Cascadia Mono NF", weight="Light"},
+	-- { family = "Noto Sans KR ExtraLight", weight = "Medium" },
 	{ family = "Noto Sans KR", weight = "Light" },
-    { family = "Symbols Nerd Font Mono" },
+    -- { family = "Symbols Nerd Font Mono" },
   }),
   -- cell_width = 0.92,
-  -- line_height = 1.0,
+  -- line_height = 1,
   -- font = wezterm.font_with_fallback({
   --   { family = "Iosevka Term", weight = "Light" },
   --   { family = "Symbols Nerd Font Mono" },
@@ -111,11 +123,14 @@ return {
 	  {
 		intensity = "Bold",
 		font = wezterm.font_with_fallback({
-		  { family = "FiraCode Nerd Font Mono", weight = "Regular" },
+		  -- { family = "Maple Mono NF ExtraLight"},
+		  -- { family = "FiraCode Nerd Font Mono", weight = "Regular" },
+			-- { family = "JetBrainsMono Nerd Font Mono", weight = "Regular" },
+			-- { family = "JetBrainsMono NFM Light", weight = "Light" },
 		  -- { family = "Maple Mono NL NF", weight = "Regular" },
 		  -- { family = "FiraCode Nerd Font Mono", weight = "Light" },
-		  -- { family = "Cascadia Mono NF", weight = "Light" },
-		  { family = "Noto Sans KR", weight = "Light" },
+		  { family = "Cascadia Mono NF", weight = "Regular" },
+		  { family = "Noto Sans KR", weight = "Regular" },
 		  { family = "Symbols Nerd Font Mono" },
 		}),
 	  },
@@ -137,13 +152,13 @@ return {
   initial_cols = 92,
   initial_rows = 36,
 
-  -- window_padding = {
-	  -- left = 0,
-	  -- right = 0,
-	  -- top = 0,
-	  -- bottom = 0,
-	-- },
-	--
+   window_padding = {
+	   left = 7,
+	   right = 0,
+	   top = 6,
+	   bottom = 0,
+	 },
+	
 	
 	-- wezterm.on('gui-startup', function(cmd)
 	--   local tab, pane, mux_window = mux.spawn_window(cmd or {})
