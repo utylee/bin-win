@@ -1548,8 +1548,9 @@ $LWin Up::
 #IfWinExist ahk_exe wezterm-gui.exe
 #1::
 {
-    IfWinExist, MINGW32
+    IfWinExist, ahk_exe wezterm-gui.exe
         WinActivate
+
 
     return
 }
