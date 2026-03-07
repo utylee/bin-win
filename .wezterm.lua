@@ -86,12 +86,19 @@ return {
   -- }),
   font = wezterm.font_with_fallback({
 	  { family = "FiraCode Nerd Font Mono", weight = "Light" },
+		  -- { family = "Maple Mono NL NF", weight = "Regular" },
+		  -- { family = "Maple Mono NL NF", weight = "Light" },
+		  -- { family = "Maple Mono NL NF"},
+	  -- { family = "RecMonoLinear Nerd Font Mono", weight = "Regular" },
+	  -- { family = "CommitMono Nerd Font Mono", weight = "Regular" },
 	  -- { family = "FiraCode Nerd Font Mono", weight = "Regular" },
 	  -- { family = "JetBrains Mono", weight = "ExtraLight" },
     -- { family = "Cascadia Mono NF", weight = "Light" },
 	{ family = "Noto Sans KR", weight = "Light" },
     { family = "Symbols Nerd Font Mono" },
   }),
+  -- cell_width = 0.92,
+  -- line_height = 1.0,
   -- font = wezterm.font_with_fallback({
   --   { family = "Iosevka Term", weight = "Light" },
   --   { family = "Symbols Nerd Font Mono" },
@@ -105,6 +112,7 @@ return {
 		intensity = "Bold",
 		font = wezterm.font_with_fallback({
 		  { family = "FiraCode Nerd Font Mono", weight = "Regular" },
+		  -- { family = "Maple Mono NL NF", weight = "Regular" },
 		  -- { family = "FiraCode Nerd Font Mono", weight = "Light" },
 		  -- { family = "Cascadia Mono NF", weight = "Light" },
 		  { family = "Noto Sans KR", weight = "Light" },
@@ -112,6 +120,9 @@ return {
 		}),
 	  },
 	},
+	-- freetype_load_target = "Light",
+  -- freetype_render_target = "HorizontalLcd",
+  -- freetype_load_flags = "NO_HINTING",
 
   -- font_rasterizer = "FreeType",
 	-- freetype_load_target = "Normal",
@@ -145,8 +156,8 @@ return {
 
   wezterm.on("gui-startup", function(cmd)
 	  local _, _, window = wezterm.mux.spawn_window(cmd or {})
-	  window:gui_window():set_position(420, 60)
-	  window:gui_window():set_inner_size(1150, 915)
+	  window:gui_window():set_position(420, 50)
+	  window:gui_window():set_inner_size(1142, 905)
 	end),
 
   -- window_position = { x = 93, y = 38 },
