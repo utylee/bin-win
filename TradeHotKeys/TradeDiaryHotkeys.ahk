@@ -1545,8 +1545,39 @@ $LWin Up::
 
 */
 
-#IfWinExist ahk_exe wezterm-gui.exe
+
+#IfWinExist Alacritty WSL1
 #1::
+{
+    IfWinExist, Alacritty WSL1
+        WinActivate
+
+    return
+}
+#IfWinExist
+
+#IfWinExist Alacritty WSL2
+#2::
+{
+    IfWinExist, Alacritty WSL2
+        WinActivate
+
+    return
+}
+#IfWinExist
+
+; #IfWinExist ahk_exe alacritty.exe
+; #1::
+; {
+;     IfWinExist, ahk_exe alacritty.exe
+;         WinActivate
+
+;     return
+; }
+; #IfWinExist
+
+#IfWinExist ahk_exe wezterm-gui.exe
+#4::
 {
     IfWinExist, ahk_exe wezterm-gui.exe
         WinActivate
@@ -1558,7 +1589,7 @@ $LWin Up::
 
 
 #IfWinExist MINGW32
-#2::
+#5::
 {
     IfWinExist, MINGW32
         WinActivate
