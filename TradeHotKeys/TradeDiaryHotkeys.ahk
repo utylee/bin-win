@@ -741,6 +741,25 @@ LAlt & ~1::
 		WinMove, ahk_exe wezterm-gui.exe, , 411, 49, 1160, 952 
 	}	
 
+	IfWinExist, ahk_exe alacritty.exe
+	{	
+		;MsgBox, 하하
+		; WinActivate
+		;WinMove, ahk_class mintty, , 520, 135, 1100, 870 
+		;WinMove, ahk_class mintty, , 500, 130, 1200, 900 
+        ;
+		;WinMove, ahk_class mintty, , 563, 187, 1200, 900 
+		;WinMove, ahk_exe WindowsTerminal.exe, , 450, 80, 1200, 1010
+		;WinMove, ahk_exe WindowsTerminal.exe, , 480, 80, 1050, 950
+		; WinMove, ahk_exe WindowsTerminal.exe, , 410, 60, 1150, 1005 
+		;WinMove, ahk_exe WindowsTerminal.exe, , 410, 60, 750, 1005 
+
+		; WinMove, ahk_exe WindowsTerminal.exe, , 410, 50, 1150, 1005 
+		; 125% 배율 확대 후 조정
+		; WinMove, ahk_exe WindowsTerminal.exe, , 410, 50, 1150, 980 
+		WinMove, ahk_exe alacritty.exe, , 435, 50, 1132, 963 
+	}	
+
 	IfWinExist, ahk_exe WindowsTerminal.exe
 	{	
 		;MsgBox, 하하
