@@ -19,11 +19,14 @@ path = 'G:/Down/'
 # target = r'\\192.168.1.202\clark\4001\99-data\91-transmission-watch'
 # target = r'\\192.168.1.202\8001\99-data\91-transmission-watch'
 # target = r'\\192.168.100.108\91-transmission-watch'
-target_org = r'\\192.168.1.202\8001\99-data\91-transmission-watch'
+# target_org = r'\\192.168.1.202\8001\99-data\91-transmission-watch'
+target_org = r'\\192.168.1.122\8001\99-data\91-transmission-watch'
 # target_org = r'v:\99-data\91-transmission-watch'
 target_together = r'\\192.168.100.108\_share_mac2\91-transmission-watch'
 # target_together = r'q:\91-transmission-watch'
-backup_target = r'I:/magnets/'
+# backup_target = r'I:/magnets/'
+# backup_target = r'F:/magnets/'
+backup_target = 'F:/magnets/'
 
 #target_media = 'u:/3002/00-MediaWorld'
 #target_media = 'u:/4002/00-MediaWorld-4002'
@@ -58,6 +61,8 @@ while 1:
                     continue
 
                 target = target_org
+
+                #같이 삽시다 일 경우는 mac2로 지정해줍니다
                 if '같이' in i:
                     target = target_together
 

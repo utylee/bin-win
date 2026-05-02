@@ -20,8 +20,10 @@ Wscript.Sleep 60000
 ' oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.108/_share_mac2 /mnt/108mac", 0
 ' oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.100.107/_share_mac /mnt/107mac", 0
 ' oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.100.108/_share_mac2 /mnt/108mac", 0
-oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.202/_share_mac /mnt/107mac", 0
-oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.202/_share_mac2 /mnt/108mac", 0
+' oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.202/_share_mac /mnt/107mac", 0
+' oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.202/_share_mac2 /mnt/108mac", 0
+oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.202/107 /mnt/107mac", 0
+oShell.Run "wsl -d Ubuntu20WSL1 sudo /usr/bin/mount -t drvfs //192.168.1.202/108 /mnt/108mac", 0
 
 'oShell.Run "wsl -d Ubuntu20WSL2 sudo mount -t drvfs '\\\\192.168.1.202\\clark' /mnt/clark", 0
 
